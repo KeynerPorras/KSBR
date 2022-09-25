@@ -46,7 +46,7 @@ lineaComanda LineaComanda[]
 
 model Ingrediente {
 id Int      @id @default(autoincrement())
-IdProducto Int
+idProducto Int
 nombre String
 estado Boolean @default(true)
 producto Producto @relation(fields:[idProducto], references:[id])
@@ -72,8 +72,7 @@ idMesa Int
 idCliente Int
 idMesero Int
 mesa Mesa @relation(fields:[idMesa], references:[id])
-usuario Usuario @relation(fields:[idCliente], references:[id])
-usuario Usuario @relation(fields:[idMesero], references:[id])
+usuarioCliente Usuario @relation(fields:[idCliente], references:[id])
 }
 
 model LineaComanda {
@@ -82,7 +81,7 @@ idComanda Int
 idProducto Int
 cantidad  Int
 precio Decimal  @db.Decimal(10, 2)
-notas
+notas String
 comanda Comanda @relation(fields:[idComanda], references:[id])
 producto Producto @relation(fields:[idProducto], references:[id])
 }
