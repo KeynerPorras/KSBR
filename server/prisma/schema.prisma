@@ -9,3 +9,12 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Categoria {
+Id Int @id @default(autoincrement())
+Nombre String
+}
+model Producto {
+Id Int @id @default(autoincrement())
+Nombre String
+}
