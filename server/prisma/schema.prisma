@@ -10,6 +10,80 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model TipoUsuario {
+id Int      @id @default(autoincrement())
+nombre      String
+usuarios Usuario[]
+}
+
 model Usuario {
 id Int      @id @default(autoincrement())
+idTipoUsuario Int
+idRestaurante Int
+tipoUsuario TipoUsuario @relation(fields:[idTipoUsuario], references:[id])
+restaurante Restaurante @relation(fields:[idRestaurante], references:[id])
 }
+
+model Categoria {
+id Int      @id @default(autoincrement())
+nombre String
+productos Producto[]
+}
+
+model Producto {
+id Int      @id @default(autoincrement())
+nombre String
+descripcion String
+IdIngredientes Int
+precio Decimal  @db.Decimal(10, 2)
+estado Boolean @default(true)
+categoria Categoria @relation(fields:[idCategoria], references:[id])
+idCategoria Int
+ingredientes Ingrediente[]
+restaurantes Restaurante[]
+lineaComanda LineaComanda[]
+}
+
+model Ingrediente {
+id Int      @id @default(autoincrement())
+IdProducto Int
+nombre String
+estado Boolean @default(true)
+producto Producto @relation(fields:[idProducto], references:[id])
+}
+
+model Restaurante {
+id Int      @id @default(autoincrement())
+productos Producto[]
+mesas Mesa[]
+usuarios Usuario[]
+}
+
+model Mesa {
+id Int      @id @default(autoincrement())
+idRestaurante Int
+restaurante Restaurante @relation(fields:[idRestaurante], references:[id])
+}
+
+model Comanda {
+id Int      @id @default(autoincrement())
+lineaComandas LineaComanda[]
+idMesa Int
+idCliente Int
+idMesero Int
+mesa Mesa @relation(fields:[idMesa], references:[id])
+usuario Usuario @relation(fields:[idCliente], references:[id])
+usuario Usuario @relation(fields:[idMesero], references:[id])
+}
+
+model LineaComanda {
+id Int      @id @default(autoincrement())
+idComanda Int
+idProducto Int
+cantidad  Int
+precio Decimal  @db.Decimal(10, 2)
+notas
+comanda Comanda @relation(fields:[idComanda], references:[id])
+producto Producto @relation(fields:[idProducto], references:[id])
+}
+
