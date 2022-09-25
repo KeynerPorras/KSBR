@@ -71,8 +71,7 @@ lineaComandas LineaComanda[]
 idMesa Int
 idCliente Int
 idMesero Int
-mesa Mesa @relation(fields:[idMesa], references:[id])
-usuarioCliente Usuario @relation(fields:[idCliente], references:[id])
+
 }
 
 model LineaComanda {
