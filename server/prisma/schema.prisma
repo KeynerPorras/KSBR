@@ -17,7 +17,7 @@ usuarios Usuario[]
 }
 
 model Usuario {
-id Int      @id @default(autoincrement())
+id String
 idTipoUsuario Int
 idRestaurante Int
 tipoUsuario TipoUsuario @relation(fields:[idTipoUsuario], references:[id])
@@ -64,17 +64,17 @@ usuarios Usuario[]
 model Mesa {
 id Int      @id @default(autoincrement())
 idRestaurante Int
-idUsuario Int
+capacidad Int
 restaurante Restaurante @relation(fields:[idRestaurante], references:[id])
-usuario Usuario @relation(fields:[idUsuario], references:[id])
 }
 
 model Comanda {
 id Int      @id @default(autoincrement())
 lineaComandas LineaComanda[]
-idMesa Int
-idUsuario Int
+idMesa? Int
+idUsuario String
 usuario Usuario @relation(fields:[idUsuario], references:[id])
+mesa Mesa? @relation(fields:[idMesa], references:[id])
 }
 
 model LineaComanda {
