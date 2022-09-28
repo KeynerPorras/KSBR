@@ -10,20 +10,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model TipoUsuario {
-id Int      @id @default(autoincrement())
-nombre      String
-usuarios Usuario[]
-}
-
 model Usuario {
-id String
+id String @unique
 rol Rol
 idRestaurante Int
-tipoUsuario TipoUsuario @relation(fields:[idTipoUsuario], references:[id])
 restaurante Restaurante @relation(fields:[idRestaurante], references:[id])
-mesas Mesa[]
 comandas Comanda[]
+deleted Boolean @default(false)
 }
 
 model Categoria {
@@ -44,6 +37,7 @@ idCategoria Int
 ingredientes Ingrediente[]
 restaurantes Restaurante[]
 lineaComanda LineaComanda[]
+deleted Boolean @default(false)
 }
 
 model Ingrediente {
@@ -52,6 +46,7 @@ idProducto Int
 nombre String
 estado Boolean @default(true)
 producto Producto @relation(fields:[idProducto], references:[id])
+deleted Boolean @default(false)
 }
 
 model Restaurante {
@@ -65,7 +60,9 @@ model Mesa {
 id Int      @id @default(autoincrement())
 idRestaurante Int
 capacidad Int
+Estado Boolean
 restaurante Restaurante @relation(fields:[idRestaurante], references:[id])
+comandas Comanda[]
 }
 
 model Comanda {
@@ -73,6 +70,8 @@ id Int      @id @default(autoincrement())
 lineaComandas LineaComanda[]
 idMesa Int?
 idUsuario String
+estado EstadoComanda
+TipoPago TipoPago
 usuario Usuario @relation(fields:[idUsuario], references:[id])
 mesa Mesa? @relation(fields:[idMesa], references:[id])
 }
@@ -88,8 +87,20 @@ comanda Comanda @relation(fields:[idComanda], references:[id])
 producto Producto @relation(fields:[idProducto], references:[id])
 }
 
-emun Rol{
-  ADMINISTRADOR
-  CLIENTE
-  MESERO
+enum Rol{
+  administrador
+  cliente
+  mesero
+}
+enum EstadoComanda{
+  registrada
+  pendiente
+  enProceso
+  entregada
+  porPagar
+}
+enum TipoPago{
+  tarjeta
+  efectivo
+  ambas
 }
