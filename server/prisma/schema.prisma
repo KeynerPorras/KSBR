@@ -12,7 +12,12 @@ datasource db {
 
 model Usuario {
 id String @unique
+idTipoUsuario String
+password String
 rol Rol
+nombre String
+apellido1 String
+apellido2 String
 idRestaurante Int
 restaurante Restaurante @relation(fields:[idRestaurante], references:[id])
 comandas Comanda[]
@@ -51,6 +56,9 @@ deleted Boolean @default(false)
 
 model Restaurante {
 id Int      @id @default(autoincrement())
+nombre String
+ubicacion String
+idUsuario String
 productos Producto[]
 mesas Mesa[]
 usuarios Usuario[]
@@ -72,6 +80,10 @@ idMesa Int?
 idUsuario String
 estado EstadoComanda
 TipoPago TipoPago
+direccion String
+subTotal Decimal @db.Decimal(10, 2)
+impuesto Decimal @db.Decimal(10, 2)
+totalPagar Decimal @db.Decimal(10, 2)
 usuario Usuario @relation(fields:[idUsuario], references:[id])
 mesa Mesa? @relation(fields:[idMesa], references:[id])
 }
@@ -81,7 +93,6 @@ id Int      @id @default(autoincrement())
 idComanda Int
 idProducto Int
 cantidad  Int
-precio Decimal  @db.Decimal(10, 2)
 notas String
 comanda Comanda @relation(fields:[idComanda], references:[id])
 producto Producto @relation(fields:[idProducto], references:[id])
