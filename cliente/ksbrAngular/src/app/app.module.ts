@@ -4,17 +4,30 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CoreModule } from './core/core.module';
+import { ShareModule } from './share/share.module';
+import { HttpClientModule } from '@angular/common/http';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule
+    // importar HttpClientModule después BrowserModule.
+    // comunicarse con un servidor a través del protocolo HTTP
+    HttpClientModule, // Debe agregar el import respectivo
+    // importar otras dependencias que sean necesario cargar en el componente principal.
+
+    // importar los módulos creados propios en orden
+    BrowserAnimationsModule,
+    CoreModule,
+    ShareModule,
+    HomeModule,
+    // al final el gestor de las rutas principal
+    AppRoutingModule
+    
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
