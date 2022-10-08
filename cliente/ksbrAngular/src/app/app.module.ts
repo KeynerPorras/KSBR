@@ -8,6 +8,7 @@ import { CoreModule } from './core/core.module';
 import { ShareModule } from './share/share.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './home/home.module';
+import { MesasModule } from './mesas/mesas.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,8 +24,10 @@ import { HomeModule } from './home/home.module';
     CoreModule,
     ShareModule,
     HomeModule,
+    MesasModule,
     // al final el gestor de las rutas principal
-    AppRoutingModule
+    AppRoutingModule,
+    
     
   ],
   providers: [],

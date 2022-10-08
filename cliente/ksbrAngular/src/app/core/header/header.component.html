@@ -1,20 +1,50 @@
-<mat-toolbar color="primary">
-    <button mat-icon-button [matMenuTriggerFor]="menu1" class="example-icon" aria-label="Example icon-button with menu icon">
+<div class="contenedor">
+  <mat-toolbar color="primary">
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu1"
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    >
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu1="matMenu" overlapTrigger="false">
-       <button mat-menu-item [routerLink]="['/home/acerca-de']" routerLinkActive="is-active" >Acerca de</button>
-  </mat-menu>
+      <button
+        mat-menu-item
+        [routerLink]="['/home/acerca-de']"
+        routerLinkActive="is-active"
+      >
+        Acerca de
+      </button>
+      <button
+        mat-menu-item
+        [routerLink]="['/mesas/gestion-mesas']"
+        routerLinkActive="is-active"
+      >
+        gestion
+      </button>
+    </mat-menu>
     <span>Keyke's</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>person</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
     
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
+
+    
+
+    <span class="mat-caption" *ngIf="isAutenticated">{{currentUser.email}} </span> 
+    <button mat-icon-button [matMenuTriggerFor]="menu2">
+     
+      <mat-icon [ngStyle]="{'color': isAutenticated ? 'white': '#9E9E9E'}" >person</mat-icon>
     </button>
-</mat-toolbar>
+    <mat-menu #menu2="matMenu">
+      <a mat-menu-item *ngIf="!(isAutenticated)">
+        <mat-icon>person_add</mat-icon>
+        <span> Login </span> 
+      </a>
+      <a mat-menu-item *ngIf="isAutenticated">
+        <mat-icon>person_remove</mat-icon>
+        <span> Logout </span>
+      </a>
+    </mat-menu>
+   
+  </mat-toolbar>
+</div>
