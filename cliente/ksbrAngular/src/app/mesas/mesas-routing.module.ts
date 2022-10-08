@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GestionMesasComponent } from './gestion-mesas/gestion-mesas.component';
 
+
 const routes: Routes = [
-  { path:'gestion/gestion-mesas',component: GestionMesasComponent}
+  { path:'mesas/gestion-mesas',component: GestionMesasComponent}
 ];
 
 @NgModule({

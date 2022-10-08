@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MesasRoutingModule } from './mesas-routing.module';
-import { GestionMesasComponent } from './gestion-mesas/gestion-mesas.component';
+
 import {MatGridListModule} from '@angular/material/grid-list';
+import { GestionMesasComponent } from './gestion-mesas/gestion-mesas.component';
 
 
 @NgModule({
@@ -15,8 +16,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MesasRoutingModule,
     MatGridListModule
   ],
-  exports: [
-    GestionMesasComponent
+  exports: [  
   ]
 })
 export class MesasModule { }
