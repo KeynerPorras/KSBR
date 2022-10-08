@@ -5,35 +5,35 @@
 //Colores
 
 $cafe-palette: (
-    50 : #f6f0e9,
-    100 : #e9d8c8,
-    200 : #dabfa3,
-    300 : #cba57e,
-    400 : #bf9162,
-    500 : #b47e46,
-    600 : #ad763f,
-    700 : #a46b37,
-    800 : #9c612f,
-    900 : #8c4e20,
-    A100 : #ffdec9,
-    A200 : #ffc096,
-    A400 : #ffa163,
-    A700 : #ff9249,
+    50 : #e7e5e2,
+    100 : #c4beb7,
+    200 : #9d9287,
+    300 : #756657,
+    400 : #584633,
+    500 : #4e342e,
+    600 : #34210d,
+    700 : #2c1b0b,
+    800 : #251608,
+    900 : #180d04,
+    A100 : #ff9858,
+    A200 : #ff7925,
+    A400 : #f15d00,
+    A700 : #d75300,
     contrast: (
         50 : #000000,
         100 : #000000,
         200 : #000000,
-        300 : #000000,
-        400 : #000000,
-        500 : #000000,
-        600 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
         700 : #ffffff,
         800 : #ffffff,
         900 : #ffffff,
         A100 : #000000,
         A200 : #000000,
-        A400 : #000000,
-        A700 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
     )
 );
 
@@ -107,7 +107,7 @@ $verde-palette: (
 
 
 
-$my-primary: mat.define-palette($cafe-palette, 800);
+$my-primary: mat.define-palette($cafe-palette, 400);
 $my-accent: mat.define-palette($vino-palette,900);
 $my-warn: mat.define-palette($verde-palette,900);
 

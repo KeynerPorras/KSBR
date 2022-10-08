@@ -1,0 +1,24 @@
+.grid-container {
+    margin: 20px;
+  }
+  
+  .dashboard-card {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    background-color: #4e342e;
+    
+  }
+  .img-mesa{
+    align-items: center;
+    text-align: center;
+  }
+
+  .dashboard-card-content {
+    text-align: center;
+    background-color: aqua;
+    
+  }
+ 
