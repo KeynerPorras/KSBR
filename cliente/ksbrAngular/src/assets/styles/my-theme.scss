@@ -104,12 +104,146 @@ $verde-palette: (
     )
 );
 
+/* For use in src/lib/core/theming/_palette.scss */
+$md-cafe: (
+    50 : #feeded,
+    100 : #fdd1d1,
+    200 : #fcb3b3,
+    300 : #fb9494,
+    400 : #fa7d7d,
+    500 : #f96666,
+    600 : #f85e5e,
+    700 : #f75353,
+    800 : #f64949,
+    900 : #f53838,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffd7d7,
+    A700 : #ffbebe,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-plateado: (
+    50 : #ede9e9,
+    100 : #d1c8c8,
+    200 : #b3a3a3,
+    300 : #957e7e,
+    400 : #7e6363,
+    500 : #674747,
+    600 : #5f4040,
+    700 : #543737,
+    800 : #4a2f2f,
+    900 : #392020,
+    A100 : #ff8080,
+    A200 : #ff4d4d,
+    A400 : #ff1a1a,
+    A700 : #ff0000,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-celeste: (
+    50 : #f0f2ec,
+    100 : #dadfcf,
+    200 : #c1cab0,
+    300 : #a8b490,
+    400 : #95a478,
+    500 : #829460,
+    600 : #7a8c58,
+    700 : #6f814e,
+    800 : #657744,
+    900 : #526533,
+    A100 : #e2ffb3,
+    A200 : #ceff80,
+    A400 : #baff4d,
+    A700 : #b0ff34,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-crema: (
+    50 : #fdfdfd,
+    100 : #fafafa,
+    200 : #f7f7f7,
+    300 : #f3f3f3,
+    400 : #f1f1f1,
+    500 : #eeeeee,
+    600 : #ececec,
+    700 : #e9e9e9,
+    800 : #e7e7e7,
+    900 : #e2e2e2,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
 
 
-
-$my-primary: mat.define-palette($cafe-palette, 400);
-$my-accent: mat.define-palette($vino-palette,900);
-$my-warn: mat.define-palette($verde-palette,900);
+$my-primary: mat.define-palette($md-cafe);
+$my-accent: mat.define-palette($md-plateado);
+$my-warn: mat.define-palette($md-celeste);
 
 $my-theme: mat.define-light-theme((
  color: (

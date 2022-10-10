@@ -1,24 +1,66 @@
 .grid-container {
-    margin: 20px;
-  }
-  
-  .dashboard-card {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    right: 15px;
-    bottom: 15px;
-    background-color: #4e342e;
-    
-  }
-  .img-mesa{
-    align-items: center;
-    text-align: center;
-  }
+  margin: 20px;
+}
 
-  .dashboard-card-content {
-    text-align: center;
-    background-color: aqua;
-    
-  }
- 
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  background-image: radial-gradient(
+    circle at -17.92% 61.98%,
+    #ffd178 0,
+    #ffc376 12.5%,
+    #f9b374 25%,
+    #eba270 37.5%,
+    #d8906c 50%,
+    #c47f67 62.5%,
+    #b27162 75%,
+    #a1665f 87.5%,
+    #935d5b 100%
+  );
+}
+.datos {
+  display: flex;
+  margin: 4%;
+  margin-left: 5%; 
+}
+.datos h4{
+  font-size: large;
+  color: white;
+  padding-left: 10%;
+  
+}
+
+.titulo-mesas { 
+  padding: 2%;
+}
+
+.contenedor-imagen{
+  
+  align-items: center;
+  text-align: center;
+}
+
+
+.dashboard-card-content {
+  text-align: center; 
+}
+.contenedor-datos{
+  box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgb(255,255,255),
+             0.3em 0.3em 1em rgba(0,0,0,0.3);
+  background-image: radial-gradient(circle at 56.38% 52.32%, #f96666 0, #f96666 25%, #f96666 50%, #f96666 75%, #f96666 100%);
+}
+
+.body{
+  background-image: radial-gradient(circle at 56.38% 52.32%, #ffffcb 0, #fff5c0 25%, #f2deb5 50%, #dac8aa 75%, #c3b49f 100%);
+}
+
+.material-icons{
+  font-size: 100px;
+  align-items: center;
+  color: black
+}
