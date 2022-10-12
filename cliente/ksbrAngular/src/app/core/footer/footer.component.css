@@ -1,3 +1,21 @@
 .footer{ 
     padding: 5%;   
 }
+
+.facebuk{
+position: absolute;
+margin-left: 23%;
+margin-bottom: 0.4%;
+}
+
+.instagram{
+position: absolute;
+margin-left: 26%;
+margin-bottom: 0.4%;
+}
+
+.whatsapp{
+position: absolute;
+margin-left: 29.2%;
+margin-bottom: 0.4%;
+}
