@@ -4,108 +4,8 @@
 
 //Colores
 
-$cafe-palette: (
-    50 : #e7e5e2,
-    100 : #c4beb7,
-    200 : #9d9287,
-    300 : #756657,
-    400 : #584633,
-    500 : #4e342e,
-    600 : #34210d,
-    700 : #2c1b0b,
-    800 : #251608,
-    900 : #180d04,
-    A100 : #ff9858,
-    A200 : #ff7925,
-    A400 : #f15d00,
-    A700 : #d75300,
-    contrast: (
-        50 : #000000,
-        100 : #000000,
-        200 : #000000,
-        300 : #ffffff,
-        400 : #ffffff,
-        500 : #ffffff,
-        600 : #ffffff,
-        700 : #ffffff,
-        800 : #ffffff,
-        900 : #ffffff,
-        A100 : #000000,
-        A200 : #000000,
-        A400 : #ffffff,
-        A700 : #ffffff,
-    )
-);
-
 /* For use in src/lib/core/theming/_palette.scss */
-$vino-palette: (
-    50 : #f0e3e3,
-    100 : #dab8b8,
-    200 : #c28989,
-    300 : #aa5a5a,
-    400 : #973636,
-    500 : #851313,
-    600 : #7d1111,
-    700 : #720e0e,
-    800 : #680b0b,
-    900 : #550606,
-    A100 : #ff8888,
-    A200 : #ff5555,
-    A400 : #ff2222,
-    A700 : #ff0909,
-    contrast: (
-        50 : #000000,
-        100 : #000000,
-        200 : #000000,
-        300 : #ffffff,
-        400 : #ffffff,
-        500 : #ffffff,
-        600 : #ffffff,
-        700 : #ffffff,
-        800 : #ffffff,
-        900 : #ffffff,
-        A100 : #000000,
-        A200 : #000000,
-        A400 : #ffffff,
-        A700 : #ffffff,
-    )
-);
-/* For use in src/lib/core/theming/_palette.scss */
-$verde-palette: (
-    50 : #f2f8ef,
-    100 : #dfedd8,
-    200 : #c9e2be,
-    300 : #b3d6a4,
-    400 : #a3cd91,
-    500 : #93c47d,
-    600 : #8bbe75,
-    700 : #80b66a,
-    800 : #76af60,
-    900 : #64a24d,
-    A100 : #ffffff,
-    A200 : #daffcd,
-    A400 : #b4ff9a,
-    A700 : #a1ff80,
-    contrast: (
-        50 : #000000,
-        100 : #000000,
-        200 : #000000,
-        300 : #000000,
-        400 : #000000,
-        500 : #000000,
-        600 : #000000,
-        700 : #000000,
-        800 : #000000,
-        900 : #000000,
-        A100 : #000000,
-        A200 : #000000,
-        A400 : #000000,
-        A700 : #000000,
-    )
-);
-
-/* For use in src/lib/core/theming/_palette.scss */
-$md-cafe: (
+$md-rojo: (
     50 : #feeded,
     100 : #fdd1d1,
     200 : #fcb3b3,
@@ -139,7 +39,7 @@ $md-cafe: (
 );
 
 /* For use in src/lib/core/theming/_palette.scss */
-$md-plateado: (
+$md-cafe: (
     50 : #ede9e9,
     100 : #d1c8c8,
     200 : #b3a3a3,
@@ -173,7 +73,7 @@ $md-plateado: (
 );
 
 /* For use in src/lib/core/theming/_palette.scss */
-$md-celeste: (
+$md-verde: (
     50 : #f0f2ec,
     100 : #dadfcf,
     200 : #c1cab0,
@@ -241,9 +141,9 @@ $md-crema: (
 );
 
 
-$my-primary: mat.define-palette($md-cafe);
-$my-accent: mat.define-palette($md-plateado);
-$my-warn: mat.define-palette($md-celeste);
+$my-primary: mat.define-palette($md-rojo);
+$my-accent: mat.define-palette($md-cafe);
+$my-warn: mat.define-palette($md-verde);
 
 $my-theme: mat.define-light-theme((
  color: (
