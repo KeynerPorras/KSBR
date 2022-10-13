@@ -1,5 +1,21 @@
 .example-spacer {
     flex: 1 1 auto;
     
+    
+  }
+  .mat-caption{
+    font-family: 'Raleway', sans-serif;
+  }
+  .botones{
+    font-size: large;
+  }
+  .nombre{
+    font-size: x-large;
+  }
+  mat-toolbar{
+    font-family: 'Raleway', sans-serif;
+  }
+  button{
+    font-family: 'Raleway', sans-serif;
   }
   

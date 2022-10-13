@@ -1,7 +1,10 @@
 .footer{ 
-    padding: 5%;   
+    margin-top: 3%;  
     
 }
+mat-toolbar{
+    font-family: 'Raleway', sans-serif;
+  }
 
 .facebuk{
 position: absolute;

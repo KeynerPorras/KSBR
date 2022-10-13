@@ -1,33 +1,7 @@
 <div class="contenedor">
   <mat-toolbar color="primary">
-    <!--
-    <button
-      mat-icon-button
-      [matMenuTriggerFor]="menu1"
-      class="example-icon"
-      aria-label="Example icon-button with menu icon"
-    >
-      <mat-icon>menu</mat-icon>
-    </button>
-    <mat-menu #menu1="matMenu" overlapTrigger="false">
-      <button
-        mat-menu-item
-        [routerLink]="['/home/acerca-de']"
-        routerLinkActive="is-active"
-      >
-        Acerca de
-      </button>
-      <button
-        mat-menu-item
-        [routerLink]="['/mesas/gestion-mesas']"
-        routerLinkActive="is-active"
-      >
-        gestion
-      </button>
-    </mat-menu>
-
-  -->
-    <span>Keyke's</span>
+    
+    <span class="nombre">Keyke's</span>
     <span class="example-spacer"></span>
     <!--Boton Inicio  -->
     <button
@@ -35,7 +9,7 @@
       [routerLink]="['']"
       routerLinkActive="is-active"
     >
-      <span>Inicio</span>
+      <span class="botones">Inicio</span>
     </button>
     <!--Boton reservacion  -->
     <button
@@ -43,22 +17,22 @@
       [routerLink]="['/mesas/gestion-mesas']"
       routerLinkActive="is-active"
     >
-      <span>Reservación</span>
+      <span class="botones">Reservación</span>
     </button>
     <!--Boton Acerca de  -->
-    <button
+    <button class="botones"
       mat-button
       [routerLink]="['/home/acerca-de']"
       routerLinkActive="is-active"
     >
-      <span>Nosotros</span>
+      <span class="botones">Nosotros</span>
     </button>
     <span class="example-spacer"></span>
-    <span class="mat-caption" *ngIf="isAutenticated"
+    <span class="mat-caption botones" *ngIf="isAutenticated"
       >{{ currentUser.email }}
     </span>
-    <button mat-icon-button [matMenuTriggerFor]="menu2">
-      <mat-icon [ngStyle]="{ color: isAutenticated ? 'white' : '#9E9E9E' }"
+    <button class="boton-login" mat-icon-button [matMenuTriggerFor]="menu2">
+      <mat-icon  [ngStyle]="{ color: isAutenticated ? 'white' : '#9E9E9E' }"
         >person</mat-icon
       >
     </button>

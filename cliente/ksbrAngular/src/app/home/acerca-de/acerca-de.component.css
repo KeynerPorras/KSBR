@@ -1,9 +1,10 @@
 .miCuadro{
+   
     margin-left: 14.5%;
     height: 90%;
     width: 70%;
-
-    background-color: #E5E5E5;
+border-radius: 4%;
+background-color: #f96666;
 
     -webkit-box-shadow: -1px 8px 31px -10px rgba(0,0,0,0.75);
 -moz-box-shadow: -1px 8px 31px -10px rgba(0,0,0,0.75);
@@ -11,7 +12,7 @@ box-shadow: -1px 8px 31px -10px rgba(0,0,0,0.75);
 }
 
 .mititulo{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Raleway', sans-serif; 
     text-align: center;
 }
 
@@ -20,8 +21,10 @@ box-shadow: -1px 8px 31px -10px rgba(0,0,0,0.75);
 }
 
 .midiv{
-    background-color: white;
-    height: 50%;
+    background-color: #674747;
+    font-family: 'Raleway', sans-serif;  
+  color: white;
+    height: 45%;
     width: 92%;
     margin-top: 1%;
     margin-left: 4%;
@@ -31,4 +34,11 @@ box-shadow: -1px 8px 31px -10px rgba(0,0,0,0.75);
 -moz-border-radius: 38px 38px 38px 38px;
 -webkit-border-radius: 38px 38px 38px 38px;
 border: 0px solid #000000;
+}
+.texto{
+   
+}
+.body{
+    font-family: 'Raleway', sans-serif; 
+    padding-top: 1%;
 }
