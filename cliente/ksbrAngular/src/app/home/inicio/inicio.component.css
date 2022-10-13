@@ -1,18 +1,21 @@
-mat-grid-tile {
-  
+
+
+.presentacion{
+  margin-bottom: 2%;
 }
 
 .container{
+  
   display: grid;
-  grid-template-columns: 400px 400px 200px;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .example-card {
+  margin: 2%;
+  padding: 3%;
   max-width: 400px;
-  width: 200px;
+  width: 70%;
 }
-
-
 
 .lista{
   background: lightblue;
@@ -25,9 +28,7 @@ mat-grid-tile {
 }
 
 .presentacion{
-  background-color: black;
+  
+  box-shadow: 10px black;
 }
 
-mat-grid-list{ 
-  width: 500px;
-}
