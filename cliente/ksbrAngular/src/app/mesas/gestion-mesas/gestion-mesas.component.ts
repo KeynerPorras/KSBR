@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Subject, takeUntil } from 'rxjs';
 import { GenericService } from 'src/app/share/generic.service';
+import { DetalleMesasComponent } from '../detalle-mesas/detalle-mesas.component';
 
 @Component({
   selector: 'app-gestion-mesas',
@@ -12,7 +14,8 @@ export class GestionMesasComponent implements OnInit {
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
-    private gSevice: GenericService
+    private gSevice: GenericService,
+    private dialog:MatDialog
   ) { this.listaVideojuegos();}
 
   listaVideojuegos() {
@@ -25,7 +28,14 @@ export class GestionMesasComponent implements OnInit {
       });
   }
 
-
+  detalleMesa(id:number){
+    const dialogConfig=new MatDialogConfig();
+    dialogConfig.disableClose=true;
+    dialogConfig.data={
+      id:id
+    };
+    this.dialog.open(DetalleMesasComponent,dialogConfig);
+  }
 
   ngOnInit(): void {
   }

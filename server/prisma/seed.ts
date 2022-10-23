@@ -33,7 +33,6 @@ async function main() {
         precio: 500,
         estado:true,
         idCategoria:2,
-        
       }
     });
   

@@ -7,6 +7,6 @@ const mesaController=require("../controllers/mesaController");
 
 router.get("/",mesaController.get);
 
-
+router.get("/:id",mesaController.getById);
 
 module.exports=router;

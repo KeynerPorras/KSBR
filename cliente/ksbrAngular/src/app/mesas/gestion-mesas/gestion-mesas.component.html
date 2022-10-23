@@ -20,6 +20,15 @@
           <img class="imagen" mat-card-image src="./assets/images/quesadilla.jpg" >  
         </mat-card-content>
         <mat-card-actions>
+          <button
+          mat-mini-fab color="accent"
+          matTooltip="Detalle Videjuego"
+          aria-label="Detalle Videjuego"
+          color="primary"
+          (click)="detalleMesa(item.id)"
+        >
+        <mat-icon class="mat-18">info</mat-icon>
+        </button>
           <button mat-button>Estado: {{item.estado}}</button>
           <button mat-button>Capacidad: {{item.capacidad}}</button>
         </mat-card-actions>          

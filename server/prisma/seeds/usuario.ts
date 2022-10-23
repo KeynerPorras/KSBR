@@ -1,4 +1,4 @@
-import {Rol } from "@prisma/client";
+import {Rol} from "@prisma/client";
 export const usuario = [
     //1
     {
