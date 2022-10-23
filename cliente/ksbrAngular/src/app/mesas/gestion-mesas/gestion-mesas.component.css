@@ -1,52 +1,30 @@
 .grid-container {
-  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin:  0 auto;
+  justify-content: space-around;
 }
-
 
 .body{
   font-family: 'Raleway', sans-serif;
 }
-.card {
-  font-family: 'Raleway', sans-serif;
-  font-weight: bold;
+
+.tarjeta{
+  display: flex;
+  flex-direction: column;
+ margin: 5%;
+ width: 20%;
+ background-color: #f96666;
+}
+
+mat-card-actions{            
   color: white;
-  height: 80%;
-  width: 80%;
-  align-items: center;
-  text-align: center;
-  box-shadow:
-       inset 0 -3em 3em rgba(0,0,0,0.1),
-             0 0  0 2px rgb(255,255,255),
-             0.3em 0.3em 1em rgba(0,0,0,0.3);
-  background-color: #f96666;
+  margin:  0 auto;
 }
-mat-card-header{  
-  padding: 1%;
-  
-}
-mat-card-actions{
-  
-  box-shadow:
-       inset 0 -3em 3em rgba(0,0,0,0.1),
-             0 0  0 2px rgb(255,255,255),
-             0.3em 0.3em 1em rgba(0,0,0,0.3);
-             position: relative;
-             
-  bottom: 20px;
-  background-color: #674747;
-  color: white;
- 
-}
-button{
-  font-family: 'Raleway', sans-serif;
-  font-weight: bold;
-  font-size: larger;
-}
-.material-icons{
-  font-size: 75px;
-  align-items: center;
-  color: black
-}
+
+
+
 .titulo{
   font-size: x-large;
   text-align: center;

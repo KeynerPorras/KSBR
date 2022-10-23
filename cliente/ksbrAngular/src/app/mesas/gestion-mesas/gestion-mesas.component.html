@@ -10,90 +10,21 @@
   <div class="titulo">
     <h1><b>Gestion de mesas</b></h1>
   </div>
-  <div class="grid-container" >
-    <mat-grid-list cols="3" rowHeight="2:1">   
-      <mat-grid-tile>
-        <mat-card  class="card">
-          <mat-card-header>     
-            <mat-card-title >Mesa</mat-card-title>
-            <mat-card-subtitle>Codigo: M01</mat-card-subtitle>
-          </mat-card-header>                 
-            <mat-card-content>
-              <span class="material-icons">table_restaurant</span>  
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button>Estado</button>
-              <button mat-button>Cantidad</button>
-            </mat-card-actions>          
-        </mat-card>
-        
-      </mat-grid-tile>
-    
-      <mat-grid-tile>
-        <mat-card  class="card">
-          <mat-card-header>     
-            <mat-card-title >Mesa</mat-card-title>
-            <mat-card-subtitle>Codigo: M02</mat-card-subtitle>
-          </mat-card-header>                 
-            <mat-card-content>
-              <span class="material-icons">table_restaurant</span>  
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button>Estado</button>
-              <button mat-button>Cantidad</button>
-            </mat-card-actions>          
-        </mat-card>
-      </mat-grid-tile>
-  
-      <mat-grid-tile >
-        <mat-card  class="card">
-          <mat-card-header>     
-            <mat-card-title >Mesa</mat-card-title>
-            <mat-card-subtitle>Codigo:M03</mat-card-subtitle>
-          </mat-card-header>                 
-            <mat-card-content>
-              <span class="material-icons">table_restaurant</span>  
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button>Estado</button>
-              <button mat-button>Cantidad</button>
-            </mat-card-actions>          
-        </mat-card>
-      </mat-grid-tile>
-  
-      <mat-grid-tile>
-        <mat-card  class="card">
-          <mat-card-header>     
-            <mat-card-title >Mesa</mat-card-title>
-            <mat-card-subtitle>Codigo:M04</mat-card-subtitle>
-          </mat-card-header>                 
-            <mat-card-content>
-              <span class="material-icons">table_restaurant</span>  
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button>Estado</button>
-              <button mat-button>Cantidad</button>
-            </mat-card-actions>          
-        </mat-card>
-      </mat-grid-tile>
-  
-      <mat-grid-tile>
-        <mat-card  class="card">
-          <mat-card-header>     
-            <mat-card-title >Mesa</mat-card-title>
-            <mat-card-subtitle>Codigo:M05</mat-card-subtitle>
-          </mat-card-header>                 
-            <mat-card-content>
-              <span class="material-icons">table_restaurant</span>  
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button>Estado</button>
-              <button mat-button>Cantidad</button>
-            </mat-card-actions>          
-        </mat-card>
-      </mat-grid-tile>
-      
-    </mat-grid-list>
+  <div class="grid-container" *ngIf="datos" >
+    <mat-card  class="tarjeta" *ngFor="let item of datos">
+      <mat-card-header>     
+        <mat-card-title >Mesa</mat-card-title>
+        <mat-card-subtitle>Codigo: {{item.id}}</mat-card-subtitle>
+      </mat-card-header>                 
+        <mat-card-content>
+          <img class="imagen" mat-card-image src="./assets/images/quesadilla.jpg" >  
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>Estado: {{item.estado}}</button>
+          <button mat-button>Capacidad: {{item.capacidad}}</button>
+        </mat-card-actions>          
+    </mat-card>
+
   </div>
   
   
