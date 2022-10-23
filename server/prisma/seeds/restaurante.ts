@@ -1,20 +1,18 @@
 export const restaurante = [
   //1
   {
-    idUsuario: 1,
-    nombre: "Restaurante 1",
-    ubicacion: "Alajuela",
+    nombre: "Keykes occidente",
+    ubicacion: "Naranjo"
   },
   //2
   {
-    idUsuario: 1,
-    nombre: "Restaurante 2",
-    ubicacion: "Sanjose",
+    nombre: "Keykes San Ramón",
+    ubicacion: "San Ramon"
   },
   //3
   {
-    idUsuario: 1,
-    nombre: "Restaurante 3",
-    ubicacion: "Cartago",
-  },
+    nombre: "Keykes San Carlos",
+    ubicacion: "San Carlos",
+    
+  }
 ];

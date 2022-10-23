@@ -1,14 +1,14 @@
 export const categoria = [
   //1
   {
-    nombre: "Categoria 1"
+    nombre: "Vinos"
   },
   //2
   {
-    nombre: "categoria 2"
+    nombre: "Hamburguesas"
   },
   //3
   {
-    nombre: "categoria 3"
+    nombre: "Platos fuertes"
   },
 ];
