@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { GenericService } from 'src/app/share/generic.service';
 
+
 @Component({
   selector: 'app-gestion-mesas',
   templateUrl: './gestion-mesas.component.html',

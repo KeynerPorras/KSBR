@@ -9,6 +9,7 @@ import { ShareModule } from './share/share.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './home/home.module';
 import { MesasModule } from './mesas/mesas.module';
+import { ProductosModule } from './productos/productos.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +26,7 @@ import { MesasModule } from './mesas/mesas.module';
     ShareModule,
     HomeModule,
     MesasModule,
+    ProductosModule,
     // al final el gestor de las rutas principal
     AppRoutingModule,
     
