@@ -8,14 +8,16 @@ import { GestionMesasComponent } from './gestion-mesas/gestion-mesas.component';
 import {MatIconModule} from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
-
+import {MatDialogModule} from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
+import { DetalleMesasComponent } from './detalle-mesas/detalle-mesas.component';
 
 
 @NgModule({
   declarations: [
-    GestionMesasComponent
+    GestionMesasComponent,
+    DetalleMesasComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatCardModule,
     MatMenuModule,
     MatButtonModule,
-    LayoutModule
+    LayoutModule,
+    MatDialogModule
   ],
   exports: [  
   ]
