@@ -60,6 +60,7 @@ ubicacion String
 productos Producto[]
 mesas Mesa[]
 usuarios Usuario[]
+comandas Comanda[]
 }
 
 model Mesa {
@@ -75,6 +76,7 @@ model Comanda {
 id Int      @id @default(autoincrement())
 idMesa Int?
 idUsuario String
+idRestaurante Int
 estado EstadoComanda
 direccion String
 subTotal Decimal @db.Decimal(10, 2)
@@ -82,6 +84,7 @@ impuesto Decimal @db.Decimal(10, 2)
 totalPagar Decimal @db.Decimal(10, 2)
 fechaComanda  DateTime            @default(now())
 usuario Usuario @relation(fields:[idUsuario], references:[id])
+restaurante Restaurante @relation(fields:[idRestaurante], references:[id])
 mesa Mesa? @relation(fields:[idMesa], references:[id])
 lineaComandas LineaComanda[]
 detallePago DetallePago[]
