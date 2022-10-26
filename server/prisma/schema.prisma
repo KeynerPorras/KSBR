@@ -80,6 +80,7 @@ direccion String
 subTotal Decimal @db.Decimal(10, 2)
 impuesto Decimal @db.Decimal(10, 2)
 totalPagar Decimal @db.Decimal(10, 2)
+fechaComanda  DateTime            @default(now())
 usuario Usuario @relation(fields:[idUsuario], references:[id])
 mesa Mesa? @relation(fields:[idMesa], references:[id])
 lineaComandas LineaComanda[]
@@ -123,6 +124,7 @@ enum EstadoComanda{
   enProceso
   entregada
   porPagar
+  pagada
 }
 enum EstadosMesas{
   reservada

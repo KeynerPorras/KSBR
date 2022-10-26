@@ -10,7 +10,7 @@ const prism = new PrismaClient();
 const productoRouter = require("./routes/productoRoutes");
 const mesaRouter = require("./routes/mesaRoutes");
 const usuarioRouter = require("./routes/usuarioRoutes");
-
+const comandaRouter = require("./routes/comandaRoutes");
 
 // Acceder a la configuracion del archivo .env
 dotEnv.config();
@@ -31,6 +31,7 @@ extended: true,
 app.use("/producto/",productoRouter);
 app.use("/mesa/",mesaRouter);
 app.use("/usuario/",usuarioRouter);
+app.use("/comanda/",comandaRouter);
 
 // Servidor
 app.listen(port, () => {

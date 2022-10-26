@@ -15,7 +15,7 @@ module.exports.getById = async (request, response, next) => {
       id: id,
     },
     include:{
-      restaurante:true
+      restaurante:true,
     }
   });
   response.json(mesa);

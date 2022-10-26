@@ -1,5 +1,6 @@
 import {EstadoComanda} from "@prisma/client";
 
+
 export const mesa = [
   //1
   {

@@ -11,4 +11,24 @@ export const usuario = [
       apellido2:"Cruz",
       idRestaurante:1
     },
+    {
+      id: "208060668",
+      correo: "kporras@gmail.com",
+      password: "08072",
+      rol: Rol.mesero,
+      nombre: "Kevin",
+      apellido1: "Morales",
+      apellido2:"Flores",
+      idRestaurante:2
+    },
+    {
+      id: "208060667",
+      correo: "kpcruz@gmail.com",
+      password: "08072",
+      rol: Rol.administrador,
+      nombre: "Gary",
+      apellido1: "Barahona",
+      apellido2:"Varela",
+      idRestaurante:3
+    },
   ];
