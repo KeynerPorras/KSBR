@@ -13,7 +13,7 @@ export class DetalleProductosComponent implements OnInit {
   datosDialog:any;
   destroy$:Subject<boolean>= new Subject<boolean>();
   constructor(
-    @Inject(MAT_DIALOG_DATA) data,
+    @Inject(MAT_DIALOG_DATA) data:any,
     private dialogRef:MatDialogRef<DetalleProductosComponent>,
     private gService:GenericService
   ) { 
