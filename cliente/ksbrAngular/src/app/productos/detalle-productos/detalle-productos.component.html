@@ -1,22 +1,40 @@
-<button mat-icon-button class="close-button" [mat-dialog-close]="true">
-    <mat-icon class="close-icon" color="primary">close</mat-icon>
-  </button>
-<div *ngIf="datos">
-<h3 mat-dialog-title class="titulo">{{datos.nombre}}</h3>
 
-<mat-dialog-content >
- <ul *ngIf="datos.ingredientes">
-    <li *ngFor="let item of datos.ingredientes"> {{item.nombre}}</li>
- </ul>
-</mat-dialog-content>
 
-<mat-dialog-content >
-  <ul *ngIf="datos.restaurantes">
-     <li *ngFor="let rest of datos.restaurantes"> {{rest.nombre}}</li>
-  </ul>
- </mat-dialog-content>
+<div class="contenedor-detalle" *ngIf="datos">
+  <h2 mat-dialog-title color="secundary"><span style="color: green;">Detalles:</span></h2>
+  <div contenedor-info>
+    <h2><span style="color: green;">Nombre del </span><span style="color: brown;">producto:</span> </h2>
+    <h3>
+      {{ datos.nombre }}
+    </h3>
+  </div>
+  <h2 class="titulos"><span style="color: brown;">Ingredientes:</span></h2>
+  <div class="contenedor-productos">
+    <mat-card class="example-card" *ngFor="let item of datos.ingredientes">
+      <mat-card-content>
+        <h2>{{ item.nombre }}</h2>
+      </mat-card-content>
+      <mat-divider inset></mat-divider>
 
-<mat-dialog-actions>
-   
-</mat-dialog-actions>
+      <mat-card-footer> </mat-card-footer>
+    </mat-card>
+  </div>
+  <h2 class="titulos"><span style="color: green;">Restaurantes:</span></h2>
+  <div class="contenedor-productos">
+    <mat-card class="example-card" *ngFor="let item of datos.restaurantes">
+      <mat-card-content>
+        <h2>{{ item.nombre }}</h2>
+        <h2>{{ item.ubicacion }}</h2>
+      </mat-card-content>
+      <mat-divider inset></mat-divider>
+
+      <mat-card-footer> </mat-card-footer>
+    </mat-card>
+    
+  </div>
+  <mat-dialog-actions>
+    <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+      <mat-icon class="close-icon" color="accent">close</mat-icon>
+    </button>
+  </mat-dialog-actions>
 </div>

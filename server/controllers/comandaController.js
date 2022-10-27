@@ -29,9 +29,6 @@ module.exports.getById = async (request, response, next) => {
                 producto:true
             }
         }
-            
-        
-
       }
     });
     response.json(mesa);

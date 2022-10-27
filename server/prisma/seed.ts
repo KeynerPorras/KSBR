@@ -81,6 +81,102 @@ async function main() {
       },
     },
   });
+  await prisma.producto.create({
+    data: {
+      nombre: "SANTA FE BURGER",
+      descripcion: "7 niveles de deliciosos ingredientes",
+      precio: 8500,
+      estado: true,
+      idCategoria: 2,
+      restaurantes: {
+        connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
+      },
+    },
+  });
+  await prisma.producto.create({
+    data: {
+      nombre: "Batido melocotón",
+      descripcion: "El sabrosísimo melocotón está en el mercado desde principios del verano hasta bien entrado el otoño. ",
+      precio: 3000,
+      estado: true,
+      idCategoria: 4,
+      restaurantes: {
+        connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
+      },
+    },
+  });
+  await prisma.producto.create({
+    data: {
+      nombre: "Batido kiwi",
+      descripcion: "Nos gusta destacar su color verde intenso en recetas que combinen ingredientes del mismo color,",
+      precio: 2000,
+      estado: true,
+      idCategoria: 4,
+      restaurantes: {
+        connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
+      },
+    },
+  });
+  await prisma.producto.create({
+    data: {
+      nombre: "Coca Cola",
+      descripcion: "Gaseosa",
+      precio: 1200,
+      estado: true,
+      idCategoria: 4,
+      restaurantes: {
+        connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
+      },
+    },
+  });
+  await prisma.producto.create({
+    data: {
+      nombre: "Fanta",
+      descripcion: "Gaseosa",
+      precio: 1200,
+      estado: true,
+      idCategoria: 4,
+      restaurantes: {
+        connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
+      },
+    },
+  });
+  await prisma.producto.create({
+    data: {
+      nombre: "Imperial",
+      descripcion: "Cerveza",
+      precio: 1200,
+      estado: true,
+      idCategoria: 5,
+      restaurantes: {
+        connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
+      },
+    },
+  });
+  await prisma.producto.create({
+    data: {
+      nombre: "Bavaria",
+      descripcion: "Cerveza",
+      precio: 1500,
+      estado: true,
+      idCategoria: 5,
+      restaurantes: {
+        connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
+      },
+    },
+  });
+  await prisma.producto.create({
+    data: {
+      nombre: "Smirnoff",
+      descripcion: "Cerveza",
+      precio: 1700,
+      estado: true,
+      idCategoria: 5,
+      restaurantes: {
+        connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
+      },
+    },
+  });
 
   await prisma.comanda.create({
     data: {

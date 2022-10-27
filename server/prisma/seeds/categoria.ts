@@ -11,4 +11,10 @@ export const categoria = [
   {
     nombre: "Platos fuertes"
   },
+  {
+    nombre: "Refrescos"
+  },
+  {
+    nombre: "Cervezas"
+  },
 ];

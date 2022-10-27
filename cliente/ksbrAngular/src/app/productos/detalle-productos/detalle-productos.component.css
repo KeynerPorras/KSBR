@@ -1,8 +1,43 @@
-.titulo{
-color: brown;
-
+.titulo {
+  color: brown;
 }
 
-.close-icon{
-    color: #542E06;
+.close-icon {
+  color: #542e06;
+}
+.contenedor-detalle {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.titulos {
+  margin: 1% 1%;
+}
+.contenedor-info {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.contenedor-productos {
+  margin-top: 1%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.example-card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0px 5px;
+}
+mat-dialog-actions{
+    justify-content: center;
+}
+mat-dialog-title{
+    text-align: center;
 }

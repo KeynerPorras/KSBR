@@ -34,6 +34,26 @@ export const ingrediente = [
     {
       nombre: "Pollo",
       idProducto:3,
-    }
+    },
+    {
+      nombre: "Aguacate",
+      idProducto:5,
+    },
+    {
+      nombre: "Queso Monterey Jack",
+      idProducto:5,
+    },
+    {
+      nombre: "Cebolla Morada",
+      idProducto:5,
+    },
+    {
+      nombre: "Pepinillos",
+      idProducto:5,
+    },
+    {
+      nombre: "Pollo Marinado",
+      idProducto:5,
+    },
     
   ];

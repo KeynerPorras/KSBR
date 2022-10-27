@@ -1,7 +1,7 @@
 <mat-card class="full-width">
     <!-- Title of an Card -->
     <mat-card-title>
-      Ordenes
+      <span style="color: brown;">Orde</span><span style="color: green;">nes</span>
     </mat-card-title>
     <mat-card-content>
       <div class="mat-elevation-z8"   
@@ -25,7 +25,7 @@
           
           <ng-container matColumnDef="usuario">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Usuario</th>
-            <td mat-cell *matCellDef="let row">{{ row.usuario.correo }}</td>
+            <td mat-cell *matCellDef="let row">{{ row.usuario.nombre}} {{row.usuario.apellido1 }} {{ row.usuario.apellido2 }}</td>
           </ng-container>  
 
           <ng-container matColumnDef="estado">
@@ -45,7 +45,7 @@
           <ng-container matColumnDef="detalle">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Detalle</th>
             <td mat-cell *matCellDef="let row">
-              <button class="iconos" mat-fab (click)="detalleComanda(row.id)">
+              <button color="primary" class="iconos" mat-fab (click)="detalleComanda(row.id)">
         <mat-icon>info</mat-icon>
       </button>
             </td>
