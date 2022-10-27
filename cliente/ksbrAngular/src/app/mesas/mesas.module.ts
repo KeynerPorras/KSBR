@@ -12,6 +12,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { DetalleMesasComponent } from './detalle-mesas/detalle-mesas.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { DetalleMesasComponent } from './detalle-mesas/detalle-mesas.component';
     MatMenuModule,
     MatButtonModule,
     LayoutModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonToggleModule
   ],
   exports: [  
   ]

@@ -12,6 +12,7 @@ import { MesasModule } from './mesas/mesas.module';
 import { ProductosModule } from './productos/productos.module';
 import { ComandasModule } from './comandas/comandas.module';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -31,6 +32,7 @@ import { ComandasModule } from './comandas/comandas.module';
     ComandasModule,
     // al final el gestor de las rutas principal
     AppRoutingModule,
+    
     
     
   ],

@@ -12,12 +12,14 @@ import { DetalleMesasComponent } from '../detalle-mesas/detalle-mesas.component'
 })
 export class GestionMesasComponent implements OnInit {
   datos: any;
+  datosRestaurante: any;
+  datosSelect: any;
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
     private gSevice: GenericService,
     private dialog:MatDialog
-  ) { this.listaVideojuegos();}
+  ) { this.listaVideojuegos(); this.listaRestaurante();}
 
   listaVideojuegos() {
     this.gSevice
@@ -26,6 +28,24 @@ export class GestionMesasComponent implements OnInit {
       .subscribe((data: any) => {
         console.log(data);
         this.datos = data;
+      });
+  }
+  listaRestaurante() {
+    this.gSevice
+      .list('restaurante/')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: any) => {
+        console.log(data);
+        this.datosRestaurante = data;
+      });
+  }
+  selectListaPorRestaurante(id:any) {
+    this.gSevice
+    .get('mesa/rest',id)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: any) => {
+        console.log(data);
+        this.datosSelect = data;
       });
   }
 

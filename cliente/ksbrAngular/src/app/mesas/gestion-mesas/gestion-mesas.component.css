@@ -18,9 +18,12 @@
  background-color: #f96666;
 }
 
-mat-card-actions{            
+mat-card-actions{        
+  display: flex;   
+  flex-wrap: wrap; 
   color: white;
   margin:  0 auto;
+  justify-content: center;
 }
 
 
@@ -31,4 +34,7 @@ mat-card-actions{
   padding-top: 2%;
   text-decoration: underline black;
 }
-
+.contenedor-botones{
+  display: flex;
+  justify-content: center;
+}

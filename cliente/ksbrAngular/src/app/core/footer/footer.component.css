@@ -23,3 +23,15 @@ position: absolute;
 margin-left: 29.2%;
 margin-bottom: 0.4%;
 }
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.seccion{
+  
+  display: flex;
+  justify-content: center;
+}
+.iconos{
+  margin: 1%;
+}
