@@ -2,15 +2,19 @@
     <mat-icon class="close-icon" color="primary">close</mat-icon>
   </button>
 <div *ngIf="datos">
-<h2 mat-dialog-title>{{datos.nombre}}</h2>
+<h3 mat-dialog-title class="titulo">{{datos.nombre}}</h3>
 
 <mat-dialog-content >
- <p>{{datos.descripcion}}</p>
- <h4>{{datos.precio}}</h4>
- <ul *ngIf="datos.generos">
-    <li *ngFor="let item of datos.generos"> {{item.nombre}}</li>
+ <ul *ngIf="datos.ingredientes">
+    <li *ngFor="let item of datos.ingredientes"> {{item.nombre}}</li>
  </ul>
 </mat-dialog-content>
+
+<mat-dialog-content >
+  <ul *ngIf="datos.restaurantes">
+     <li *ngFor="let rest of datos.restaurantes"> {{rest.nombre}}</li>
+  </ul>
+ </mat-dialog-content>
 
 <mat-dialog-actions>
    
