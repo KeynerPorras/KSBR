@@ -34,7 +34,6 @@ export class DetalleMesasComponent implements OnInit {
     .subscribe((data:any)=>{
         this.datos=data; 
     });
-   
   }
   close(){
     //Dentro de close ()

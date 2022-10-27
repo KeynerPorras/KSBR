@@ -34,4 +34,7 @@ mat-card-actions{
   padding-top: 2%;
   text-decoration: underline black;
 }
-
+.contenedor-botones{
+  display: flex;
+  justify-content: center;
+}

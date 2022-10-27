@@ -11,11 +11,11 @@
     <h1><b>Gestion de mesas</b></h1>
   </div>
   <div *ngIf="datosRestaurante">
-    <mat-button-toggle-group color="primary" #group="matButtonToggleGroup" name="fontStyle" aria-label="Font Style"  >
-      <mat-button-toggle *ngFor="let item of datosRestaurante" value="{{item.id}}" (click)="selectListaPorRestaurante(item.id)">{{item.nombre}} </mat-button-toggle>
-     
-    </mat-button-toggle-group>
-    <div class="example-selected-value">Selected value: {{group.value}}</div>
+    <div class="contenedor-botones">
+      <mat-button-toggle-group color="primary" #group="matButtonToggleGroup" name="fontStyle" aria-label="Font Style"  >
+        <mat-button-toggle *ngFor="let item of datosRestaurante" value="{{item.id}}" (click)="selectListaPorRestaurante(item.id)">{{item.nombre}} </mat-button-toggle>     
+      </mat-button-toggle-group>
+    </div>
     <div class="grid-container" *ngIf="datosSelect" >
     
       <mat-card  class="tarjeta" *ngFor="let item of datosSelect">
