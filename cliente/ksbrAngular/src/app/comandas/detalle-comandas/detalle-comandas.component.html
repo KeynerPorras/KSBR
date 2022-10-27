@@ -1,1 +1,31 @@
-<p>detalle-comandas works!</p>
+<div class="contenedor-detalle" *ngIf="datos">
+  <h2 mat-dialog-title color="secundary">Detalle</h2>
+  <div contenedor-info>
+    <h3>Nombre usuario:</h3>
+  <h3>
+    {{ datos.usuario.nombre }} {{ datos.usuario.apellido1 }}
+    {{ datos.usuario.apellido2 }}
+  </h3>
+  <h3>Tipo usuario: {{ datos.usuario.rol }}</h3>
+  </div>
+
+  <div class="contenedor-productos">
+    <mat-card class="example-card" *ngFor="let item of datos.lineaComandas">
+      <mat-card-content>
+        <h1>{{ item.producto.nombre }}</h1>
+        <p>{{ item.producto.precio | currency: "CRC " }}</p>
+        <p>Notas: {{ item.notas }}</p>
+        <p>Cantidad: {{ item.cantidad }}</p>
+      </mat-card-content>
+      <mat-divider inset></mat-divider>
+
+      <mat-card-footer> </mat-card-footer>
+    </mat-card>
+  </div>
+
+  <mat-dialog-actions>
+    <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+      <mat-icon class="close-icon" color="accent">close</mat-icon>
+    </button>
+  </mat-dialog-actions>
+</div>

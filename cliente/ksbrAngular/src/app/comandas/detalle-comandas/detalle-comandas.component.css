@@ -1,0 +1,27 @@
+.contenedor-detalle{
+width: 100%;
+display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.contenedor-info{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contenedor-productos{
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.example-card{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
