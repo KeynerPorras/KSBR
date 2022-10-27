@@ -11,6 +11,7 @@ const productoRouter = require("./routes/productoRoutes");
 const mesaRouter = require("./routes/mesaRoutes");
 const usuarioRouter = require("./routes/usuarioRoutes");
 const comandaRouter = require("./routes/comandaRoutes");
+const restauranteRouter = require("./routes/restauranteRoutes");
 
 // Acceder a la configuracion del archivo .env
 dotEnv.config();
@@ -32,6 +33,7 @@ app.use("/producto/",productoRouter);
 app.use("/mesa/",mesaRouter);
 app.use("/usuario/",usuarioRouter);
 app.use("/comanda/",comandaRouter);
+app.use("/restaurante/",restauranteRouter);
 
 // Servidor
 app.listen(port, () => {

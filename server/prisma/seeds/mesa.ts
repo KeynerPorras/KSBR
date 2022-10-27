@@ -23,4 +23,19 @@ export const mesa = [
     capacidad: 5,
     estado:EstadoComanda.pendiente
   },
+  {
+    idRestaurante: 2,
+    capacidad: 4,
+    estado:EstadoComanda.pendiente
+  },
+  {
+    idRestaurante: 3,
+    capacidad: 5,
+    estado:EstadoComanda.pendiente
+  },
+  {
+    idRestaurante: 3,
+    capacidad: 6,
+    estado:EstadoComanda.pendiente
+  },
 ];

@@ -10,6 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list'; 
 import {MatMenuModule} from '@angular/material/menu';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatIconModule,
     MatButtonModule,
     MatGridListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDividerModule
   ],
   exports: [
     HeaderComponent,
