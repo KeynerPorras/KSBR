@@ -1,44 +1,44 @@
-.miCuadro{
-   
-    margin-left: 14.5%;
-    height: 90%;
-    width: 70%;
-border-radius: 4%;
-background-color: #f96666;
-
-    -webkit-box-shadow: -1px 8px 31px -10px rgba(0,0,0,0.75);
--moz-box-shadow: -1px 8px 31px -10px rgba(0,0,0,0.75);
-box-shadow: -1px 8px 31px -10px rgba(0,0,0,0.75);
+.miCuadro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 70%;
+  border-radius: 4%;
+  background-color: #f96666;
+  -webkit-box-shadow: -1px 8px 31px -10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 8px 31px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 8px 31px -10px rgba(0, 0, 0, 0.75);
+  margin: 0 auto;
 }
 
-.mititulo{
-    font-family: 'Raleway', sans-serif; 
-    text-align: center;
+.mititulo {
+    margin-top: 2%;
+  font-family: "Raleway", sans-serif;
+  text-align: center;
 }
 
-.milogo{
-    margin-left: 37.5%;
+.milogo {
+  margin-top: 1%;
+  margin: 1% auto;
 }
 
-.midiv{
-    background-color: #674747;
-    font-family: 'Raleway', sans-serif;  
+.midiv {
+  display: flex;
+  flex-direction: column;
+  background-color: #674747;
+  font-family: "Raleway", sans-serif;
   color: white;
-    height: 45%;
-    width: 92%;
-    margin-top: 1%;
-    margin-left: 4%;
-    text-align: center;
+  margin: 1%;
+  text-align: center;
 
-    border-radius: 38px 38px 38px 38px;
--moz-border-radius: 38px 38px 38px 38px;
--webkit-border-radius: 38px 38px 38px 38px;
-border: 0px solid #000000;
+  border-radius: 38px 38px 38px 38px;
+  -moz-border-radius: 38px 38px 38px 38px;
+  -webkit-border-radius: 38px 38px 38px 38px;
+  border: 0px solid #000000;
 }
-.texto{
-   
-}
-.body{
-    font-family: 'Raleway', sans-serif; 
-    padding-top: 1%;
+
+.body {
+  font-family: "Raleway", sans-serif;
+  padding-top: 1%;
 }
