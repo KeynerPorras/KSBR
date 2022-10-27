@@ -1,20 +1,18 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Subject, takeUntil } from 'rxjs';
 import { GenericService } from 'src/app/share/generic.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { DetalleProductosComponent } from '../detalle-productos/detalle-productos.component';
 
 @Component({
-  selector: 'app-gestion-productos',
-  templateUrl: './gestion-productos.component.html',
-  styleUrls: ['./gestion-productos.component.css'],
+  selector: 'app-gestion-comandas',
+  templateUrl: './gestion-comandas.component.html',
+  styleUrls: ['./gestion-comandas.component.css']
 })
 
-export class GestionProductosComponent  implements AfterViewInit {
+export class GestionComandasComponent  implements AfterViewInit {
   datos:any;
   destroy$:Subject<boolean>= new Subject<boolean>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -23,10 +21,10 @@ export class GestionProductosComponent  implements AfterViewInit {
   dataSource= new MatTableDataSource<any>();
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id','nombre', 'descripcion', 'precio', 'categoria'];
+  displayedColumns = ['id','idMesa', 'usuario','estado','fechaComanda', 'totalPagar'];
 
   constructor(private router: Router,
-    private route: ActivatedRoute,private gService:GenericService, private dialog:MatDialog) {
+    private route: ActivatedRoute,private gService:GenericService) {
     
   }
 
@@ -36,7 +34,7 @@ export class GestionProductosComponent  implements AfterViewInit {
   }
   listaVideojuegos() {
     this.gService
-      .list('producto/')
+      .list('comanda/')
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any) => {
         console.log(data);
@@ -46,18 +44,9 @@ export class GestionProductosComponent  implements AfterViewInit {
         this.dataSource.paginator = this.paginator;
       });
   }
-
-  detalleProducto(id:number){
-    const dialogConfig=new MatDialogConfig();
-    dialogConfig.disableClose=false;
-    dialogConfig.data={
-      id:id
-    };
-    this.dialog.open(DetalleProductosComponent,dialogConfig);
-  }
-  
   ngOnDestroy(){
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
   }
+
 }

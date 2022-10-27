@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './home/home.module';
 import { MesasModule } from './mesas/mesas.module';
 import { ProductosModule } from './productos/productos.module';
+import { ComandasModule } from './comandas/comandas.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +28,7 @@ import { ProductosModule } from './productos/productos.module';
     HomeModule,
     MesasModule,
     ProductosModule,
+    ComandasModule,
     // al final el gestor de las rutas principal
     AppRoutingModule,
     

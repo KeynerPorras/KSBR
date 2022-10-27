@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ProductosRoutingModule } from './productos-routing.module';
-import { GestionProductosComponent } from './gestion-productos/gestion-productos.component';
+import { ComandasRoutingModule } from './comandas-routing.module';
+import { GestionComandasComponent } from './gestion-comandas/gestion-comandas.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
@@ -19,17 +19,17 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import { DetalleProductosComponent } from './detalle-productos/detalle-productos.component';
+import { DetalleComandasComponent } from './detalle-comandas/detalle-comandas.component';
 
 
 @NgModule({
   declarations: [
-    GestionProductosComponent,
-    DetalleProductosComponent
+    GestionComandasComponent,
+    DetalleComandasComponent
   ],
   imports: [
     CommonModule,
-    ProductosRoutingModule,
+    ComandasRoutingModule,
 
     MatGridListModule,
     MatCardModule,
@@ -49,4 +49,4 @@ import { DetalleProductosComponent } from './detalle-productos/detalle-productos
     MatButtonToggleModule
   ]
 })
-export class ProductosModule { }
+export class ComandasModule { }
