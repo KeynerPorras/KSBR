@@ -27,10 +27,11 @@ export class DetalleProductosComponent implements OnInit {
   }
   obtenerVideojuego(id:any){
     this.gService
-    .get('videojuego',id)
+    .get('producto',id)
     .pipe(takeUntil(this.destroy$))
     .subscribe((data:any)=>{
         this.datos=data; 
+        console.log(this.datos.ingredientes);
     });
    
   }
