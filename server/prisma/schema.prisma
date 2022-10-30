@@ -67,7 +67,7 @@ model Mesa {
 id Int      @id @default(autoincrement())
 idRestaurante Int
 capacidad Int
-estado EstadoComanda
+estado EstadosMesas
 restaurante Restaurante @relation(fields:[idRestaurante], references:[id])
 comandas Comanda[]
 }
