@@ -65,6 +65,7 @@ comandas Comanda[]
 
 model Mesa {
 id Int      @id @default(autoincrement())
+codigo String
 idRestaurante Int
 capacidad Int
 estado EstadosMesas
@@ -91,13 +92,13 @@ detallePago DetallePago[]
 }
 
 model LineaComanda {
-id Int      @id @default(autoincrement())
 idComanda Int
 idProducto Int
 cantidad  Int
 notas String
 comanda Comanda @relation(fields:[idComanda], references:[id])
 producto Producto @relation(fields:[idProducto], references:[id])
+@@id([idComanda, idProducto])
 }
 
 model DetallePago{
@@ -132,5 +133,9 @@ enum EstadoComanda{
 enum EstadosMesas{
   reservada
   ocupada
+  libre
+  ordenRealizada
+  porPagar
+  inactiva
 }
 

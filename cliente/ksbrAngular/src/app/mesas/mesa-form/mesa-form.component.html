@@ -1,0 +1,57 @@
+<form [formGroup]="mesaForm" novalidate (ngSubmit)="isCreate ? crearMesa(): actualizarVideojuego()">
+    <input type="hidden" formControlName="id" />
+    <mat-card class="shipping-card">
+        <mat-card-header>
+          <mat-card-title>{{titleForm}} Videojuego</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput #codigoMesa maxlength="20" placeholder="Codigo" formControlName="codigo">
+                <mat-hint align="end">{{codigoMesa.value.length}} / 20</mat-hint>
+                <mat-error *ngIf="mesaForm.controls['codigo'].hasError('required')">
+                  Codigo es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Restaurante" type="number" formControlName="idRestaurante">
+                <mat-error *ngIf="mesaForm.controls['idRestaurante'].hasError('required')">
+                  Restaurante es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Capacidad de mesa" type="number" formControlName="capacidad">
+                <mat-error *ngIf="mesaForm.controls['capacidad'].hasError('required')">
+                  La capacidad es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput #codigoMesa maxlength="20" placeholder="Estado" formControlName="estado">
+                
+                <mat-error *ngIf="mesaForm.controls['estado'].hasError('required')">
+                  Codigo es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit">Guardar</button>
+          </mat-card-actions>
+      </mat-card>
+</form>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { GenericService } from 'src/app/share/generic.service';
 import { DetalleMesasComponent } from '../detalle-mesas/detalle-mesas.component';
@@ -17,6 +18,8 @@ export class GestionMesasComponent implements OnInit {
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     private gSevice: GenericService,
     private dialog:MatDialog
   ) { this.listaVideojuegos(); this.listaRestaurante();}
@@ -59,6 +62,12 @@ export class GestionMesasComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  crearMesa() {
+    this.router.navigate(['/mesas/create'], {
+      relativeTo: this.route,
+    });
   }
 
 }

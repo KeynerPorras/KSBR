@@ -38,3 +38,6 @@ mat-card-actions{
   display: flex;
   justify-content: center;
 }
+.crear{
+  margin-right: 2%;
+}

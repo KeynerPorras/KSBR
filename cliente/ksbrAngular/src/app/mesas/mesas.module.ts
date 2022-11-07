@@ -13,12 +13,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { DetalleMesasComponent } from './detalle-mesas/detalle-mesas.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-
+import { MesaFormComponent } from './mesa-form/mesa-form.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     GestionMesasComponent,
-    DetalleMesasComponent
+    DetalleMesasComponent,
+    MesaFormComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +35,11 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatButtonModule,
     LayoutModule,
     MatDialogModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    ReactiveFormsModule
   ],
   exports: [  
   ]
