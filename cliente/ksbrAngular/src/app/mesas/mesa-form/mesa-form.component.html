@@ -20,8 +20,13 @@
           
           <div class="row">
             <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput placeholder="Restaurante" type="number" formControlName="idRestaurante">
+              <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Restaurante</mat-label>
+                <mat-select formControlName="idRestaurante">
+                  <mat-option *ngFor="let item of restauranteList" [value]="item.id">
+                    {{item.nombre}}
+                  </mat-option>
+                </mat-select>
                 <mat-error *ngIf="mesaForm.controls['idRestaurante'].hasError('required')">
                   Restaurante es <strong>requerido</strong>
                 </mat-error>

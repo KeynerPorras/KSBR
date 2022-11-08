@@ -29,7 +29,7 @@ export class GestionMesasComponent implements OnInit {
       .list('mesa/')
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any) => {
-        console.log(data);
+      //  console.log(data);
         this.datos = data;
       });
   }
@@ -38,7 +38,7 @@ export class GestionMesasComponent implements OnInit {
       .list('restaurante/')
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any) => {
-        console.log(data);
+       // console.log(data);
         this.datosRestaurante = data;
       });
   }
@@ -47,7 +47,7 @@ export class GestionMesasComponent implements OnInit {
     .get('mesa/rest',id)
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any) => {
-        console.log(data);
+       // console.log(data);
         this.datosSelect = data;
       });
   }
@@ -69,5 +69,9 @@ export class GestionMesasComponent implements OnInit {
       relativeTo: this.route,
     });
   }
-
+  actualizarMesa(id: number) {
+    this.router.navigate(['/mesa/update', id], {
+      relativeTo: this.route,
+    });
+  }
 }

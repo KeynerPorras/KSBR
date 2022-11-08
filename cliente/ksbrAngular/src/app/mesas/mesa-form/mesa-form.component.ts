@@ -12,7 +12,7 @@ import { GenericService } from 'src/app/share/generic.service';
 export class MesaFormComponent implements OnInit {
   titleForm:string='Crear';
   destroy$: Subject<boolean> = new Subject<boolean>();
-  restauranreList:any;
+  restauranteList:any;
   mesaInfo :any;
   respVideojuego:any;
   submitted = false;
@@ -44,7 +44,7 @@ export class MesaFormComponent implements OnInit {
           this.mesaForm.setValue({
             id:this.mesaInfo.id,
             codigo:this.mesaInfo.codigo,
-            idRestaurante:this.mesaInfo.dRestaurante,
+            idRestaurante:this.mesaInfo.idRestaurante,
             capacidad:this.mesaInfo.capacidad,
             estado:this.mesaInfo.estado,           
           })
@@ -68,13 +68,13 @@ export class MesaFormComponent implements OnInit {
    
   }
   listaRestaurante() {
-    this.restauranreList = null;
+    this.restauranteList = null;
     this.gService
       .list('restaurante/')
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any) => {
-        console.log(data);
-        this.restauranreList = data;
+      //  console.log(data);
+        this.restauranteList = data;
       });
   }
 
@@ -97,14 +97,32 @@ crearMesa(): void {
     //Obtener respuesta
     this.respVideojuego=data;
     console.log(data);
-    this.router.navigate(['/mesa/gestion-mesas'],{
+    this.router.navigate(['/mesas/gestion-mesas'],{
       queryParams: {create:'true'}
     });
   });
 }
 
 actualizarVideojuego(){
+  //Establecer submit verdadero
+  this.submitted=true;
+  //Verificar validación
+  if(this.mesaForm.invalid){
+    return;
+  }
   
+  //Obtener id Generos del Formulario y Crear arreglo con {id: value}
+ 
+  //console.log(this.mesaForm.value);
+  //Accion API create enviando toda la informacion del formulario
+  this.gService.update('mesa',this.mesaForm.value)
+  .pipe(takeUntil(this.destroy$)) .subscribe((data: any) => {
+    //Obtener respuesta
+    this.respVideojuego=data;
+    this.router.navigate(['/mesas/gestion-mesas'],{
+      queryParams: {update:'true'}
+    });
+  });
 }
 
 onReset() {
@@ -112,7 +130,7 @@ onReset() {
   this.mesaForm.reset();
 }
 onBack() {
-  this.router.navigate(['/mesa/gestion-mesas']);
+  this.router.navigate(['/mesas/gestion-mesas']);
 }
 ngOnDestroy() {
   this.destroy$.next(true);

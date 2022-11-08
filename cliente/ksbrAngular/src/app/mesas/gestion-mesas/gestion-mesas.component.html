@@ -30,6 +30,14 @@
         <mat-card-header>     
           <mat-card-title >Mesa</mat-card-title>
           <mat-card-subtitle>Codigo:{{item.codigo}}-{{item.id}}</mat-card-subtitle>
+          <button class="crear"
+            mat-mini-fab color="accent"
+            matTooltip="Agregar nueva mesa"
+            aria-label="Agregar mesa"
+            (click)="actualizarMesa(item.id)"           
+          >
+          <mat-icon class="mat-18">upgrade</mat-icon>
+          </button>
         </mat-card-header>                 
           <mat-card-content>
             <img class="imagen" mat-card-image src="./assets/images/quesadilla.jpg" >  
@@ -38,12 +46,12 @@
             <button
             mat-mini-fab color="accent"
             matTooltip="Detalle Videjuego"
-            aria-label="Detalle Videjuego"
-            color="primary"
+            aria-label="Detalle Videjuego"           
             (click)="detalleMesa(item.id)"
           >
-          <mat-icon class="mat-18">info</mat-icon>
+          <mat-icon  class="mat-18">info</mat-icon>
           </button>
+          
             <button mat-button>Estado: {{item.estado}}</button>
             <button mat-button>Capacidad: {{item.capacidad}}</button>
           </mat-card-actions>          
