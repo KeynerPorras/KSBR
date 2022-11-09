@@ -19,15 +19,21 @@
 }
 
 mat-card-actions{        
-  display: flex;   
+  display: flex;  
+  flex-direction: column; 
   flex-wrap: wrap; 
   color: white;
   margin:  0 auto;
-  justify-content: center;
+  justify-content: space-around;
 }
-
-
-
+.acciones{
+  display: flex;  
+  justify-content: space-around;
+}
+.estados{
+  display: flex;  
+  justify-content: space-around;
+}
 .titulo{
   font-size: x-large;
   text-align: center;

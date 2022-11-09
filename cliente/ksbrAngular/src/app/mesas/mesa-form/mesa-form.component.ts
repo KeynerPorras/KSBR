@@ -13,11 +13,13 @@ export class MesaFormComponent implements OnInit {
   titleForm:string='Crear';
   destroy$: Subject<boolean> = new Subject<boolean>();
   restauranteList:any;
+  mesasList:any;
   mesaInfo :any;
   respVideojuego:any;
   submitted = false;
   mesaForm!: FormGroup;
   idMesa: number = 0;
+  cantidad: number = 0;
   isCreate:boolean=true;
 
 
@@ -27,6 +29,7 @@ export class MesaFormComponent implements OnInit {
   ) { 
     this.formularioReactive();
       this.listaRestaurante();
+      this.listaMesas();
   }
 
   ngOnInit(): void {
@@ -81,8 +84,25 @@ export class MesaFormComponent implements OnInit {
   public errorHandling = (control: string, error: string) => {
     return this.mesaForm.controls[control].hasError(error);
   };
+
+  listaMesas() {
+    this.gService
+      .list('mesa/')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: any) => {
+      //  console.log(data);
+        this.mesasList = data;
+      });
+  }
+
+
 //Crear Videojueogo
 crearMesa(): void {
+  let arregloMesas:string[] = [this.mesasList];
+  console.log(arregloMesas);
+  console.log(arregloMesas[0].length);
+  let count=arregloMesas[0].length + 1;
+  this.mesaForm.value.codigo=this.mesaForm.value.codigo+"-"+count;
   //Establecer submit verdadero
   this.submitted=true;
   //Verificar validación
