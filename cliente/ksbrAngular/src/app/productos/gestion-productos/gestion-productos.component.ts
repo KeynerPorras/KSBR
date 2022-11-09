@@ -23,7 +23,7 @@ export class GestionProductosComponent  implements AfterViewInit {
   dataSource= new MatTableDataSource<any>();
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id','nombre', 'descripcion', 'precio', 'categoria','acciones'];
+  displayedColumns = ['id','nombre', 'descripcion', 'precio', 'categoria','acciones','actua'];
 
   constructor(private router: Router,
     private route: ActivatedRoute,private gService:GenericService, private dialog:MatDialog) {
@@ -54,6 +54,18 @@ export class GestionProductosComponent  implements AfterViewInit {
       id:id
     };
     this.dialog.open(DetalleProductosComponent,dialogConfig);
+  }
+
+  actualizarProducto(id: number) {
+    this.router.navigate(['/productos/update', id], {
+      relativeTo: this.route,
+    });
+  }
+ 
+  crearProducto() {
+    this.router.navigate(['/productos/create'], {
+      relativeTo: this.route,
+    });
   }
   
   ngOnDestroy(){

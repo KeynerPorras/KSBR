@@ -20,12 +20,14 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { DetalleProductosComponent } from './detalle-productos/detalle-productos.component';
+import { ProductoFormComponent } from './producto-form/producto-form.component';
 
 
 @NgModule({
   declarations: [
     GestionProductosComponent,
-    DetalleProductosComponent
+    DetalleProductosComponent,
+    ProductoFormComponent
   ],
   imports: [
     CommonModule,
