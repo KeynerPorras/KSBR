@@ -1,4 +1,4 @@
-<form [formGroup]="videojuegoForm" novalidate (ngSubmit)="isCreate ? crearVideojuego(): actualizarVideojuego()">
+<form [formGroup]="productoForm" novalidate (ngSubmit)="isCreate ? crearVideojuego(): actualizarVideojuego()">
   <input type="hidden" formControlName="id" />
   <mat-card class="shipping-card">
     <mat-card-header>
@@ -10,7 +10,7 @@
           <mat-form-field class="full-width">
             <input matInput #nombreVideojuego maxlength="20" placeholder="Nombre" formControlName="nombre">
             <mat-hint align="end">{{nombreVideojuego.value.length}} / 20</mat-hint>
-            <mat-error *ngIf="videojuegoForm.controls['nombre'].hasError('required')">
+            <mat-error *ngIf="productoForm.controls['nombre'].hasError('required')">
               Nombre es <strong>requerido</strong>
             </mat-error>
           </mat-form-field>
@@ -21,7 +21,7 @@
         <div class="col">
           <mat-form-field class="full-width">
             <input matInput placeholder="Descripción" formControlName="descripcion">
-            <mat-error *ngIf="videojuegoForm.controls['descripcion'].hasError('required')">
+            <mat-error *ngIf="productoForm.controls['descripcion'].hasError('required')">
               Descripción es <strong>requerido</strong>
             </mat-error>
           </mat-form-field>
@@ -29,22 +29,32 @@
         <div class="col">
           <mat-form-field class="full-width">
             <input matInput placeholder="Precio" formControlName="precio">
-            <mat-error *ngIf="videojuegoForm.controls['precio'].hasError('required')">
+            <mat-error *ngIf="productoForm.controls['precio'].hasError('required')">
               Precio es <strong>requerido</strong>
             </mat-error>
           </mat-form-field>
         </div>
       </div>
-      
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Categoria" formControlName="idCategoria" type="number">
+            <mat-error *ngIf="productoForm.controls['idCategoria'].hasError('required')">
+              Descripción es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
       <div class="row">
         <div class="col" *ngIf="generosList">
           <mat-form-field class="full-width">
-            <mat-select placeholder="Generos" formControlName="restaurantes" multiple>
+            <mat-select placeholder="Restaurantes" formControlName="restaurantes" multiple>
               <mat-option *ngFor="let g of generosList" [value]="g.id">
                 {{ g.nombre }}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="videojuegoForm.controls['restaurantes'].hasError('required')">
+            <mat-error *ngIf="productoForm.controls['restaurantes'].hasError('required')">
               Generos es <strong>requerido</strong>
             </mat-error>
           </mat-form-field>
@@ -53,13 +63,13 @@
       
       <div class="row">
         <div class="col">
-          <mat-label>Publicar</mat-label>
-          <mat-radio-group formControlName="publicar">
+          <mat-label>Estado</mat-label>
+          <mat-radio-group formControlName="estado">
             <mat-radio-button [value]="true">Sí</mat-radio-button>
             <mat-radio-button [value]="false">No</mat-radio-button>
           </mat-radio-group>
-          <mat-error *ngIf="videojuegoForm.controls['publicar'].touched &&
-           videojuegoForm.controls['publicar'].hasError('required')">
+          <mat-error *ngIf="productoForm.controls['estado'].touched &&
+           productoForm.controls['estado'].hasError('required')">
             Publicar es <strong>requerido</strong>
           </mat-error>
         </div>

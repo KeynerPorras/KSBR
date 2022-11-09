@@ -16,7 +16,7 @@ export class ProductoFormComponent implements OnInit {
   videojuegoInfo: any;
   respVideojuego: any;
   submitted = false;
-  videojuegoForm!: FormGroup;
+  productoForm!: FormGroup;
   idVideojuego: number = 0;
   isCreate: boolean = true;
   constructor(private fb: FormBuilder, private gService: GenericService,
@@ -27,12 +27,35 @@ export class ProductoFormComponent implements OnInit {
 
 
 
-  ngOnInit(): void {}
+    ngOnInit(): void {
+      //Verificar si se envio un id por parametro para crear formulario para actualizar
+      this.activeRouter.params.subscribe((params:Params)=>{
+        this.idVideojuego=params['id'];
+        if(this.idVideojuego!=undefined){
+          this.isCreate=false;
+          this.titleForm="Actualizar";
+           //Obtener videojuego a actualizar del API
+           this.gService.get('producto',this.idVideojuego).pipe(takeUntil(this.destroy$))
+           .subscribe((data:any)=>{
+            this.videojuegoInfo=data;
+            this.productoForm.setValue({
+              id:this.videojuegoInfo.id,
+              nombre:this.videojuegoInfo.nombre,
+              descripcion:this.videojuegoInfo.descripcion,
+              precio:this.videojuegoInfo.precio,
+              estado:this.videojuegoInfo.estado,
+              idCategoria:this.videojuegoInfo.idCategoria,
+              restaurantes:this.videojuegoInfo.restaurantes.map(({id}) => id)
+            })
+           });
+        }
+      });
+    }
 
   //Crear Formulario
   formularioReactive(){
     //[null, Validators.required]
-    this.videojuegoForm=this.fb.group({
+    this.productoForm=this.fb.group({
       id:[null,null],
       nombre:[null,Validators.compose([
         Validators.required, Validators.minLength(2),Validators.maxLength(20)
@@ -57,31 +80,67 @@ export class ProductoFormComponent implements OnInit {
   }
 
   public errorHandling = (control: string, error: string) => {
-    return this.videojuegoForm.controls[control].hasError(error);
+    return this.productoForm.controls[control].hasError(error);
   };
 
   crearVideojuego(): void {
     //Establecer submit verdadero
     this.submitted=true;
     //Verificar validación
-    if(this.videojuegoForm.invalid){
+    if(this.productoForm.invalid){
       return;
     }
     
     //Obtener id Generos del Formulario y Crear arreglo con {id: value}
-    //let gFormat:any=this.videojuegoForm.get('restaurantes').value.map(x=>({['id']: x }));
+    let gFormat:any=this.productoForm.get('restaurantes').value.map(x=>({['id']: x }));
     //Asignar valor al formulario 
-    //this.videojuegoForm.patchValue({ generos:gFormat});
-    console.log(this.videojuegoForm.value);
+    this.productoForm.patchValue({ restaurantes:gFormat});
+    console.log(this.productoForm.value);
     //Accion API create enviando toda la informacion del formulario
-    this.gService.create('producto',this.videojuegoForm.value)
+    this.gService.create('producto',this.productoForm.value)
     .pipe(takeUntil(this.destroy$)) .subscribe((data: any) => {
       //Obtener respuesta
       this.respVideojuego=data;
-      this.router.navigate(['/productos/gestion-producto'],{
+      this.router.navigate(['/productos/gestion-productos'],{
         queryParams: {create:'true'}
       });
     });
-  
+  }
+
+  actualizarVideojuego(){
+    //Establecer submit verdadero
+    this.submitted=true;
+    //Verificar validación
+    if(this.productoForm.invalid){
+      return;
+    }
+    
+    //Obtener id Generos del Formulario y Crear arreglo con {id: value}
+    let gFormat:any=this.productoForm.get('restaurantes').value.map(x=>({['id']: x }));
+    //Asignar valor al formulario 
+    this.productoForm.patchValue({ restaurantes:gFormat});
+    console.log(this.productoForm.value);
+    //Accion API create enviando toda la informacion del formulario
+    this.gService.update('producto',this.productoForm.value)
+    .pipe(takeUntil(this.destroy$)) .subscribe((data: any) => {
+      //Obtener respuesta
+      this.respVideojuego=data;
+      this.router.navigate(['/productos/gestion-productos'],{
+        queryParams: {update:'true'}
+      });
+    });
+  }
+
+  onReset() {
+    this.submitted = false;
+    this.productoForm.reset();
+  }
+  onBack() {
+    this.router.navigate(['/productos/gestion-productos']);
+  }
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    // Desinscribirse
+    this.destroy$.unsubscribe();
   }
 }

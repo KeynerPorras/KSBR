@@ -41,14 +41,45 @@ module.exports.create=async(request, response, next)=>{
       descripcion:producto.descripcion,
       precio:producto.precio,
       estado:producto.estado,
+      idCategoria:producto.idCategoria,
       restaurantes:{
         connect: producto.restaurantes
       },
-      categoria:{
-        connect: producto.categoria
+    }
+  });
+  response.json(newproducto);
+};
 
+module.exports.update = async (request, response, next) => {
+  let producto = request.body;
+  let idproducto = parseInt(request.params.id);
+  //Obtener producto vieja
+  const productoViejo = await prisma.producto.findUnique({
+    where: { id: idproducto },
+    include: {
+      restaurantes: {
+        select:{
+          id:true
+        }
       }
     }
+  });
+
+  const newproducto = await prisma.producto.update({
+    where: {
+      id: idproducto,
+    },
+    data: {
+      nombre: producto.nombre,
+      descripcion: producto.descripcion,
+      precio: producto.precio,
+      idCategoria: producto.idCategoria,
+      estado: producto.estado,
+      restaurantes:{
+        disconnect: productoViejo.restaurantes,
+        connect: producto.restaurantes
+      }
+    },
   });
   response.json(newproducto);
 };
