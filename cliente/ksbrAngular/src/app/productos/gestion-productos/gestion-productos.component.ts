@@ -23,7 +23,7 @@ export class GestionProductosComponent  implements AfterViewInit {
   dataSource= new MatTableDataSource<any>();
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id','nombre', 'descripcion', 'precio', 'categoria','acciones','actua'];
+  displayedColumns = ['id','nombre', 'descripcion', 'precio', 'categoria','acciones','actua','ingrediente'];
 
   constructor(private router: Router,
     private route: ActivatedRoute,private gService:GenericService, private dialog:MatDialog) {

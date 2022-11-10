@@ -19,7 +19,7 @@
           <!-- Columna nombre -->
 
           <ng-container  matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Codigo Producto</th>
+            <th  mat-header-cell *matHeaderCellDef mat-sort-header>Codigo Producto</th>
             <td  mat-cell *matCellDef="let row">{{ row.id }}</td>
           </ng-container>
 
@@ -44,8 +44,8 @@
           </ng-container>
 
           <ng-container class="centrar" matColumnDef="acciones">
-            <th mat-header-cell *matHeaderCellDef>Detalles</th>
-            <td mat-cell *matCellDef="let row">
+            <th class="centrar" mat-header-cell *matHeaderCellDef>Detalles</th>
+            <td class="centrar" mat-cell *matCellDef="let row">
               <button mat-mini-fab matTooltip="Detalle Producto" aria-label="Detalle Producto" color="primary"
                 (click)="detalleProducto(row.id)">
                 <mat-icon class="mat-18">restaurant</mat-icon>
@@ -54,8 +54,8 @@
           </ng-container>
 
           <ng-container class="centrar" matColumnDef="actua">
-            <th mat-header-cell *matHeaderCellDef>Editar</th>
-            <td mat-cell *matCellDef="let row">
+            <th class="centrar" mat-header-cell *matHeaderCellDef>Editar</th>
+            <td class="centrar" mat-cell *matCellDef="let row">
               <button
                 mat-mini-fab
                 matTooltip="Actualizar Producto"
@@ -64,6 +64,23 @@
                 (click)="actualizarProducto(row.id)"
               >
                 <mat-icon class="mat-18">edit</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <ng-container class="centrar" matColumnDef="ingrediente">
+            <th class="centrar" mat-header-cell *matHeaderCellDef>Ingredientes</th>
+            <td class="centrar" mat-cell *matCellDef="let row">
+              <button
+                mat-mini-fab
+                matTooltip="Actualizar Producto"
+                aria-label="Actualizar Producto"
+                color="primary"
+                (click)="actualizarProducto(row.id)"
+              >
+                <mat-icon class="mat-18"><span class="material-symbols-outlined">
+                  assignment_add
+                  </span></mat-icon>
               </button>
             </td>
           </ng-container>
