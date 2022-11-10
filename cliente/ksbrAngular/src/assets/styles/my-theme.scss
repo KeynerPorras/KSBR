@@ -19,7 +19,7 @@ $md-rojo: (
     200 : #fcb3b3,
     300 : #fb9494,
     400 : #fa7d7d,
-    500 : #f96666,
+    500 : #510214,
     600 : #f85e5e,
     700 : #f75353,
     800 : #f64949,
@@ -151,7 +151,7 @@ $md-crema: (
 $my-primary: mat.define-palette(mat.$brown-palette, 800);
 $my-accent: mat.define-palette(mat.$green-palette, 500);
 $my-warn: mat.define-palette(mat.$red-palette, 500);
-//$my-primary: mat.define-palette($md-cafe);
+//$my-primary: mat.define-palette($md-rojo);
 //$my-accent: mat.define-palette($md-cafe);
 //$my-warn: mat.define-palette($md-verde);
 

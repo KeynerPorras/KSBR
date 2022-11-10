@@ -34,7 +34,7 @@ async function main() {
     data: {
       nombre: "Vino Blanco",
       descripcion: "Vino del año 1996",
-      precio: 78000,
+      precio: 28000,
       estado: true,
       idCategoria: 1,
       restaurantes: {
