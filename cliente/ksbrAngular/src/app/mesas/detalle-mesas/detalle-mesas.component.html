@@ -1,12 +1,12 @@
 <div *ngIf="datos">
-<h2 mat-dialog-title color="secundary">Codigo mesa:{{datos.codigo}}-{{datos.id}}</h2>
+<h2 mat-dialog-title color="secundary"><span style="color: brown;">Codigo mesa:</span>{{datos.codigo}}-{{datos.id}}</h2>
 
 <mat-dialog-content >
- <h4>Estado de la mesa: {{datos.estado}}</h4>
- <h4>Cpacidad de asientos: {{datos.capacidad}}</h4>
+ <h4><span style="color: green;">Estado:</span> {{datos.estado}}</h4>
+ <h4><span style="color: brown;">Capacidad:</span> {{datos.capacidad}}</h4>
  <h4><span style="color: green;">Restaurante:</span></h4>
  <p>{{datos.restaurante.nombre}}</p>
- <p>Ubicación : {{datos.restaurante.ubicacion}}</p>
+ <p><span style="color: brown;">Ubicación:</span> : {{datos.restaurante.ubicacion}}</p>
  
 </mat-dialog-content>
 

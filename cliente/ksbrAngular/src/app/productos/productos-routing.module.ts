@@ -9,7 +9,7 @@ const routes: Routes = [
 
   { path:'productos/create', component: ProductoFormComponent},
 
-  { path:'ingrediente/create/:id', component: IngredienteFormComponent},
+  { path:'ingrediente/create', component: IngredienteFormComponent},
 
   { path:'productos/update/:id', component: ProductoFormComponent}
 ];

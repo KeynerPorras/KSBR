@@ -62,8 +62,8 @@ export class GestionProductosComponent  implements AfterViewInit {
     });
   }
 
-  crearIngrediente(id: number) {
-    this.router.navigate(['/ingrediente/create', id], {
+  crearIngrediente() {
+    this.router.navigate(['/ingrediente/create'], {
       relativeTo: this.route,
     });
   }

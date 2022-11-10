@@ -37,7 +37,7 @@ app.use("/usuario/",usuarioRouter);
 app.use("/comanda/",comandaRouter);
 app.use("/restaurante/",restauranteRouter);
 app.use("/categoria/", categoriaRouter);
-app.use("/ingrediente/", ingredienteRouter);
+app.use("/ingrediente/",ingredienteRouter);
 
 // Servidor
 app.listen(port, () => {

@@ -2,10 +2,10 @@ const express=require("express");
 const router=express.Router();
 
 //Controlador con las acciones de las rutas
-const ingredController=require("../controllers/ingredienteController");
-//Rutas de ingreds
+const ingredienteController=require("../controllers/ingredienteController");
 
-router.post("/",ingredController.create);
+router.get("/",ingredienteController.get);
 
+router.post("/",ingredienteController.create);
 
 module.exports=router;

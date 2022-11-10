@@ -32,15 +32,17 @@ export class IngredienteFormComponent implements OnInit {
       this.activeRouter.params.subscribe((params:Params)=>{
         this.idVideojuego=params['id'];
         if(this.idVideojuego!=undefined){
-          this.isCreate=true;
+          this.isCreate=false;
           this.titleForm="Crear";
            //Obtener videojuego a actualizar del API
            this.gService.get('producto',this.idVideojuego).pipe(takeUntil(this.destroy$))
            .subscribe((data:any)=>{
             this.videojuegoInfo=data;
-            
+            console.log(this.videojuegoInfo)
             this.productoForm.setValue({
-              idProducto:this.videojuegoInfo.idProducto
+              id:this.videojuegoInfo.id,
+              idProducto:this.videojuegoInfo.id,
+              nombre:this.videojuegoInfo.nombre
             })
            });
         }
@@ -60,7 +62,7 @@ export class IngredienteFormComponent implements OnInit {
   listaProductos() {
     this.generosList = null;
     this.gService
-      .list('ingrediente')
+      .list('producto')
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any) => {
         // console.log(data);
@@ -79,6 +81,7 @@ export class IngredienteFormComponent implements OnInit {
     if(this.productoForm.invalid){
       return;
     }
+    console.log(this.productoForm.value)
     //Accion API create enviando toda la informacion del formulario
     this.gService.create('ingrediente',this.productoForm.value)
     .pipe(takeUntil(this.destroy$)) .subscribe((data: any) => {
