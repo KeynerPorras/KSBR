@@ -21,13 +21,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { DetalleProductosComponent } from './detalle-productos/detalle-productos.component';
 import { ProductoFormComponent } from './producto-form/producto-form.component';
+import { IngredienteFormComponent } from './ingrediente-form/ingrediente-form.component';
 
 
 @NgModule({
   declarations: [
     GestionProductosComponent,
     DetalleProductosComponent,
-    ProductoFormComponent
+    ProductoFormComponent,
+    IngredienteFormComponent
   ],
   imports: [
     CommonModule,
