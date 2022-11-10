@@ -5,7 +5,8 @@
   height: 100%;
   width: 70%;
   border-radius: 4%;
-  background-color: #f96666;
+  /* background-color: #f96666; */
+  background-image: url(../../../assets/images/barra.jpg);
   -webkit-box-shadow: -1px 8px 31px -10px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -1px 8px 31px -10px rgba(0, 0, 0, 0.75);
   box-shadow: -1px 8px 31px -10px rgba(0, 0, 0, 0.75);
@@ -16,6 +17,9 @@
     margin-top: 2%;
   font-family: "Raleway", sans-serif;
   text-align: center;
+  color: white;
+  font-size: xx-large;
+  font-weight: bold;
 }
 
 .milogo {
@@ -26,9 +30,10 @@
 .midiv {
   display: flex;
   flex-direction: column;
-  background-color: #674747;
+  background-color: #6643438a;
   font-family: "Raleway", sans-serif;
   color: white;
+  font-size: large;
   margin: 1%;
   text-align: center;
 
@@ -41,4 +46,5 @@
 .body {
   font-family: "Raleway", sans-serif;
   padding-top: 1%;
+  margin-bottom: 12%;
 }

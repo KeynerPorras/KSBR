@@ -2,17 +2,23 @@
     <input type="hidden" formControlName="id" />
     <mat-card class="shipping-card">
         <mat-card-header>
-          <mat-card-title>{{titleForm}} Videojuego</mat-card-title>
+          <mat-card-title>{{titleForm}} Mesas</mat-card-title>
         </mat-card-header>
         <mat-card-content>
           
           <div class="row">
             <div class="col">
               <mat-form-field class="full-width">
-                <input matInput #codigoMesa maxlength="20" placeholder="Codigo" formControlName="codigo">
-                <mat-hint align="end">{{codigoMesa.value.length}} / 20</mat-hint>
+                <input  matInput #codigoMesa minlength="4" maxlength="6" placeholder="Codigo" formControlName="codigo">
+                <mat-hint align="end">{{codigoMesa.value.length}} / 6</mat-hint>
                 <mat-error *ngIf="mesaForm.controls['codigo'].hasError('required')">
                   Codigo es <strong>requerido</strong>
+                </mat-error>
+                <mat-error *ngIf="mesaForm.controls['codigo'].hasError('maxlength')">
+                  Tamaño de codigo maximo es <strong>6</strong>
+                </mat-error>
+                <mat-error *ngIf="mesaForm.controls['codigo'].hasError('minlength')">
+                  Tamaño de codigo minimo es <strong>4</strong>
                 </mat-error>
               </mat-form-field>
             </div>
@@ -34,9 +40,15 @@
             </div>
             <div class="col">
               <mat-form-field class="full-width">
-                <input matInput placeholder="Capacidad de mesa" type="number" formControlName="capacidad">
+                <input matInput placeholder="Capacidad de mesa" min="2" max="8" type="number" formControlName="capacidad">
                 <mat-error *ngIf="mesaForm.controls['capacidad'].hasError('required')">
                   La capacidad es <strong>requerido</strong>
+                </mat-error>
+                <mat-error *ngIf="mesaForm.controls['capacidad'].hasError('min')">
+                  El minimo es <strong>2</strong>
+                </mat-error>
+                <mat-error *ngIf="mesaForm.controls['capacidad'].hasError('max')">
+                  El maximo es <strong>8</strong>
                 </mat-error>
               </mat-form-field>
             </div>
@@ -44,11 +56,15 @@
 
           <div class="row">
             <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput #codigoMesa maxlength="20" placeholder="Estado" formControlName="estado">
-                
+              <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Estados</mat-label>
+                <mat-select formControlName="estado">
+                  <mat-option *ngFor="let item of estadosList" [value]="item.id">
+                    {{item.id}}
+                  </mat-option>
+                </mat-select>
                 <mat-error *ngIf="mesaForm.controls['estado'].hasError('required')">
-                  Codigo es <strong>requerido</strong>
+                  Restaurante es <strong>requerido</strong>
                 </mat-error>
               </mat-form-field>
             </div>

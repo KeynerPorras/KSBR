@@ -1,6 +1,7 @@
-const { PrismaClient } = require("@prisma/client");
+const { PrismaClient, EstadosMesas } = require("@prisma/client");
 const { count } = require("console");
 const { query } = require("express");
+const { type } = require("os");
 
 
 const prisma = new PrismaClient();
@@ -14,12 +15,15 @@ module.exports.get = async (request, response, next) => {
   response.json(mesa);
 };
 
-module.exports.getEstados = async (request, response, next) => {
-  const estados = await prisma.EstadosMesas.findMany({
-    
-  });
+module.exports.getEstados = async (request, response) => {
+  
+  const estados = [{"id":EstadosMesas.libre},{"id":EstadosMesas.ocupada},{"id":EstadosMesas.ordenRealizada},
+  {"id":EstadosMesas.porPagar},{"id":EstadosMesas.reservada}]
+ // const estados = EstadosMesas;
   response.json(estados);
 };
+
+
 
 module.exports.getById = async (request, response, next) => {
   let id = parseInt(request.params.id);
@@ -49,8 +53,7 @@ module.exports.getByIdRestaurante = async (request, response, next) => {
 
 //Crear una mesa
 module.exports.create = async (request, response, next) => {
-  let mesa = request.body;
-  const result = await prisma.$queryRaw`SELECT count(id) FROM mesa`  
+  let mesa = request.body;  
   const newmesa = await prisma.mesa.create({
     data: {
       codigo: mesa.codigo,
@@ -59,7 +62,6 @@ module.exports.create = async (request, response, next) => {
       estado: mesa.estado,      
     },
   });
-  console.log(result.$queryRaw);
   response.json(newmesa);
 };
 

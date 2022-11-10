@@ -13,6 +13,7 @@ export class ProductoFormComponent implements OnInit {
   titleForm: string = 'Crear';
   destroy$: Subject<boolean> = new Subject<boolean>();
   generosList: any;
+  categoriaList:any;
   videojuegoInfo: any;
   respVideojuego: any;
   submitted = false;
@@ -23,6 +24,7 @@ export class ProductoFormComponent implements OnInit {
     private router: Router,private activeRouter: ActivatedRoute) {
       this.formularioReactive();
       this.listaRestaurantes();
+      this.listaCategorias();
     }
 
 
@@ -38,6 +40,7 @@ export class ProductoFormComponent implements OnInit {
            this.gService.get('producto',this.idVideojuego).pipe(takeUntil(this.destroy$))
            .subscribe((data:any)=>{
             this.videojuegoInfo=data;
+            
             this.productoForm.setValue({
               id:this.videojuegoInfo.id,
               nombre:this.videojuegoInfo.nombre,
@@ -76,6 +79,17 @@ export class ProductoFormComponent implements OnInit {
       .subscribe((data: any) => {
         // console.log(data);
         this.generosList = data;
+      });
+  }
+
+  listaCategorias() {
+    this.categoriaList = null;
+    this.gService
+      .list('categoria')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: any) => {
+        // console.log(data);
+        this.categoriaList = data;
       });
   }
 

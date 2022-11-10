@@ -2,16 +2,22 @@
   <input type="hidden" formControlName="id" />
   <mat-card class="shipping-card">
     <mat-card-header>
-      <mat-card-title>{{titleForm}} Videojuego</mat-card-title>
+      <mat-card-title>{{titleForm}} Producto</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput #nombreVideojuego maxlength="20" placeholder="Nombre" formControlName="nombre">
-            <mat-hint align="end">{{nombreVideojuego.value.length}} / 20</mat-hint>
+            <input matInput #nombreProducto minlength="5" maxlength="20" placeholder="Nombre" formControlName="nombre">
+            <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
             <mat-error *ngIf="productoForm.controls['nombre'].hasError('required')">
               Nombre es <strong>requerido</strong>
+            </mat-error>
+            <mat-error *ngIf="productoForm.controls['nombre'].hasError('minlength')">
+              Tamaño minimo es <strong>5</strong>
+            </mat-error>
+            <mat-error *ngIf="productoForm.controls['nombre'].hasError('maxlength')">
+              Tamaño maximo es <strong>20</strong>
             </mat-error>
           </mat-form-field>
         </div>
@@ -20,28 +26,39 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Descripción" formControlName="descripcion">
+            <input matInput maxlength="100" minlength="10" placeholder="Descripción" formControlName="descripcion">
             <mat-error *ngIf="productoForm.controls['descripcion'].hasError('required')">
               Descripción es <strong>requerido</strong>
+            </mat-error>
+            <mat-error *ngIf="productoForm.controls['descripcion'].hasError('minlength')">
+              Tamaño minimo es <strong>10</strong>
+            </mat-error>
+            <mat-error *ngIf="productoForm.controls['descripcion'].hasError('maxlength')">
+              Tamaño maximo es <strong>100</strong>
             </mat-error>
           </mat-form-field>
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Precio" formControlName="precio">
+            <input matInput placeholder="Precio" type="number" formControlName="precio">
             <mat-error *ngIf="productoForm.controls['precio'].hasError('required')">
               Precio es <strong>requerido</strong>
-            </mat-error>
+            </mat-error>            
           </mat-form-field>
         </div>
       </div>
 
       <div class="row">
         <div class="col">
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Categoria" formControlName="idCategoria" type="number">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Categoria</mat-label>
+            <mat-select formControlName="idCategoria">
+              <mat-option *ngFor="let item of categoriaList" [value]="item.id">
+                {{item.nombre}}
+              </mat-option>
+            </mat-select>
             <mat-error *ngIf="productoForm.controls['idCategoria'].hasError('required')">
-              Descripción es <strong>requerido</strong>
+              Categoria es <strong>requerido</strong>
             </mat-error>
           </mat-form-field>
         </div>
@@ -63,7 +80,7 @@
       
       <div class="row">
         <div class="col">
-          <mat-label>Estado</mat-label>
+          <mat-label>Producto disponible</mat-label>
           <mat-radio-group formControlName="estado">
             <mat-radio-button [value]="true">Sí</mat-radio-button>
             <mat-radio-button [value]="false">No</mat-radio-button>

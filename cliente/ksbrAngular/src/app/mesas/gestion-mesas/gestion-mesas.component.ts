@@ -16,7 +16,6 @@ export class GestionMesasComponent implements OnInit {
   datosRestaurante: any;
   datosSelect: any;
   destroy$: Subject<boolean> = new Subject<boolean>();
-
   constructor(
     private router: Router,
     private route: ActivatedRoute,

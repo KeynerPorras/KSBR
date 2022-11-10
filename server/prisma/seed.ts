@@ -185,9 +185,9 @@ async function main() {
       idRestaurante: 1,
       estado: EstadoComanda.pagada,
       direccion: "restaurante",
-      subTotal: 81000,
+      subTotal: 36000,
       impuesto: 4000,
-      totalPagar: 85000,
+      totalPagar: 40000,
       fechaComanda: new Date('2022-10-27'),
     },
   });
@@ -217,7 +217,7 @@ async function main() {
       fechaComanda: new Date('2022-10-27'),
     },
   });
-  await prisma.comanda.create({
+  /* await prisma.comanda.create({
     data: {
       idMesa: 3,
       idUsuario: "208060667",
@@ -242,7 +242,7 @@ async function main() {
       totalPagar: 0,
       fechaComanda: new Date('2022-10-27'),
     },
-  });
+  }); */
 
   await prisma.lineaComanda.createMany({
     data: lineaComanda,

@@ -4,10 +4,12 @@
   flex-wrap: wrap;
   margin:  0 auto;
   justify-content: space-around;
+ 
 }
 
 .body{
   font-family: 'Raleway', sans-serif;
+  
 }
 
 .tarjeta{

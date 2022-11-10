@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -13,6 +14,7 @@ export class MesaFormComponent implements OnInit {
   titleForm:string='Crear';
   destroy$: Subject<boolean> = new Subject<boolean>();
   restauranteList:any;
+  estadosList:any;
   mesasList:any;
   mesaInfo :any;
   respVideojuego:any;
@@ -30,6 +32,7 @@ export class MesaFormComponent implements OnInit {
     this.formularioReactive();
       this.listaRestaurante();
       this.listaMesas();
+      this.listaEstados();
   }
 
   ngOnInit(): void {
@@ -43,7 +46,7 @@ export class MesaFormComponent implements OnInit {
          //Obtener videojuego a actualizar del API
          this.gService.get('mesa',this.idMesa).pipe(takeUntil(this.destroy$))
          .subscribe((data:any)=>{
-          this.mesaInfo=data;
+          this.mesaInfo=data;        
           this.mesaForm.setValue({
             id:this.mesaInfo.id,
             codigo:this.mesaInfo.codigo,
@@ -95,6 +98,16 @@ export class MesaFormComponent implements OnInit {
       });
   }
 
+  listaEstados() {
+    this.gService
+      .list('mesa/estados')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: any) => {
+      //  console.log(data);
+        this.estadosList = data;
+        console.log(data);
+      });
+  }
 
 //Crear Videojueogo
 crearMesa(): void {

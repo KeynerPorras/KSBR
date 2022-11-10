@@ -4,7 +4,7 @@ export const producto = [
     {
       nombre:"Vino Blanco",
       descripcion: "Vino del año 1996",
-      precio: 78000,
+      precio: 28000,
       estado:true,
       idCategoria:1   
     },

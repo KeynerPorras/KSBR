@@ -6,9 +6,3 @@ body { margin: 0; font-family: 'Raleway', "Helvetica Neue", sans-serif; }
 .font2{
     font-family: 'Raleway', sans-serif;
 }
-
-.footer{
-    position: relative;
-    bottom: 0px;
-    width: 100%;
-}
