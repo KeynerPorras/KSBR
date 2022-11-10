@@ -13,6 +13,7 @@ const usuarioRouter = require("./routes/usuarioRoutes");
 const comandaRouter = require("./routes/comandaRoutes");
 const restauranteRouter = require("./routes/restauranteRoutes");
 const categoriaRouter = require("./routes/categoriaRoutes");
+const ingredienteRouter = require("./routes/ingredienteRoutes");
 
 // Acceder a la configuracion del archivo .env
 dotEnv.config();
@@ -36,6 +37,7 @@ app.use("/usuario/",usuarioRouter);
 app.use("/comanda/",comandaRouter);
 app.use("/restaurante/",restauranteRouter);
 app.use("/categoria/", categoriaRouter);
+app.use("/ingrediente/", ingredienteRouter);
 
 // Servidor
 app.listen(port, () => {
