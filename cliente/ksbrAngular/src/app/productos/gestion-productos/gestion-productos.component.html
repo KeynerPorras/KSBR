@@ -68,22 +68,7 @@
             </td>
           </ng-container>
 
-          <ng-container class="centrar" matColumnDef="ingrediente">
-            <th class="centrar" mat-header-cell *matHeaderCellDef>Ingredientes</th>
-            <td class="centrar" mat-cell *matCellDef="let row">
-              <button
-                mat-mini-fab
-                matTooltip="Actualizar Producto"
-                aria-label="Actualizar Producto"
-                color="primary"
-                (click)="crearIngrediente()"
-              >
-                <mat-icon class="mat-18"><span class="material-symbols-outlined">
-                  assignment_add
-                  </span></mat-icon>
-              </button>
-            </td>
-          </ng-container>
+          
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>

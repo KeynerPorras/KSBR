@@ -1,5 +1,5 @@
 import { ThisReceiver } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
@@ -23,8 +23,8 @@ export class MesaFormComponent implements OnInit {
   idMesa: number = 0;
   cantidad: number = 0;
   isCreate:boolean=true;
-
-
+  codigo:any;
+  @Input() editable: boolean = false; // doesn't have to be an @Input
   constructor(
     private fb: FormBuilder, private gService: GenericService,
     private router: Router,private activeRouter: ActivatedRoute
@@ -33,6 +33,7 @@ export class MesaFormComponent implements OnInit {
       this.listaRestaurante();
       this.listaMesas();
       this.listaEstados();
+    
   }
 
   ngOnInit(): void {
@@ -49,12 +50,13 @@ export class MesaFormComponent implements OnInit {
           this.mesaInfo=data;        
           this.mesaForm.setValue({
             id:this.mesaInfo.id,
-            codigo:this.mesaInfo.codigo,
+            codigo:this.mesaInfo.codigo,          
             idRestaurante:this.mesaInfo.idRestaurante,
             capacidad:this.mesaInfo.capacidad,
             estado:this.mesaInfo.estado,           
           })
          });
+         this.codigo=this.mesaInfo.codigo;
       }
     });
   }
@@ -64,9 +66,7 @@ export class MesaFormComponent implements OnInit {
     //[null, Validators.required]
     this.mesaForm=this.fb.group({
       id:[null,null],
-      codigo:[null,Validators.compose([
-        Validators.required, Validators.minLength(2),Validators.maxLength(20)
-      ])],
+      codigo:[null,null],
       idRestaurante:[null, Validators.required],
       capacidad: [null, Validators.required],
       estado:[null, Validators.required],     
@@ -109,21 +109,28 @@ export class MesaFormComponent implements OnInit {
       });
   }
 
+  obtenerCodigo(id:any) {
+    
+    this.gService
+      .get('mesa/next',id)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: any) => {
+        
+        this.codigo= data;
+        console.log(data);
+      });
+  }
+
 //Crear Videojueogo
 crearMesa(): void {
-  let arregloMesas:string[] = [this.mesasList];
-  console.log(arregloMesas);
-  console.log(arregloMesas[0].length);
-  let count=arregloMesas[0].length + 1;
-  this.mesaForm.value.codigo=this.mesaForm.value.codigo+"-"+count;
   //Establecer submit verdadero
   this.submitted=true;
   //Verificar validación
   if(this.mesaForm.invalid){
     return;
   }
-  
-  
+  this.mesaForm.value.codigo=this.codigo;
+  console.log(this.mesaForm.value);
   //Accion API create enviando toda la informacion del formulario
   this.gService.create('mesa/',this.mesaForm.value)
   .pipe(takeUntil(this.destroy$)) .subscribe((data: any) => {
@@ -143,9 +150,8 @@ actualizarVideojuego(){
   if(this.mesaForm.invalid){
     return;
   }
-  
   //Obtener id Generos del Formulario y Crear arreglo con {id: value}
- 
+ console.log(this.mesaForm.value)
   //console.log(this.mesaForm.value);
   //Accion API create enviando toda la informacion del formulario
   this.gService.update('mesa',this.mesaForm.value)

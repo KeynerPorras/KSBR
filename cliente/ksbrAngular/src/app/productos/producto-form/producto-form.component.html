@@ -62,6 +62,20 @@
             </mat-error>
           </mat-form-field>
         </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput maxlength="100" minlength="10" placeholder="Ingredientes" formControlName="ingredientes">
+            <mat-error *ngIf="productoForm.controls['ingredientes'].hasError('required')">
+              Ingredientes es <strong>requerido</strong>
+            </mat-error>
+            <mat-error *ngIf="productoForm.controls['descripcion'].hasError('minlength')">
+              Tamaño minimo es <strong>10</strong>
+            </mat-error>
+            <mat-error *ngIf="productoForm.controls['descripcion'].hasError('maxlength')">
+              Tamaño maximo es <strong>100</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
       </div>
       <div class="row">
         <div class="col" *ngIf="generosList">

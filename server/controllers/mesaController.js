@@ -23,7 +23,22 @@ module.exports.getEstados = async (request, response) => {
   response.json(estados);
 };
 
-
+module.exports.getNextId = async (request, response, next) => {
+  let id = parseInt(request.params.id);
+  let codigo;
+  const restaurante = await prisma.restaurante.findUnique({
+    where: {
+      id: id,
+    },
+  });
+  const mesa = await prisma.mesa.count({
+    where: {
+      idRestaurante: id,
+    },
+  });
+  codigo=restaurante.nombre +"-"+ mesa;
+  response.json(codigo);
+};
 
 module.exports.getById = async (request, response, next) => {
   let id = parseInt(request.params.id);
@@ -49,7 +64,6 @@ module.exports.getByIdRestaurante = async (request, response, next) => {
   });
   response.json(mesa);
 };
-
 
 //Crear una mesa
 module.exports.create = async (request, response, next) => {

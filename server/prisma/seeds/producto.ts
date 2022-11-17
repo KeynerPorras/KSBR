@@ -6,6 +6,7 @@ export const producto = [
       descripcion: "Vino del año 1996",
       precio: 28000,
       estado:true,
+      ingredientes:"Cerezas",
       idCategoria:1   
     },
     //1
@@ -14,6 +15,7 @@ export const producto = [
         descripcion: "Hamgurguesa dobre torta de carne",
         precio: 2500,
         estado:true,
+        ingredientes:"Pan, Carne, Tomate, Lechuga",
         idCategoria:2, 
       },
       {
@@ -21,6 +23,7 @@ export const producto = [
         descripcion: "Fajitas de pollo",
         precio: 3500,
         estado:true,
+        ingredientes:"Pollo, Salsas, Ensalada",
         idCategoria:3   
       },
   ];

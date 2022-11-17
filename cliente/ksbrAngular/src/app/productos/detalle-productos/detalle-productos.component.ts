@@ -31,7 +31,7 @@ export class DetalleProductosComponent implements OnInit {
     .pipe(takeUntil(this.destroy$))
     .subscribe((data:any)=>{
         this.datos=data; 
-        console.log(this.datos.ingredientes);
+        
     });
    
   }
