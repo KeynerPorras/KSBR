@@ -53,10 +53,11 @@ export class MesaFormComponent implements OnInit {
             codigo:this.mesaInfo.codigo,          
             idRestaurante:this.mesaInfo.idRestaurante,
             capacidad:this.mesaInfo.capacidad,
-            estado:this.mesaInfo.estado,           
+            estado:this.mesaInfo.estado,
+                     
           })
          });
-         this.codigo=this.mesaInfo.codigo;
+         //this.codigo=this.mesaInfo.codigo;
       }
     });
   }
@@ -110,8 +111,8 @@ export class MesaFormComponent implements OnInit {
   }
 
   obtenerCodigo(id:any) {
-    
-    this.gService
+    if(this.isCreate==true){
+      this.gService
       .get('mesa/next',id)
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any) => {
@@ -119,6 +120,8 @@ export class MesaFormComponent implements OnInit {
         this.codigo= data;
         console.log(data);
       });
+    }
+    
   }
 
 //Crear Videojueogo

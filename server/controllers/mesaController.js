@@ -25,18 +25,46 @@ module.exports.getEstados = async (request, response) => {
 
 module.exports.getNextId = async (request, response, next) => {
   let id = parseInt(request.params.id);
-  let codigo;
+  
+  var codigo;
+  var numero;
+  var letras;
+  if(id==2){
+    letras="KSSR" +"-" ;
+  }
+  if(id==1){
+    letras="KSOC" +"-" ;
+  }
+  if(id==3){
+    letras="KSSC" +"-" ;
+  }
+
+
   const restaurante = await prisma.restaurante.findUnique({
     where: {
       id: id,
     },
   });
+
   const mesa = await prisma.mesa.count({
     where: {
-      idRestaurante: id,
+      //idRestaurante: id,
     },
   });
-  codigo=restaurante.nombre +"-"+ mesa;
+  const mesaExiste = await prisma.mesa.findUnique({
+    where: {
+      id: mesa+1,
+    },
+  });
+  console.log(mesaExiste);
+  
+  if(mesaExiste==null){
+    codigo=letras+ parseInt(mesa+1) ;
+  }
+  if(mesaExiste!=null){
+    
+    codigo=letras+ parseInt(mesa+1) ;
+  }
   response.json(codigo);
 };
 
