@@ -23,7 +23,7 @@ export class GestionProductosComponent  implements AfterViewInit {
   dataSource= new MatTableDataSource<any>();
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id','nombre', 'descripcion', 'precio', 'categoria','acciones','actua','ingrediente'];
+  displayedColumns = ['id','nombre', 'descripcion', 'precio', 'categoria','acciones','actua'];
 
   constructor(private router: Router,
     private route: ActivatedRoute,private gService:GenericService, private dialog:MatDialog) {
@@ -62,11 +62,7 @@ export class GestionProductosComponent  implements AfterViewInit {
     });
   }
 
-  crearIngrediente(id: number) {
-    this.router.navigate(['/ingrediente/create', id], {
-      relativeTo: this.route,
-    });
-  }
+  
  
   crearProducto() {
     this.router.navigate(['/productos/create'], {

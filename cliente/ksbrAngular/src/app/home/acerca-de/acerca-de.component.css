@@ -11,6 +11,7 @@
   -moz-box-shadow: -1px 8px 31px -10px rgba(0, 0, 0, 0.75);
   box-shadow: -1px 8px 31px -10px rgba(0, 0, 0, 0.75);
   margin: 0 auto;
+  
 }
 
 .mititulo {
@@ -46,5 +47,6 @@
 .body {
   font-family: "Raleway", sans-serif;
   padding-top: 1%;
+  padding-bottom: 10%;
   margin-bottom: 12%;
 }

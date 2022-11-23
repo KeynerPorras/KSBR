@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import { categoria } from "./seeds/categoria";
 import { restaurante } from "./seeds/restaurante";
 import { mesa } from "./seeds/mesa";
-import { ingrediente } from "./seeds/ingrediente";
+
 import { usuario } from "./seeds/usuario";
 import { tipoPago } from "./seeds/tipoPago";
 import { lineaComanda } from "./seeds/lineaComanda";
@@ -34,8 +34,9 @@ async function main() {
     data: {
       nombre: "Vino Blanco",
       descripcion: "Vino del año 1996",
-      precio: 78000,
+      precio: 28000,
       estado: true,
+      ingredientes:"Cerezas",
       idCategoria: 1,
       restaurantes: {
         connect: [{ id: 1 }],
@@ -49,6 +50,7 @@ async function main() {
       descripcion: "Hamgurguesa dobre torta de carne",
       precio: 4500,
       estado: true,
+      ingredientes:"Cerezas",
       idCategoria: 2,
       restaurantes: {
         connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
@@ -62,6 +64,7 @@ async function main() {
       descripcion: "Fajitas de pollo",
       precio: 3500,
       estado: true,
+      ingredientes:"Cerezas",
       idCategoria: 3,
       restaurantes: {
         connect: [{ id: 1 },{ id: 3 }],
@@ -75,6 +78,7 @@ async function main() {
       descripcion: "Hamgurguesa sin carne",
       precio: 3500,
       estado: true,
+      ingredientes:"Cerezas",
       idCategoria: 2,
       restaurantes: {
         connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
@@ -87,6 +91,7 @@ async function main() {
       descripcion: "7 niveles de deliciosos ingredientes",
       precio: 8500,
       estado: true,
+      ingredientes:"Cerezas",
       idCategoria: 2,
       restaurantes: {
         connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
@@ -99,6 +104,7 @@ async function main() {
       descripcion: "El sabrosísimo melocotón está en el mercado desde principios del verano hasta bien entrado el otoño. ",
       precio: 3000,
       estado: true,
+      ingredientes:"Cerezas",
       idCategoria: 4,
       restaurantes: {
         connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
@@ -111,6 +117,7 @@ async function main() {
       descripcion: "Nos gusta destacar su color verde intenso en recetas que combinen ingredientes del mismo color,",
       precio: 2000,
       estado: true,
+      ingredientes:"Cerezas",
       idCategoria: 4,
       restaurantes: {
         connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
@@ -123,6 +130,7 @@ async function main() {
       descripcion: "Gaseosa",
       precio: 1200,
       estado: true,
+      ingredientes:"Cerezas",
       idCategoria: 4,
       restaurantes: {
         connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
@@ -135,6 +143,7 @@ async function main() {
       descripcion: "Gaseosa",
       precio: 1200,
       estado: true,
+      ingredientes:"Cerezas",
       idCategoria: 4,
       restaurantes: {
         connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
@@ -147,6 +156,7 @@ async function main() {
       descripcion: "Cerveza",
       precio: 1200,
       estado: true,
+      ingredientes:"Cerezas",
       idCategoria: 5,
       restaurantes: {
         connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
@@ -159,6 +169,7 @@ async function main() {
       descripcion: "Cerveza",
       precio: 1500,
       estado: true,
+      ingredientes:"Cerezas",
       idCategoria: 5,
       restaurantes: {
         connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
@@ -171,6 +182,7 @@ async function main() {
       descripcion: "Cerveza",
       precio: 1700,
       estado: true,
+      ingredientes:"Cerezas",
       idCategoria: 5,
       restaurantes: {
         connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
@@ -247,9 +259,7 @@ async function main() {
   await prisma.lineaComanda.createMany({
     data: lineaComanda,
   });
-  await prisma.ingrediente.createMany({
-    data: ingrediente,
-  });
+  
 }
 main()
   .then(async () => {

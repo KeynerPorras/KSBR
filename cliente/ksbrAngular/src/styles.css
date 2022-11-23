@@ -6,3 +6,8 @@ body { margin: 0; font-family: 'Raleway', "Helvetica Neue", sans-serif; }
 .font2{
     font-family: 'Raleway', sans-serif;
 }
+
+app-root {
+    display: block;
+    height: 100%;
+  }

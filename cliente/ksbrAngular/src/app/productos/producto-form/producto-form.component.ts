@@ -47,6 +47,7 @@ export class ProductoFormComponent implements OnInit {
               descripcion:this.videojuegoInfo.descripcion,
               precio:this.videojuegoInfo.precio,
               estado:this.videojuegoInfo.estado,
+              ingredientes:this.videojuegoInfo.ingredientes,
               idCategoria:this.videojuegoInfo.idCategoria,
               restaurantes:this.videojuegoInfo.restaurantes.map(({id}) => id)
             })
@@ -66,6 +67,7 @@ export class ProductoFormComponent implements OnInit {
       descripcion:[null, Validators.required],
       precio: [null, Validators.required],
       estado:[true, Validators.required],
+      ingredientes:[null, Validators.required],
       idCategoria:[null, Validators.required],
       restaurantes:[null, Validators.required],
     });

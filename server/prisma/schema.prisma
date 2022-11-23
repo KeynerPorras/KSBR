@@ -36,22 +36,14 @@ nombre String
 descripcion String
 precio Decimal  @db.Decimal(10, 2)
 estado Boolean @default(true)
+ingredientes String
 categoria Categoria @relation(fields:[idCategoria], references:[id])
 idCategoria Int
-ingredientes Ingrediente[]
 restaurantes Restaurante[]
 lineaComanda LineaComanda[]
 deleted Boolean @default(false)
 }
 
-model Ingrediente {
-id Int      @id @default(autoincrement())
-idProducto Int
-nombre String
-estado Boolean @default(true)
-producto Producto @relation(fields:[idProducto], references:[id])
-deleted Boolean @default(false)
-}
 
 model Restaurante {
 id Int      @id @default(autoincrement())

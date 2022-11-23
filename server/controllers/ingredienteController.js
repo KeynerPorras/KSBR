@@ -1,12 +1,21 @@
-//Crear una ingred
-module.exports.create = async (request, response, next) => {
-    let ingred = request.body;  
-    const newingred = await prisma.ingred.create({
+const { PrismaClient } = require("@prisma/client");
+
+const prisma = new PrismaClient();
+
+module.exports.get = async (request, response, next) => {
+    const ingrediente = await prisma.ingrediente.findMany({
+      
+    });
+    response.json(ingrediente);
+  };
+
+  module.exports.create = async (request, response, next) => {
+    let ingrediente = request.body;  
+    const newingrediente = await prisma.ingrediente.create({
       data: {
-        idProducto: ingred.idProducto,
-        nombre: ingred.nombre,
-        estado: true    
+        idProducto: ingrediente.idProducto,
+        nombre: ingrediente.nombre  
       },
     });
-    response.json(newingred);
+    response.json(newingrediente);
   };

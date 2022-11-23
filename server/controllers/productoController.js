@@ -9,7 +9,7 @@ module.exports.get = async (request, response, next) => {
     include: {
       categoria: true,
       restaurantes: true,
-      ingredientes:true
+      
     },
     orderBy: {
       nombre: "asc",
@@ -26,7 +26,7 @@ module.exports.getById = async (request, response, next) => {
     include: {
       categoria: true,
       restaurantes: true,
-      ingredientes:true
+      
     },
   });
   response.json(productos);
@@ -41,6 +41,7 @@ module.exports.create=async(request, response, next)=>{
       descripcion:producto.descripcion,
       precio:producto.precio,
       estado:producto.estado,
+      ingredientes:producto.ingredientes,
       idCategoria:producto.idCategoria,
       restaurantes:{
         connect: producto.restaurantes
@@ -75,6 +76,7 @@ module.exports.update = async (request, response, next) => {
       precio: producto.precio,
       idCategoria: producto.idCategoria,
       estado: producto.estado,
+      ingredientes:producto.ingredientes,
       restaurantes:{
         disconnect: productoViejo.restaurantes,
         connect: producto.restaurantes

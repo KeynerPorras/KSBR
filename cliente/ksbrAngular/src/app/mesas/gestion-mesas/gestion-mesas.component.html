@@ -29,7 +29,7 @@
       <mat-card  class="tarjeta" *ngFor="let item of datosSelect">
         <mat-card-header>     
           <mat-card-title >Mesa</mat-card-title>
-          <mat-card-subtitle>Codigo:{{item.codigo}}-{{item.id}}</mat-card-subtitle>
+          <mat-card-subtitle>Codigo:{{item.codigo}}</mat-card-subtitle>
           
         </mat-card-header>                 
           <mat-card-content>
@@ -55,7 +55,7 @@
             </button>
             </div>
             <div class="estados">
-              <button mat-button>Estado mesa: {{item.estado}}</button>
+              <button mat-button>Estado : {{item.estado}}</button>
               <button mat-button>Capacidad : {{item.capacidad}}</button>
             </div>
             

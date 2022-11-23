@@ -17,4 +17,6 @@ router.put("/:id",mesaController.update);
 
 router.get("/rest/:id",mesaController.getByIdRestaurante);
 
+router.get("/next/:id",mesaController.getNextId);
+
 module.exports=router;
