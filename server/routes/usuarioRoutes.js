@@ -7,6 +7,10 @@ const usuarioController=require("../controllers/usuarioController");
 
 router.get("/",usuarioController.get);
 
+router.post("/",usuarioController.create);
 
+router.get("/:id",usuarioController.getById);
+
+router.put("/:id",usuarioController.update);
 
 module.exports=router;
