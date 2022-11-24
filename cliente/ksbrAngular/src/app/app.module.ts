@@ -12,6 +12,7 @@ import { MesasModule } from './mesas/mesas.module';
 import { ProductosModule } from './productos/productos.module';
 import { ComandasModule } from './comandas/comandas.module';
 import { HttpErrorInterceptorService } from './share/http-error-interceptor.service';
+import { UsuariosModule } from './usuarios/usuarios.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,8 +31,10 @@ import { HttpErrorInterceptorService } from './share/http-error-interceptor.serv
     MesasModule,
     ProductosModule,
     ComandasModule,
+    UsuariosModule,
     // al final el gestor de las rutas principal
     AppRoutingModule,
+    
     
     
     
