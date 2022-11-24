@@ -20,12 +20,14 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { DetalleComandasComponent } from './detalle-comandas/detalle-comandas.component';
-
+import { LineaDetalleComponent } from './linea-detalle/linea-detalle.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     GestionComandasComponent,
-    DetalleComandasComponent
+    DetalleComandasComponent,
+    LineaDetalleComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +48,8 @@ import { DetalleComandasComponent } from './detalle-comandas/detalle-comandas.co
     MatSelectModule,
     MatRadioModule,
     ReactiveFormsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    ToastrModule
   ]
 })
 export class ComandasModule { }

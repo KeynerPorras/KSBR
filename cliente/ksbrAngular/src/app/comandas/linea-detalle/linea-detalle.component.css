@@ -1,0 +1,11 @@
+.full-width-table {
+    width: 100%;
+  }
+
+  mat-card-title{
+    text-align: center;
+    margin: 1%
+  }
+  .full-width{
+    margin-bottom: 10%;
+  }

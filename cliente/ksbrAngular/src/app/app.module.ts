@@ -11,7 +11,7 @@ import { HomeModule } from './home/home.module';
 import { MesasModule } from './mesas/mesas.module';
 import { ProductosModule } from './productos/productos.module';
 import { ComandasModule } from './comandas/comandas.module';
-
+import { HttpErrorInterceptorService } from './share/http-error-interceptor.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +23,7 @@ import { ComandasModule } from './comandas/comandas.module';
     // importar otras dependencias que sean necesario cargar en el componente principal.
 
     // importar los módulos creados propios en orden
-    BrowserAnimationsModule,
+   // BrowserAnimationsModule,
     CoreModule,
     ShareModule,
     HomeModule,

@@ -11,7 +11,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list'; 
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
-
+import {MatCardModule} from '@angular/material/card';	
+import {MatBadgeModule} from '@angular/material/badge';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,10 @@ import {MatDividerModule} from '@angular/material/divider';
     MatButtonModule,
     MatGridListModule,
     MatMenuModule,
-    MatDividerModule
+    MatDividerModule,
+    MatCardModule,
+    MatBadgeModule,
+    ToastrModule
   ],
   exports: [
     HeaderComponent,

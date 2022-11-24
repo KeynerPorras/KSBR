@@ -16,7 +16,8 @@ export class GestionMesasComponent implements OnInit {
   datosRestaurante: any;
   datosSelect: any;
   destroy$: Subject<boolean> = new Subject<boolean>();
-  constructor(
+  constructor( 
+    
     private router: Router,
     private route: ActivatedRoute,
     private gSevice: GenericService,
@@ -58,6 +59,7 @@ export class GestionMesasComponent implements OnInit {
       id:id
     };
     this.dialog.open(DetalleMesasComponent,dialogConfig);
+    
   }
 
   ngOnInit(): void {
