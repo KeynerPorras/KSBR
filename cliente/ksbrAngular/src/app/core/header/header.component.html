@@ -9,6 +9,7 @@
         <button mat-menu-item [routerLink]="'/'" [routerLinkActive]="'mat-raised-button'">Inicio</button>
         <button mat-menu-item [routerLink]="['/mesas/gestion-mesas']" [routerLinkActive]="'mat-raised-button'">Reservación</button>
         <button mat-menu-item [routerLink]="['/productos/gestion-productos']" [routerLinkActive]="'mat-raised-button'">Productos</button> 
+        <button mat-menu-item [routerLink]="['/usuarios/gestion-usuarios']" [routerLinkActive]="'mat-raised-button'">Usuarios</button>
         <button mat-menu-item   [matMenuTriggerFor]="menu3"  class="example-icon" >Ordenes</button>
           <mat-menu #menu3="matMenu" >          
             <button mat-menu-item [routerLink]="['/comandas/gestion-comandas']" [routerLinkActive]="'mat-raised-button'">Lista ordenes</button>
