@@ -13,7 +13,7 @@
     <mat-card class="example-card" *ngFor="let item of datos.lineaComandas">
       <mat-card-content>
         <h1>{{ item.producto.nombre }}</h1>
-        <p>{{ item.producto.precio | currency: "CRC " }}</p>
+        <p>{{ item.producto.precio | currency: "₡ " }}</p>
         <p>Notas: {{ item.notas }}</p>
         <p>Cantidad: {{ item.cantidad }}</p>
       </mat-card-content>

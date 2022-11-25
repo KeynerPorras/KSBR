@@ -7,6 +7,6 @@ const restauranteController=require("../controllers/restauranteController");
 
 router.get("/",restauranteController.get);
 
-
+router.get("/sede/:id",restauranteController.getById);
 
 module.exports=router;

@@ -22,12 +22,14 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { DetalleComandasComponent } from './detalle-comandas/detalle-comandas.component';
 import { LineaDetalleComponent } from './linea-detalle/linea-detalle.component';
 import { ToastrModule } from 'ngx-toastr';
+import { ComandaComponent } from './comanda/comanda.component';
 
 @NgModule({
   declarations: [
     GestionComandasComponent,
     DetalleComandasComponent,
-    LineaDetalleComponent
+    LineaDetalleComponent,
+    ComandaComponent
   ],
   imports: [
     CommonModule,
