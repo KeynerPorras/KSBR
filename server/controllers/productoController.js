@@ -32,6 +32,8 @@ module.exports.getById = async (request, response, next) => {
   response.json(productos);
 };
 
+
+
 //Crear una Producto
 module.exports.create=async(request, response, next)=>{
   let producto= request.body;

@@ -10,6 +10,9 @@
   <div class="titulo">
     <h1><b><span style="color: green;">Gestión de </span> <span style="color: brown;">mesas</span></b></h1>
   </div>
+
+
+  
   <div *ngIf="datosRestaurante">
     <div class="contenedor-botones">
       <button class="crear"
@@ -52,6 +55,14 @@
               (click)="actualizarMesa(item.id)"           
             >
             <mat-icon class="mat-18">edit</mat-icon>
+            </button>
+            <button class="reserva"
+              mat-mini-fab color="accent"
+              matTooltip="Agregar nueva mesa"
+              aria-label="Agregar mesa"
+              (click)="reservarMesa(item.id)"           
+            >
+            <mat-icon class="mat-18">bookmark_added </mat-icon>
             </button>
             </div>
             <div class="estados">
