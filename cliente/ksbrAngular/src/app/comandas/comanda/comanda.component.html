@@ -34,7 +34,7 @@
           <ng-container matColumnDef="Agregar">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Agregar</th>
             <td mat-cell *matCellDef="let row">
-              <button color="primary" mat-mini-fab (click)="seleccionarProducto(row.id)" > 
+              <button color="primary" mat-mini-fab (click)="comprar(row.id)" > 
         <mat-icon class="mat-18">add_shopping_cart</mat-icon>
       </button>
             </td>
@@ -55,104 +55,70 @@
       </div>
     </mat-card-content>
   </mat-card>
-  <mat-card class="card2 full-width">
-    <!-- Title of an Card -->
-    <mat-card-title>
-      <span style="color: brown;">Linea </span><span style="color: green;">Detalle</span>
-    </mat-card-title>
-    <h1 style="color: white;">No Mesa: {{Mesa.id}} | Restaurante: {{Mesa.idRestaurante}}</h1>
-    <mat-card-content >
 
-      <form [formGroup]="ordenForm" (ngSubmit)="pruebaCompra()" >
-        <mat-card class="shipping-card">
-          <mat-card-header>
-            <mat-card-title> Orden</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <div class="row">
-              <div class="col">
-                <mat-form-field class="full-width">
-                  <input matInput placeholder="Nombre" formControlName="nombre">           
-                </mat-form-field>
-              </div>
-            </div>
-            
-            <div class="row">
-              <div class="col">
-                <mat-form-field class="full-width">
-                  <input matInput type="number" placeholder="Cantidad" formControlName="cantidad">           
-                </mat-form-field>
-              </div> 
-              <div class="col">
-                <mat-form-field class="full-width">
-                  <input matInput placeholder="Notas" formControlName="notas">           
-                </mat-form-field>
-              </div>             
-            </div>                                  
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit = pruebaCompra()">Guardar</button>
-          </mat-card-actions>
-        </mat-card>
-      </form>
-    </mat-card-content>
-  </mat-card>
+  
 
 </div>
+<mat-card class="card1 full-width">
+  <!-- Title of an Card -->
+  <mat-card-title>
+    <span style="color: brown;">Linea </span><span style="color: green;">Detalle</span>
+  </mat-card-title>
 
-<div>
-  <mat-card class="card1 full-width">
-    <!-- Title of an Card -->
-    <mat-card-title>
-      <span style="color: brown;">Carr</span><span style="color: green;">ito</span>
-    </mat-card-title>
-    <mat-card-content>
-      <div class="mat-elevation-z8"   
-      *ngIf="dataSource"    
-      >
-        <table mat-table [dataSource]="dataSource"
-         class="full-width-table"  matSort
-         matSortStart="desc" aria-label="Elements">
-          <!-- Columna nombre -->
-      
-          <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Codigo Producto</th>
-            <td mat-cell *matCellDef="let row">{{ row.id }}</td>
-          </ng-container> 
-
-          <ng-container matColumnDef="nombre">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
-            <td mat-cell *matCellDef="let row">{{ row.nombre }}</td>
-          </ng-container>  
+  <h1>No Mesa:</h1>
+  <mat-card-content>
+    <div class="mat-elevation-z8"   
+    *ngIf="dataSource2"    
+    >
+      <table mat-table [dataSource]="dataSource2"
+       class="full-width-table"  matSort
+       matSortStart="desc" aria-label="Elements2">
+        <!-- Columna nombre -->
+    
+        <ng-container matColumnDef="producto">
+          <mat-header-cell *matHeaderCellDef> Producto </mat-header-cell>
+          <mat-cell *matCellDef="let element2"> {{element2.product.nombre}} 
+          </mat-cell>
           
-          <ng-container matColumnDef="precio">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>precio</th>
-            <td mat-cell *matCellDef="let row">{{ row.precio}}  </td>
-          </ng-container>  
-                    
-         
-          <ng-container matColumnDef="Agregar">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Agregar</th>
-            <td mat-cell *matCellDef="let row">
-              <button color="primary" mat-mini-fab (click)="seleccionarProducto(row.id)" > 
-        <mat-icon class="mat-18">add_shopping_cart</mat-icon>
-      </button>
-            </td>
-          </ng-container>
-          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-        </table>
-  
-        <mat-paginator
-          #paginator
-          [length]="dataSource.data.length"
-          [pageIndex]="0"
-          [pageSize]="5"
-          [pageSizeOptions]="[3, 5, 10]"
-          aria-label="Seleccione una pagina"
-        >
-        </mat-paginator>
-      </div>
-    </mat-card-content>
-  </mat-card>
-</div>
+          <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="precio">
+          <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
+          <mat-cell *matCellDef="let element2"> {{ element2.precio | currency}} </mat-cell>
+          <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="cantidad">
+          <mat-header-cell *matHeaderCellDef> Cantidad </mat-header-cell>
+          <mat-cell *matCellDef="let element2"> {{ element2.cantidad}} </mat-cell>
+        <mat-footer-cell *matFooterCellDef >Total </mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="subtotal">
+          <mat-header-cell *matHeaderCellDef> Sub Total </mat-header-cell>
+          <mat-cell *matCellDef="let element2"> {{ element2.subtotal | currency}} </mat-cell>
+          <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+        </ng-container>
+
+        
+                  
+       
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns2; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+      </table>
+
+      <mat-paginator
+        #paginator
+        [length]="dataSource2.data.length"
+        [pageIndex]="0"
+        [pageSize]="5"
+        [pageSizeOptions]="[3, 5, 10]"
+        aria-label="Seleccione una pagina"
+      >
+      </mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>
+
