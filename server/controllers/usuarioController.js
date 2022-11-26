@@ -1,4 +1,4 @@
-const { PrismaClient } = require("@prisma/client");
+const { PrismaClient, Rol } = require("@prisma/client");
 
 const prisma = new PrismaClient();
 
@@ -13,12 +13,16 @@ module.exports.get = async (request, response, next) => {
 
 //Obtener por Id
 module.exports.getById = async (request, response, next) => {
-  let id = parseInt(request.params.id);
+  let id = request.params.id;
   const videojuego = await prisma.usuario.findUnique({
-    where: { id: id }
+    where: { id: id },
+    include:{
+      restaurante:true
+    }
   });
   response.json(videojuego);
 };
+
 
 module.exports.create=async(request, response, next)=>{
   let usuario= request.body;
@@ -61,4 +65,11 @@ module.exports.update = async (request, response, next) => {
     },
   });
   response.json(newproducto);
+};
+
+module.exports.getEstados = async (request, response) => {
+  
+  const estados = [{"id":Rol.administrador},{"id":Rol.cliente},{"id":Rol.mesero}]
+ // const estados = EstadosMesas;
+  response.json(estados);
 };
