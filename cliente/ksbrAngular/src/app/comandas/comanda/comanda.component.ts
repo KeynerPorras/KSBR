@@ -78,6 +78,8 @@ formularioReactive(){
           
           this.cartService.currentDataCart$.subscribe(data=>{
             this.dataSource2=new MatTableDataSource(data);
+            this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
           })
           this.total=this.cartService.getTotal();
   }
@@ -148,7 +150,25 @@ formularioReactive(){
     
   }
   registrarOrden() {
-   
+    if(this.cartService.getItems!=null){
+      
+      
+     
+      
+      
+          this.noti.mensaje('Orden',
+          'Orden registrada',
+          TipoMessage.success);
+          this.cartService.deleteCart();
+          this.total=this.cartService.getTotal();
+         
+      
+  
+     }else{
+      this.noti.mensaje('Orden',
+      'Agregue videojuegos a la orden',
+      TipoMessage.warning);
+     }
   }
 
 
