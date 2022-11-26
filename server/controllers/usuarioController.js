@@ -43,7 +43,7 @@ module.exports.create=async(request, response, next)=>{
 
 module.exports.update = async (request, response, next) => {
   let usuario = request.body;
-  let idusuario = parseInt(request.params.id);
+  let idusuario = request.params.id;
   //Obtener producto vieja
   const usuarioViejo = await prisma.usuario.findUnique({
     where: { id: idusuario }
