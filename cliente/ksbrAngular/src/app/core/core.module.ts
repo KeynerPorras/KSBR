@@ -34,7 +34,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatDividerModule,
     MatCardModule,
     MatBadgeModule,
-    ToastrModule
+    ToastrModule.forRoot()
   ],
   exports: [
     HeaderComponent,

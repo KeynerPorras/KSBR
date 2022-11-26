@@ -26,6 +26,7 @@ export class ComandaComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   //@ViewChild(MatTable) table!: MatTable<VideojuegoAllItem>;
   dataSource= new MatTableDataSource<any>();
+  dataSource2= new MatTableDataSource<any>();
   idMesa:any;
   idRestaurante:any;
   submitted = false;
@@ -36,10 +37,14 @@ export class ComandaComponent implements OnInit {
   nombre:any;
 
   listaDetalles: any[];
+
+  total = 0;
+  fecha = Date.now();
+  qtyItems = 0;
   
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id','nombre', 'precio','Agregar'];
-  displayedColumns2=['codigoProducto']
+  displayedColumns2: string[] = ['producto','cantidad', 'precio',  'subtotal'];
   constructor(
     //private notificacion:NotificacionService,
     private fb: FormBuilder,
@@ -47,7 +52,8 @@ export class ComandaComponent implements OnInit {
     private dialog:MatDialog,
     private router: Router,
     private route: ActivatedRoute,private gService:GenericService,
-    private cartService:CartService,private activeRouter: ActivatedRoute
+    private cartService:CartService,private activeRouter: ActivatedRoute,
+    private noti: NotificacionService,
   ) {
     this.formularioReactive();
    }
@@ -68,7 +74,12 @@ formularioReactive(){
     this.activeRouter.params.subscribe((params:Params)=>{
       this.idMesa=params['id'];                              
           })
-          this.listaRestaurante(this.idMesa); 
+          this.listaRestaurante(this.idMesa);
+          
+          this.cartService.currentDataCart$.subscribe(data=>{
+            this.dataSource2=new MatTableDataSource(data);
+          })
+          this.total=this.cartService.getTotal();
   }
 
   listaProductos(id:any) {
@@ -91,11 +102,9 @@ formularioReactive(){
       .subscribe((data: any) => {        
         this.Mesa=data;
         console.log(this.Mesa)
-        this.listaProductos(this.Mesa.idRestaurante);
+        this.listaProductos(data.idRestaurante);
       });
   }
-
-
 
   ngOnDestroy(){
     this.destroy$.next(true);
@@ -123,42 +132,23 @@ formularioReactive(){
       //Agregar videojuego obtenido del API al carrito
       this.cartService.addToCart(data);
       //Notificar al usuario
-      /* this.notificacion.mensaje(
+      this.noti.mensaje(
         'Orden',
         'Producto: '+data.nombre+' agregado a la orden',
         TipoMessage.success
-      ); */
+      );
     });
+   
   }
 
-  pruebaCompra(){
-    if(this.ordenForm.invalid){
-      return;
-    }
-    console.log(this.ordenForm.value);
-    console.log(this.Mesa.id);
-    console.log(this.idRestaurante);
-    console.log(this.ordenForm.value.id);
-    console.log(this.ordenForm.value.cantidad);
-    console.log(this.ordenForm.value.notas);
-    console.log("Sirve");
-
-    lineaDetalle:{
-       {idProducto:this.ordenForm.value.id}
-       {cantidad:this.ordenForm.value.cantidad}
-       {notas:this.ordenForm.value.notas}
-    };
-
-    this.listaDetalles.push(this.lineaDetalle);
-
+  actualizarCantidad(item: any) {
+    
   }
-  lineaDetalle(id:number){
-    const dialogConfig=new MatDialogConfig();
-    dialogConfig.disableClose=true;
-    dialogConfig.data={
-      id:id
-    };
-    this.dialog.open(LineaDetalleComponent,dialogConfig);   
+  eliminarItem(item: any) {
+    
+  }
+  registrarOrden() {
+   
   }
 
 
