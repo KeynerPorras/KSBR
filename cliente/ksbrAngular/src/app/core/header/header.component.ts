@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
     this.authService.isAuthenticated.subscribe(
       (valor) => (this.isAutenticated = valor)
     );
-
+      console.log(this.currentUser.user.rol);
     //Suscribirse al observable que gestiona la cantidad de items del carrito
     this.cartService.countItems.subscribe((value)=>{
       this.qtyItems=value;
