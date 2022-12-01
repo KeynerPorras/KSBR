@@ -23,13 +23,15 @@ import { DetalleComandasComponent } from './detalle-comandas/detalle-comandas.co
 import { LineaDetalleComponent } from './linea-detalle/linea-detalle.component';
 import { ToastrModule } from 'ngx-toastr';
 import { ComandaComponent } from './comanda/comanda.component';
+import { ComandaOnlineComponent } from './comanda-online/comanda-online.component';
 
 @NgModule({
   declarations: [
     GestionComandasComponent,
     DetalleComandasComponent,
     LineaDetalleComponent,
-    ComandaComponent
+    ComandaComponent,
+    ComandaOnlineComponent
   ],
   imports: [
     CommonModule,

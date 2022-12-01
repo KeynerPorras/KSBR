@@ -75,9 +75,14 @@ export class GestionMesasComponent implements OnInit {
       relativeTo: this.route,
     });
   }
-  reservarMesa(id: number) {
-    this.router.navigate(['/comandas/comanda',id ], {
-      relativeTo: this.route,
-    });
+  reservarMesa(id: number, estado: string) {
+    if(estado == "libre"){
+      console.log(estado);
+    }else{
+      this.router.navigate(['/comandas/comanda',id ], {
+        relativeTo: this.route,
+      });
+    }   
+    
   }
 }

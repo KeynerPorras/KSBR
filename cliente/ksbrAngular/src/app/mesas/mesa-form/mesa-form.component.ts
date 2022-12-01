@@ -120,8 +120,7 @@ export class MesaFormComponent implements OnInit {
         this.codigo= data;
         console.log(data);
       });
-    }
-    
+    }   
   }
 
 //Crear Videojueogo

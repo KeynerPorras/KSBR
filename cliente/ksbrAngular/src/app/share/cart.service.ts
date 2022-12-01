@@ -12,6 +12,22 @@ export class ItemCart {
   providedIn: 'root',
 })
 export class CartService {
+  items=[];
+
+  addToCart2(cart) {
+    this.items.push(cart);
+  }
+
+  getItems2() {
+    return this.items;
+  }
+
+  clearCart2() {
+    this.items = [];
+    return this.items;
+  }
+
+
   private cart = new BehaviorSubject<ItemCart[]>(null); //Definimos nuestro BehaviorSubject, este debe tener un valor inicial siempre
   public currentDataCart$ = this.cart.asObservable(); //Tenemos un observable con el valor actual del BehaviorSubject
   public qtyItems = new Subject<number>();

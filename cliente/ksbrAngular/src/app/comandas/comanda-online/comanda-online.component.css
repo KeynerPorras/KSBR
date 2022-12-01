@@ -1,0 +1,29 @@
+.full-width-table { 
+    margin-top: 5%;
+    width: 100%;
+  }
+  .card1{
+    width: 100%;
+  }
+  .card2{
+    width: 100%;
+    margin-left: 5%;
+  }
+
+  mat-card-title{
+    text-align: center;
+    margin: 1%
+  }
+  .full-width{
+    margin-bottom: 10%;
+  }
+
+.body{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}
+
+.footer-row {
+  font-weight: bold;
+}
