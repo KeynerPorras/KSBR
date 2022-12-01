@@ -5,12 +5,19 @@
         <span style="color: brown;">Linea </span><span style="color: green;">Detalle</span>
       </mat-card-title>
   
-      <h1>No Mesa: {{idMesa}} | Restaurante: {{Mesa.idRestaurante}}</h1>
+      <h1>No Mesa: </h1>
       <mat-card-content>
         <div class="mat-elevation-z8"   
         *ngIf="dataSource"    
         >
+        <mat-form-field appearance="fill">
+          <mat-label>Choose an option</mat-label>
+          <mat-select *ngIf="listaRestaurantes">
+            <mat-option *ngFor="let item of listaRestaurantes" value="{{item.id}}" (click)="listaProductos(item.id)">{{item.nombre}}</mat-option>                       
+          </mat-select>
+        </mat-form-field>
           <table mat-table [dataSource]="dataSource"
+          
            class="full-width-table"  matSort
            matSortStart="desc" aria-label="Elements">
             <!-- Columna nombre -->
@@ -113,8 +120,9 @@
           </mat-paginator>
         </div>
       </mat-card-content>
+      <h3 >Total | {{total | currency: "₡ "}}</h3> 
       <mat-card-actions align="end">
-        <h3>Total | {{total | currency: "₡ "}}</h3>
+       
         <button mat-flat-button color="accent" (click)="registrarOrden()" >
             Comprar
             <mat-icon>shopping_bag</mat-icon> 

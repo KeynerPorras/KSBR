@@ -2,7 +2,7 @@
   <mat-card class="card1 full-width">
     <!-- Title of an Card -->
     <mat-card-title>
-      <span style="color: brown;">Linea </span><span style="color: green;">Detalle</span>
+      <span style="color: brown;">Prod</span><span style="color: green;">uctos</span>
     </mat-card-title>
 
     <h1>No Mesa: {{idMesa}} | Restaurante: {{idRestaurante}}</h1>
@@ -62,7 +62,7 @@
       <span style="color: brown;">Linea </span><span style="color: green;">Detalle</span>
     </mat-card-title>
   
-    <h1>No Mesa:</h1>
+    <h1>Productos agregados:</h1>
     <mat-card-content>
       <div class="mat-elevation-z8"   
       *ngIf="dataSource2"    
@@ -97,6 +97,15 @@
             <td mat-cell *matCellDef="let element">{{ element.cantidad * element.producto.precio | currency: "₡"}}</td>
            
           </ng-container>
+
+          <ng-container matColumnDef="eliminar">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Eliminar</th>
+            <td mat-cell *matCellDef="let row">
+              <button color="primary" mat-mini-fab (click)="eliminarItem(row.producto.id)" > 
+        <mat-icon class="mat-18">delete</mat-icon>
+      </button>
+            </td>
+          </ng-container>
           
           <tr mat-header-row *matHeaderRowDef="displayedColumns2; sticky: true"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
@@ -106,7 +115,7 @@
           #paginator
           [length]="dataSource.data.length"
           [pageIndex]="0"
-          [pageSize]="5"
+          [pageSize]="7"
           [pageSizeOptions]="[3, 5, 10]"
           aria-label="Seleccione una pagina"
         >

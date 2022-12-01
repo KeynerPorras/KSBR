@@ -79,13 +79,15 @@ export class GestionMesasComponent implements OnInit {
   }
   reservarMesa(id: number, estado: string, idRestaurante:number) {
     if(estado == "libre"){
-      this.crearComanda(id,idRestaurante)
+      this.crearComanda(id,idRestaurante);
+      this.router.navigate(['/comandas/comanda',id ], {
+        relativeTo: this.route,
+      });
     }else{
       this.router.navigate(['/comandas/comanda',id ], {
         relativeTo: this.route,
       });
-    }   
-    
+    }
   }
 
   crearComanda(id:number,idRestaurante:number){
@@ -104,4 +106,6 @@ export class GestionMesasComponent implements OnInit {
       );
     });
   }
+
+  
 }

@@ -124,3 +124,36 @@ module.exports.create = async (request, response, next) => {
 
   response.json(newcomanda);
 };
+
+module.exports.update = async (request, response, next) => {
+  let detalle = request.body;
+  console.log(detalle.total)
+  console.log(detalle)
+  let idComanda = parseInt(request.params.id);
+  //Obtener mesa vieja
+  const comanda = await prisma.comanda.findUnique({
+    where: { id:idComanda},
+    
+  });
+
+  const newmesa = await prisma.mesa.update({
+    where: {
+      id:comanda.idMesa
+    },
+    data: {
+      estado:"libre"   
+    },
+  });
+
+  const newcomanda = await prisma.comanda.update({
+    where: {
+      id:idComanda
+    },
+    data: {
+      totalPagar:detalle.total,
+      estado:"pagada"   
+    },
+  });
+  response.json(newcomanda);
+};
+

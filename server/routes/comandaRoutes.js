@@ -9,10 +9,14 @@ router.get("/",comandaController.get);
 
 router.get("/:id",comandaController.getById);
 
+router.post("/",comandaController.create);
+
 router.get("/mesa/:id",comandaController.getByIdMesa);
 
 router.get("/numero/:id",comandaController.getNumComanda);
 
-router.post("/",comandaController.create);
+router.put("/:id",comandaController.update);
+
+
 
 module.exports=router;

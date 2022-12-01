@@ -54,6 +54,45 @@ module.exports.getById = async (request, response, next) => {
         },
       });
       response.json(newlinea);
+    } 
+  };
+
+
+  module.exports.delete = async (request, response, next) => {
+    let detalle = request.body;
+
+    const buscarProducto = await prisma.lineaComanda.findUnique({
+      where:{
+        idComanda_idProducto:{
+          idComanda: detalle.idComanda,
+          idProducto:detalle.idProducto
+        }
+      }
+    })
+
+    if(buscarProducto.cantidad==1){
+      const detallecomanda = await prisma.lineaComanda.delete({
+        where: {
+            idComanda_idProducto:{
+            idComanda: detalle.idComanda,
+            idProducto:detalle.idProducto
+          }
+        }
+      });
+      response.json(detallecomanda);
+    }else{
+      const newlinea = await prisma.lineaComanda.update({
+        where:{
+          idComanda_idProducto:{
+            idComanda: detalle.idComanda,
+            idProducto:detalle.idProducto
+          }
+        },
+        data: {
+          cantidad: parseInt(buscarProducto.cantidad-1)       
+        },
+      });
+      response.json(newlinea);
     }
 
     

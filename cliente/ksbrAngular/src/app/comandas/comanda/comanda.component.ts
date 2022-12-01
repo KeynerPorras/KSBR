@@ -30,7 +30,7 @@ export class ComandaComponent implements OnInit {
   dataSource2= new MatTableDataSource<any>();
   idMesa:any;
   idRestaurante:any;
-  idComanda:any;
+  idComanda:any;  //ID COMANDA SE LLENA EN NUMERO COMANDA
   submitted = false;
   ordenForm:FormGroup;
  
@@ -40,14 +40,15 @@ export class ComandaComponent implements OnInit {
   nombre:any;
 
   listaDetalles: any[];
-
-  total = 0;
+  subtotal:any; //SUB TOTAL DE LA COMANDA
+  iv:any;  //IVA DE LA COMANDA
+  total = 0; //TOTAL DE LA COMANDA
   fecha = Date.now();
   qtyItems = 0;
   
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id','nombre', 'precio','Agregar'];
-  displayedColumns2: string[] = ['producto','cantidad', 'precio','subtotal'];
+  displayedColumns2: string[] = ['producto','cantidad', 'precio','subtotal','eliminar'];
 
   
   constructor(
@@ -95,14 +96,15 @@ formularioReactive(){
         this.dataSource.paginator = this.paginator;
       });
   }
-
+  objetoComanda:any;
   numeroComanda(idMesa:any){
     this.gService   
     .get('comanda/mesa',idMesa)
     .pipe(takeUntil(this.destroy$))
-    .subscribe((data: any) => {                    
+    .subscribe((data: any) => {   
+                     
       this.idComanda=data.id;
-      console.log(data.id);
+      this.objetoComanda=data;
     });
   }
 
@@ -112,14 +114,26 @@ formularioReactive(){
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any) => {
         this.lineasDetalle = data.lineaComandas;
-        console.log(this.lineasDetalle);
+        this.calcularTotales();
         this.dataSource2= new MatTableDataSource(data.lineaComandas);
-        this.dataSource2.sort = this.sort;
-        this.dataSource2.paginator = this.paginator;
-        console.log(data.id);
-        console.log(data.idMesa);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;      
       });
   }
+
+  
+
+  calcularTotales(){ 
+    console.log(this.lineasDetalle)
+    this.subtotal=0;
+    for(let i=0;i<this.lineasDetalle.length;i++){      
+      //this.subtotal+=parseFloat(this.lineasDetalle[i].producto.precio)*parseInt((this.lineasDetalle[i].cantidad));
+      this.subtotal=parseFloat(this.subtotal)+parseFloat(this.lineasDetalle[i].producto.precio)*parseInt((this.lineasDetalle[i].cantidad));
+    }
+    console.log(this.subtotal)
+    this.iv=this.subtotal*0.13;
+    this.total=this.subtotal+this.iv;
+   }
 
   listaRestaurante(id:any) {
     this.Mesa=null;
@@ -155,7 +169,6 @@ formularioReactive(){
 
   seleccionarProducto(id:number){
     let comanda ={idComanda:this.idComanda,idProducto:id,cantidad:1,notas:"Prueba"}
-
     console.log(this.idComanda);
     this.gSevice
     .create('lineaComanda/',comanda)
@@ -164,9 +177,10 @@ formularioReactive(){
       console.log(data);
       this.ngOnInit();
     //  this.formularioReactive();
-    });
-    
+    });   
   }
+
+    
 
   comprar(id:number){
     this.gSevice
@@ -185,21 +199,41 @@ formularioReactive(){
    
   }
 
-  actualizarCantidad(item: any) {
+  actualizarCantidad(id: any) {
     
   }
-  eliminarItem(item: any) {    
+  eliminarItem(id: any) { 
+    let detalle ={idComanda:this.idComanda,idProducto:id}  
+    console.log(detalle);
+    this.gSevice
+    .create('lineaComanda/eliminar',detalle)
+    .pipe(takeUntil(this.destroy$))
+    .subscribe((data:any)=>{
+      console.log(data);
+      this.ngOnInit();
+    //  this.formularioReactive();
+    });  
   }
   registrarOrden() {
-    if(this.cartService.getItems!=null){      
-          this.noti.mensaje('Orden',
-          'Orden registrada',
-          TipoMessage.success);
-          this.cartService.deleteCart();
-          this.total=this.cartService.getTotal();
-         
+    console.log(this.objetoComanda);
+    this.objetoComanda.estado="pagada";
+    this.objetoComanda.total=this.total;
+    if(this.lineasDetalle!=null){ 
       
-  
+      this.gSevice
+    .update('comanda',this.objetoComanda)
+    .pipe(takeUntil(this.destroy$))
+    .subscribe((data:any)=>{
+      console.log(data);
+      this.ngOnInit();
+      this.noti.mensaje('Orden',
+      'Orden registrada',
+      TipoMessage.success);
+      this.router.navigate(['/mesas/gestion-mesas']);
+    });  
+         
+          
+
      }else{
       this.noti.mensaje('Orden',
       'Agregue videojuegos a la orden',

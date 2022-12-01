@@ -13,7 +13,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatCardModule} from '@angular/material/card';	
 import {MatBadgeModule} from '@angular/material/badge';
-import { ToastrModule } from 'ngx-toastr';
+import {ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [

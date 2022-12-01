@@ -10,7 +10,7 @@ const routes: Routes = [
   //{ path:'comandas/linea-Detalle', component: LineaDetalleComponent},
  // { path:'comandas/linea-Detalle/:id', component: LineaDetalleComponent},
   { path:'comandas/comanda/:id', component: ComandaComponent},
-  { path:'comandas/comanda-online/:id', component: ComandaOnlineComponent}
+  { path:'comandas/comanda-online', component: ComandaOnlineComponent}
 ];
 
 @NgModule({

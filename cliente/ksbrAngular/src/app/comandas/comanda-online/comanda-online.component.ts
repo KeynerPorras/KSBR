@@ -37,6 +37,8 @@ export class ComandaOnlineComponent implements OnInit {
   idProducto:any;
   nombre:any;
 
+  listaRestaurantes:any;
+
   listaDetalles: any[];
 
   total = 0;
@@ -60,14 +62,12 @@ export class ComandaOnlineComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activeRouter.params.subscribe((params:Params)=>{
-      this.idMesa=params['id'];                              
-          })
-          this.listaRestaurante(this.idMesa);
-          
-          this.cartService.currentDataCart$.subscribe(data=>{
-            this.dataSource2=new MatTableDataSource(data);
-            this.dataSource.sort = this.sort;
+     
+    this.obtenerRestaurantes();
+    this.listaRestaurante(1);
+        this.cartService.currentDataCart$.subscribe(data=>{
+        this.dataSource2=new MatTableDataSource(data);
+        this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
         this.total=this.cartService.getTotal();
           })
@@ -84,7 +84,7 @@ export class ComandaOnlineComponent implements OnInit {
    
   }
 
-  listaProductos(id:any) {
+  listaProductos(id:number) {
     this.gService
       .get('restaurante/sede',id)
       .pipe(takeUntil(this.destroy$))
@@ -96,7 +96,7 @@ export class ComandaOnlineComponent implements OnInit {
       });
   }
 
-  listaRestaurante(id:any) {
+  listaRestaurante(id:number) {
     this.Mesa=null;
     this.gService
       .get('mesa',id)
@@ -107,6 +107,17 @@ export class ComandaOnlineComponent implements OnInit {
         this.listaProductos(data.idRestaurante);
       });
   }
+
+  obtenerRestaurantes() {
+    this.gSevice
+      .list('restaurante/')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: any) => {
+       // console.log(data);
+        this.listaRestaurantes = data;
+      });
+  }
+
 
   ngOnDestroy(){
     this.destroy$.next(true);
@@ -140,15 +151,13 @@ export class ComandaOnlineComponent implements OnInit {
         'Producto: '+data.nombre+' agregado a la orden',
         TipoMessage.success
       );
-    });
-   
+    });   
   }
 
   actualizarCantidad(item: any) {
     
   }
-  eliminarItem(item: any) {
-    
+  eliminarItem(item: any) {    
   }
   registrarOrden() {
     if(this.cartService.getItems!=null){      
@@ -156,10 +165,7 @@ export class ComandaOnlineComponent implements OnInit {
           'Orden registrada',
           TipoMessage.success);
           this.cartService.deleteCart();
-          this.total=this.cartService.getTotal();
-         
-      
-  
+          this.total=this.cartService.getTotal();  
      }else{
       this.noti.mensaje('Orden',
       'Agregue videojuegos a la orden',

@@ -7,6 +7,8 @@ const lineaComandaController=require("../controllers/lineaComandaController");
 
 router.get("/:id",lineaComandaController.getById);
 
+router.post("/eliminar/",lineaComandaController.delete);
+
 router.post("/",lineaComandaController.create);
 
 router.put("/:id,idProducto",lineaComandaController.update);
