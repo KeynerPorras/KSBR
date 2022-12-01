@@ -39,12 +39,12 @@ export class HeaderComponent implements OnInit {
   }
 
   login(){
-    this.router.navigate(['usuarios/login']);
+    this.router.navigate(['usuario/login']);
   }
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['usuarios/login']);
+    this.router.navigate(['usuario/login']);
   }
 
 }
