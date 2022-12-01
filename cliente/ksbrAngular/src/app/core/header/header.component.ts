@@ -17,17 +17,34 @@ export class HeaderComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    this.authService.currentUser.subscribe((x) => (this.currentUser = x));
+    
+    //Subscripción al booleano que indica si esta autenticado
+    this.authService.isAuthenticated.subscribe(
+      (valor) => (this.isAutenticated = valor)
+    );
+
+    //Suscribirse al observable que gestiona la cantidad de items del carrito
     this.cartService.countItems.subscribe((value)=>{
       this.qtyItems=value;
     });
 
     
-    this.isAutenticated = true;
+    /* this.isAutenticated = true;
     let user = {
       nombre: 'Tom',
       email: 'kporrascruz@gmail.com'
     };
-    this.currentUser = user;
+    this.currentUser = user; */
+  }
+
+  login(){
+    this.router.navigate(['usuarios/login']);
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['usuarios/login']);
   }
 
 }

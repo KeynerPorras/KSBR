@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { GenericService } from 'src/app/share/generic.service';
+import { NotificacionService, TipoMessage } from 'src/app/share/notification.service';
 
 @Component({
   selector: 'app-usuario-form',
@@ -25,7 +26,8 @@ export class UsuarioFormComponent implements OnInit {
     private fb: FormBuilder,
     private gService: GenericService,
     private router: Router,
-    private activeRouter: ActivatedRoute
+    private activeRouter: ActivatedRoute,
+    private noti: NotificacionService
   ) {
     this.formularioReactive();
     this.listaRestaurantes();
@@ -111,6 +113,11 @@ export class UsuarioFormComponent implements OnInit {
       this.router.navigate(['/usuarios/gestion-usuarios'],{
         queryParams: {create:'true'}
       });
+      this.noti.mensaje(
+        'Agregar',
+        'Usuario: '+data.id+' Agregado al sistema',
+        TipoMessage.success
+      );
     });
   }
 
@@ -131,7 +138,13 @@ export class UsuarioFormComponent implements OnInit {
       this.router.navigate(['/usuarios/gestion-usuarios'],{
         queryParams: {update:'true'}
       });
+      this.noti.mensaje(
+        'Actualizar',
+        'Usuario: '+data.id+' actualizado en sistema',
+        TipoMessage.success
+      );
     });
+    
   }
 
   onReset() {

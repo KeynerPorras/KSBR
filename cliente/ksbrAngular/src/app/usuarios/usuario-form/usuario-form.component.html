@@ -71,7 +71,7 @@
         <!--password-------------------------------------------------------------------------------->
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput #nombreProducto minlength="5" maxlength="20" placeholder="Password"
+            <input matInput #nombreProducto minlength="2" maxlength="20" placeholder="Password"
               formControlName="password">
             <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
             <mat-error *ngIf="productoForm.controls['password'].hasError('required')">
@@ -109,7 +109,7 @@
         <!--apellido1-------------------------------------------------------------------------------->
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput #nombreProducto minlength="5" maxlength="20" placeholder="Primer Apellido"
+            <input matInput #nombreProducto minlength="2" maxlength="20" placeholder="Primer Apellido"
               formControlName="apellido1">
             <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
             <mat-error *ngIf="productoForm.controls['apellido1'].hasError('required')">
@@ -127,7 +127,7 @@
         <!--apellido2-------------------------------------------------------------------------------->
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput #nombreProducto minlength="5" maxlength="20" placeholder="Segundo Apellido"
+            <input matInput #nombreProducto minlength="2" maxlength="20" placeholder="Segundo Apellido"
               formControlName="apellido2">
             <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
             <mat-error *ngIf="productoForm.controls['apellido2'].hasError('required')">

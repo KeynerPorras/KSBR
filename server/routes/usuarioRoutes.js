@@ -11,6 +11,10 @@ router.get("/estados/",usuarioController.getEstados);
 
 router.post("/",usuarioController.create);
 
+router.post("/login", usuarioController.login);
+
+router.post("/registrar", usuarioController.register);
+
 router.get("/:id",usuarioController.getById);
 
 router.put("/:id",usuarioController.update);

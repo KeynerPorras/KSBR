@@ -11,10 +11,18 @@
         <button mat-menu-item [routerLink]="['/productos/gestion-productos']" [routerLinkActive]="'mat-raised-button'">Productos</button> 
         <button mat-menu-item [routerLink]="['/usuarios/gestion-usuarios']" [routerLinkActive]="'mat-raised-button'">Usuarios</button>
         <button mat-menu-item   [matMenuTriggerFor]="menu3"  class="example-icon" >Ordenes</button>
-          <mat-menu #menu3="matMenu" >          
-            <button mat-menu-item [routerLink]="['/comandas/gestion-comandas']" [routerLinkActive]="'mat-raised-button'">Lista ordenes</button>
-            <button mat-menu-item [routerLink]="['/comandas/linea-Detalle']" [routerLinkActive]="'mat-raised-button'">Crear orden</button>           
-        </mat-menu>  
+        
+        <mat-menu #menu3="matMenu">
+          <a mat-menu-item  *ngIf="!(isAutenticated)" (click)="login()">
+            <mat-icon>person_add</mat-icon>
+            <span> Login </span> 
+          </a>
+          <a mat-menu-item *ngIf="isAutenticated" (click)="logout()">
+            <mat-icon>person_remove</mat-icon>
+            <span> Logout </span>
+          </a>
+        </mat-menu> 
+
         <button mat-menu-item   [matMenuTriggerFor]="menu2"  class="example-icon" >Acerca de</button>
           <mat-menu #menu2="matMenu" >          
             <button mat-menu-item [routerLink]="['/home/acerca-de']" [routerLinkActive]="'mat-raised-button'">Nosotros</button>           
@@ -45,7 +53,7 @@
     </button>
     
     <mat-menu #menu3="matMenu">
-      <a mat-menu-item  *ngIf="!(isAutenticated)" >
+      <a mat-menu-item  *ngIf="!(isAutenticated)" (click)="login()">
         <mat-icon>person_add</mat-icon>
         <span> Login </span> 
       </a>

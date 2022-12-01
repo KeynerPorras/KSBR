@@ -20,12 +20,20 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { ToastrModule } from 'ngx-toastr';
+import {MatTabsModule} from '@angular/material/tabs';
+import { UserCreateComponent } from './user-create/user-create.component';
+import { UserIndexComponent } from './user-index/user-index.component';
+import { UserLoginComponent } from './user-login/user-login.component';
 
 
 @NgModule({
   declarations: [
     GestionUsuariosComponent,
-    UsuarioFormComponent
+    UsuarioFormComponent,
+    UserCreateComponent,
+    UserIndexComponent,
+    UserLoginComponent
   ],
   imports: [
     CommonModule,
@@ -37,6 +45,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatIconModule,
     MatButtonModule,
     LayoutModule,
+    MatTabsModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
@@ -46,7 +55,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatSelectModule,
     MatRadioModule,
     ReactiveFormsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    ToastrModule,
   ]
 })
 export class UsuariosModule { }
