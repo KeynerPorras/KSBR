@@ -46,7 +46,7 @@
      <mat-icon>shopping_cart</mat-icon>
    </button> |   
 
-      <span class="mat-caption" *ngIf="isAutenticated"> {{currentUser.email}}</span> 
+      <span class="mat-caption" *ngIf="isAutenticated"> {{currentUser.user.correo}}</span> 
     <button mat-icon-button [matMenuTriggerFor]="menu3">
      
       <mat-icon [ngStyle]="{'color':isAutenticated ? ' white' : '#9E9E9E' }">person</mat-icon>

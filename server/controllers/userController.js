@@ -39,7 +39,7 @@ module.exports.login = async (request, response, next) => {
   //Buscar el usuario según el email dado
   const user = await prisma.Usuario.findUnique({
     where: {
-      correo: userReq.correo,
+      id: userReq.id,
     },
   });
   //Sino lo encuentra según su email
@@ -50,13 +50,13 @@ module.exports.login = async (request, response, next) => {
     });
   }
   //Verifica la contraseña
-  const checkPassword = bcrypt.compareSync(userReq.password, user.password);
+  const checkPassword = bcrypt.compare(userReq.password, user.password);
   if (checkPassword) {
     //Si el usuario es correcto: email y password
     //Crear el token
     const payload = {
-      correo: user.correo,
-      role: user.role,
+      id: user.id,
+      rol: user.rol,
     };
     //Crea el token con el payload, llave secreta
     // y el tiempo de expiración
