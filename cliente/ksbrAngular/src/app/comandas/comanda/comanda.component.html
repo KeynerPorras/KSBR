@@ -122,8 +122,9 @@
         </mat-paginator>
       </div>
     </mat-card-content>
+    <h3>Total | {{total | currency: "₡ "}}</h3>
     <mat-card-actions align="end">
-      <h3>Total | {{total | currency: "₡ "}}</h3>
+      
       <button mat-flat-button color="accent" (click)="registrarOrden()" >
           Comprar
           <mat-icon>shopping_bag</mat-icon> 

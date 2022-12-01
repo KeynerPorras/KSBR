@@ -35,7 +35,7 @@
           
           <ng-container matColumnDef="fechaComanda">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
-            <td mat-cell *matCellDef="let row">{{ row.fechaComanda }}</td>
+            <td mat-cell *matCellDef="let row">{{ row.fechaComanda | date: 'dd-MM-yyyy' }}</td>
           </ng-container>
           
           <ng-container matColumnDef="totalPagar">

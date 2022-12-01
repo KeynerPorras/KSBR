@@ -218,7 +218,8 @@ formularioReactive(){
     console.log(this.objetoComanda);
     this.objetoComanda.estado="pagada";
     this.objetoComanda.total=this.total;
-    if(this.lineasDetalle!=null){ 
+    console.log(this.lineasDetalle.length);
+    if(this.lineasDetalle.length!=0){ 
       
       this.gSevice
     .update('comanda',this.objetoComanda)
@@ -232,11 +233,9 @@ formularioReactive(){
       this.router.navigate(['/mesas/gestion-mesas']);
     });  
          
-          
-
      }else{
       this.noti.mensaje('Orden',
-      'Agregue videojuegos a la orden',
+      'Agregue productos a la orden',
       TipoMessage.warning);
      }
   }

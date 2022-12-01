@@ -2,16 +2,16 @@
     <mat-card class="card1 full-width">
       <!-- Title of an Card -->
       <mat-card-title>
-        <span style="color: brown;">Linea </span><span style="color: green;">Detalle</span>
+        <span style="color: brown;">Compra </span><span style="color: green;"></span>
       </mat-card-title>
   
-      <h1>No Mesa: </h1>
+      <h1>Productos restaurantes: </h1>
       <mat-card-content>
         <div class="mat-elevation-z8"   
         *ngIf="dataSource"    
         >
         <mat-form-field appearance="fill">
-          <mat-label>Choose an option</mat-label>
+          <mat-label>Selección restaurante</mat-label>
           <mat-select *ngIf="listaRestaurantes">
             <mat-option *ngFor="let item of listaRestaurantes" value="{{item.id}}" (click)="listaProductos(item.id)">{{item.nombre}}</mat-option>                       
           </mat-select>
@@ -69,7 +69,7 @@
         <span style="color: brown;">Linea </span><span style="color: green;">Detalle</span>
       </mat-card-title>
     
-      <h1>No Mesa:</h1>
+      <h1>Productos agregados:</h1>
       <mat-card-content>
         <div class="mat-elevation-z8"   
         *ngIf="dataSource2"    

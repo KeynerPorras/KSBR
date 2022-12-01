@@ -28,24 +28,24 @@ export const mesa = [
     codigo:"KSOC-4",
     idRestaurante: 1,
     capacidad: 5,
-    estado:EstadosMesas.reservada
+    estado:EstadosMesas.libre
   },
   {
     codigo:"KSSR-5",
     idRestaurante: 2,
     capacidad: 4,
-    estado:EstadosMesas.reservada
+    estado:EstadosMesas.libre
   },
   {
     codigo:"KSSC-6",
     idRestaurante: 3,
     capacidad: 5,
-    estado:EstadosMesas.reservada
+    estado:EstadosMesas.libre
   },
   {
     codigo:"KSSC-7",
     idRestaurante: 3,
     capacidad: 6,
-    estado:EstadosMesas.reservada
+    estado:EstadosMesas.libre
   },
 ];

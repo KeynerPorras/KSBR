@@ -11,18 +11,11 @@
         <button mat-menu-item [routerLink]="['/comandas/comanda-online']" [routerLinkActive]="'mat-raised-button'">Compra online</button>
         <button mat-menu-item [routerLink]="['/productos/gestion-productos']" [routerLinkActive]="'mat-raised-button'">Productos</button> 
         <button mat-menu-item [routerLink]="['/usuarios/gestion-usuarios']" [routerLinkActive]="'mat-raised-button'">Usuarios</button>
-        <button mat-menu-item [routerLink]="['comandas/gestion-comandas']" [routerLinkActive]="'mat-raised-button'">ordenes</button>
+        
         <button mat-menu-item   [matMenuTriggerFor]="menu3"  class="example-icon" >Ordenes</button>
         
         <mat-menu #menu3="matMenu">
-          <a mat-menu-item  *ngIf="!(isAutenticated)" (click)="login()">
-            <mat-icon>person_add</mat-icon>
-            <span> Login </span> 
-          </a>
-          <a mat-menu-item *ngIf="isAutenticated" (click)="logout()">
-            <mat-icon>person_remove</mat-icon>
-            <span> Logout </span>
-          </a>
+          <button mat-menu-item [routerLink]="['comandas/gestion-comandas']" [routerLinkActive]="'mat-raised-button'">ordenes</button>
         </mat-menu> 
 
         <button mat-menu-item   [matMenuTriggerFor]="menu2"  class="example-icon" >Acerca de</button>
@@ -43,23 +36,20 @@
        <!-- https://fonts.google.com/icons -->
        <!--https://material.angular.io/guide/typography-->
       
-     <button mat-icon-button matBadgeColor="accent" [matBadge]="qtyItems.toString()"
-       [routerLink]="'/orden'" [routerLinkActive]="'mat-raised-button'"  aria-label="Cantidad">
-     <mat-icon>shopping_cart</mat-icon>
-   </button> |   
+      
 
       <span class="mat-caption" *ngIf="isAutenticated"> {{currentUser.user.correo}}</span> 
-    <button mat-icon-button [matMenuTriggerFor]="menu3">
+    <button mat-icon-button [matMenuTriggerFor]="menu4">
      
       <mat-icon [ngStyle]="{'color':isAutenticated ? ' white' : '#9E9E9E' }">person</mat-icon>
     </button>
     
-    <mat-menu #menu3="matMenu">
+    <mat-menu #menu4="matMenu">
       <a mat-menu-item  *ngIf="!(isAutenticated)" (click)="login()">
         <mat-icon>person_add</mat-icon>
         <span> Login </span> 
       </a>
-      <a mat-menu-item *ngIf="isAutenticated"  >
+      <a mat-menu-item *ngIf="isAutenticated" (click)="logout()">
         <mat-icon>person_remove</mat-icon>
         <span> Logout </span>
       </a>
