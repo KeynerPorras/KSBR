@@ -112,5 +112,15 @@ module.exports.create = async (request, response, next) => {
       fechaComanda: comanda.fechaComanda           
     },
   });
+
+  const newMesa = await prisma.mesa.update({
+    where:{
+      id:comanda.idMesa
+    },
+    data: {
+      estado: "ocupada"       
+    },
+  });
+
   response.json(newcomanda);
 };

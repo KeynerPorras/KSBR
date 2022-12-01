@@ -47,7 +47,7 @@ export class ComandaComponent implements OnInit {
   
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id','nombre', 'precio','Agregar'];
-  displayedColumns2: string[] = ['producto','cantidad', 'precio'];
+  displayedColumns2: string[] = ['producto','cantidad', 'precio','subtotal'];
 
   
   constructor(
@@ -98,7 +98,7 @@ formularioReactive(){
 
   numeroComanda(idMesa:any){
     this.gService   
-    .get('comanda/mesa',1)
+    .get('comanda/mesa',idMesa)
     .pipe(takeUntil(this.destroy$))
     .subscribe((data: any) => {                    
       this.idComanda=data.id;
@@ -154,16 +154,18 @@ formularioReactive(){
   
 
   seleccionarProducto(id:number){
-    let comanda ={idComanda:5,idProducto:id,cantidad:1,notas:"Prueba"}
+    let comanda ={idComanda:this.idComanda,idProducto:id,cantidad:1,notas:"Prueba"}
 
-  console.log(comanda);
+    console.log(this.idComanda);
     this.gSevice
     .create('lineaComanda/',comanda)
     .pipe(takeUntil(this.destroy$))
     .subscribe((data:any)=>{
       console.log(data);
-      this.formularioReactive();
+      this.ngOnInit();
+    //  this.formularioReactive();
     });
+    
   }
 
   comprar(id:number){

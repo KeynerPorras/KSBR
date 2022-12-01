@@ -9,5 +9,7 @@ router.get("/:id",lineaComandaController.getById);
 
 router.post("/",lineaComandaController.create);
 
+router.put("/:id,idProducto",lineaComandaController.update);
+
 
 module.exports=router;

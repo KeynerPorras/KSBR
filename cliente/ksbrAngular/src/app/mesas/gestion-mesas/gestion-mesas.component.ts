@@ -3,6 +3,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { GenericService } from 'src/app/share/generic.service';
+import { NotificacionService, TipoMessage } from 'src/app/share/notification.service';
 import { DetalleMesasComponent } from '../detalle-mesas/detalle-mesas.component';
 
 
@@ -21,7 +22,8 @@ export class GestionMesasComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private gSevice: GenericService,
-    private dialog:MatDialog
+    private dialog:MatDialog,
+    private noti: NotificacionService,
   ) { this.listaVideojuegos(); this.listaRestaurante();}
 
   listaVideojuegos() {
@@ -75,14 +77,31 @@ export class GestionMesasComponent implements OnInit {
       relativeTo: this.route,
     });
   }
-  reservarMesa(id: number, estado: string) {
+  reservarMesa(id: number, estado: string, idRestaurante:number) {
     if(estado == "libre"){
-      console.log(estado);
+      this.crearComanda(id,idRestaurante)
     }else{
       this.router.navigate(['/comandas/comanda',id ], {
         relativeTo: this.route,
       });
     }   
     
+  }
+
+  crearComanda(id:number,idRestaurante:number){
+    let comanda ={idMesa:id,idUsuario: "208060669",idRestaurante: idRestaurante ,estado: "registrada",
+    direccion: "Prueba 2",subTotal: 0,impuesto: 0,totalPagar: 0,fechaComanda: Date.now}
+
+    this.gSevice
+    .create('comanda/',comanda)
+    .pipe(takeUntil(this.destroy$))
+    .subscribe((data:any)=>{
+      console.log(data);
+      this.noti.mensaje(
+        'Orden',
+        'Comanda: '+data.id+' Creada',
+        TipoMessage.success
+      );
+    });
   }
 }
