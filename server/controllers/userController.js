@@ -17,14 +17,14 @@ module.exports.register = async (request, response, next) => {
   let hash = bcrypt.hashSync(userData.password, salt);
   const user = await prisma.usuario.create({
     data: {
-        id:userData.id,
-        correo:userData.correo,
-        password:hash,
-        rol:userData.rol,
-        nombre:userData.nombre,
-        apellido1:userData.apellido1,
-        apellido2:userData.apellido2,
-        idRestaurante:userData.idRestaurante,
+      id:userData.id,
+      correo:userData.correo,
+      password:hash,
+      rol:userData.rol,
+      nombre:userData.nombre,
+      apellido1:userData.apellido1,
+      apellido2:userData.apellido2,
+      idRestaurante:userData.idRestaurante,
     },
   });
   response.status(200).json({
@@ -33,7 +33,6 @@ module.exports.register = async (request, response, next) => {
     data: user,
   });
 };
-
 module.exports.login = async (request, response, next) => {
   let userReq = request.body;
   //Buscar el usuario según el email dado
@@ -49,32 +48,35 @@ module.exports.login = async (request, response, next) => {
       message: "Usuario no registrado",
     });
   }
-  //Verifica la contraseña
-  const checkPassword = bcrypt.compare(userReq.password, user.password);
-  if (checkPassword) {
-    //Si el usuario es correcto: email y password
-    //Crear el token
-    const payload = {
-      id: user.id,
-      rol: user.rol,
-    };
-    //Crea el token con el payload, llave secreta
-    // y el tiempo de expiración
-    const token = jwt.sign(payload, process.env.SECRET_KEY, {
-      expiresIn: process.env.JWT_EXPIRE,
-    });
-    response.json({
-      success: true,
-      message: "Usuario registrado",
-      data: {
-        user,
-        token,
-      },
-    });
-  } else {
-    response.status(401).send({
-      success: false,
-      message: "Password incorrecto",
-    });
+
+  if (user && userReq.password) {
+    //Verifica la contraseña
+    const checkPassword = bcrypt.compare(userReq.password, user.password);
+    if (checkPassword) {
+      //Si el usuario es correcto: email y password
+      //Crear el token
+      const payload = {
+        id: user.id,
+        rol: user.rol,
+      };
+      //Crea el token con el payload, llave secreta
+      // y el tiempo de expiración
+      const token = jwt.sign(payload, process.env.SECRET_KEY, {
+        expiresIn: process.env.JWT_EXPIRE,
+      });
+      response.json({
+        success: true,
+        message: "Usuario registrado",
+        data: {
+          user,
+          token,
+        },
+      });
+    } else {
+      response.status(401).send({
+        success: false,
+        message: "Password incorrecto",
+      });
+    }
   }
 };

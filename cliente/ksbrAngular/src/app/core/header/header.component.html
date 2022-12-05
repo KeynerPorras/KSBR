@@ -1,59 +1,72 @@
 <div class="contenedor mat-typography">
-  <mat-toolbar color="primary" >
-    <div class="example-spacer" >
-      <button mat-icon-button   [matMenuTriggerFor]="menu1"  class="example-icon" >
+  <mat-toolbar color="primary">
+    <div class="example-spacer">
+      <button mat-icon-button [matMenuTriggerFor]="menu1" class="example-icon">
         <mat-icon>menu</mat-icon>
       </button>
       <span>Keyke's Bar y restaurante</span>
       <mat-menu #menu1="matMenu">
+        <!---->
         <button mat-menu-item [routerLink]="'/'" [routerLinkActive]="'mat-raised-button'">Inicio</button>
-        <button mat-menu-item [routerLink]="['/mesas/gestion-mesas']" [routerLinkActive]="'mat-raised-button'">Reservación</button>
-        <button mat-menu-item [routerLink]="['/comandas/comanda-online']" [routerLinkActive]="'mat-raised-button'">Compra online</button>
-        <button mat-menu-item [routerLink]="['/productos/gestion-productos']" [routerLinkActive]="'mat-raised-button'">Productos</button> 
-        <button mat-menu-item [routerLink]="['/usuarios/gestion-usuarios']" [routerLinkActive]="'mat-raised-button'">Usuarios</button>
-        
-        <button mat-menu-item   [matMenuTriggerFor]="menu3"  class="example-icon" >Ordenes</button>
-        
-        <mat-menu #menu3="matMenu">
-          <button mat-menu-item [routerLink]="['comandas/gestion-comandas']" [routerLinkActive]="'mat-raised-button'">ordenes</button>
-        </mat-menu> 
+        <!---->
+        <div *ngIf="isAutenticated" [ngSwitch]="currentUser.user.rol">
+          <button mat-menu-item [routerLink]="['/mesas/gestion-mesas']"
+            [routerLinkActive]="'mat-raised-button'">Reservación</button>
+          <button mat-menu-item [routerLink]="['/comandas/comanda-online']"
+            [routerLinkActive]="'mat-raised-button'">Compra online</button>
+          <button mat-menu-item [routerLink]="['/productos/gestion-productos']" [routerLinkActive]="'mat-raised-button'"
+            *ngSwitchCase="'administrador'">Productos</button>
+          <button mat-menu-item [routerLink]="['/usuarios/gestion-usuarios']" [routerLinkActive]="'mat-raised-button'"
+            *ngSwitchCase="'administrador'">Usuarios</button>
 
-        <button mat-menu-item   [matMenuTriggerFor]="menu2"  class="example-icon" >Acerca de</button>
-          <mat-menu #menu2="matMenu" >          
-            <button mat-menu-item [routerLink]="['/home/acerca-de']" [routerLinkActive]="'mat-raised-button'">Nosotros</button>           
+          <button mat-menu-item [matMenuTriggerFor]="menu3" class="example-icon"
+            *ngSwitchCase="'administrador'">Ordenes</button>
+
+          <mat-menu #menu3="matMenu">
+            <button mat-menu-item [routerLink]="['comandas/gestion-comandas']"
+              [routerLinkActive]="'mat-raised-button'">ordenes</button>
+          </mat-menu>
+        </div>
+        <!---->
+        <button mat-menu-item [matMenuTriggerFor]="menu2" class="example-icon">Acerca de</button>
+        <mat-menu #menu2="matMenu">
+          <button mat-menu-item [routerLink]="['/home/acerca-de']"
+            [routerLinkActive]="'mat-raised-button'">Nosotros</button>
         </mat-menu>
+        <!---->
+
       </mat-menu>
       <div class="example-button-container" align="end">
-        
+
       </div>
     </div>
 
-   
-    <div class="example-spacer" >
-      
+
+    <div class="example-spacer">
+
       <!-- Enlaces de la aplicación -->
-       <!-- https://fonts.google.com/icons -->
-       <!--https://material.angular.io/guide/typography-->
-      
-      <span class="mat-caption" *ngIf="isAutenticated"> {{currentUser.user.correo}}</span> 
-    <button mat-icon-button [matMenuTriggerFor]="menu4">
-     
-      <mat-icon [ngStyle]="{'color':isAutenticated ? ' white' : '#9E9E9E' }">person</mat-icon>
-    </button>
-    
-    <mat-menu #menu4="matMenu">
-      <a mat-menu-item  *ngIf="!(isAutenticated)" (click)="login()">
-        <mat-icon>person_add</mat-icon>
-        <span> Login </span> 
-      </a>
-      <a mat-menu-item *ngIf="isAutenticated" (click)="logout()">
-        <mat-icon>person_remove</mat-icon>
-        <span> Logout </span>
-      </a>
-    </mat-menu>
-  </div>
-    
-    
-    
+      <!-- https://fonts.google.com/icons -->
+      <!--https://material.angular.io/guide/typography-->
+
+      <span class="mat-caption" *ngIf="isAutenticated"> {{currentUser.user.correo}}</span>
+      <button mat-icon-button [matMenuTriggerFor]="menu4">
+
+        <mat-icon [ngStyle]="{'color':isAutenticated ? ' white' : '#9E9E9E' }">person</mat-icon>
+      </button>
+
+      <mat-menu #menu4="matMenu">
+        <a mat-menu-item *ngIf="!(isAutenticated)" (click)="login()">
+          <mat-icon>person_add</mat-icon>
+          <span> Login </span>
+        </a>
+        <a mat-menu-item *ngIf="isAutenticated" (click)="logout()">
+          <mat-icon>person_remove</mat-icon>
+          <span> Logout </span>
+        </a>
+      </mat-menu>
+    </div>
+
+
+
   </mat-toolbar>
 </div>

@@ -14,16 +14,16 @@ module.exports.verifyToken = async (req, res, next) => {
   }
   if (token) {
     const verify = jwt.verify(token, process.env.SECRET_KEY);
-    const user = await prisma.Usuario.findUnique({
+    const user = await prisma.usuario.findUnique({
       where: {
-        email: verify.email,
+        id: verify.id,
       },
     });
     req.user = verify;
     next();
   }
 };
-exports.grantRole = function (roles) {
+exports.grantRole = function (rol) {
   return async (req, res, next) => {
     try {
       const bearerHeader = req.headers["authorization"];
@@ -38,8 +38,8 @@ exports.grantRole = function (roles) {
       }
       if (token) {
         const verify = jwt.verify(token, process.env.SECRET_KEY);
-       
-        if (roles.length && roles.indexOf(verify.role.toUpperCase())===-1) {
+        
+        if (rol.length && rol.indexOf(verify.rol)===-1) {
           // user's role is not authorized
           return res.status(401).json({ message: "No autorizado" });
         }
