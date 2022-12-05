@@ -152,20 +152,6 @@ formularioReactive(){
     this.destroy$.unsubscribe();
   }
 
-  /* seleccionarProducto(id:number){
-    this.gSevice
-    .get('producto',id)
-    .pipe(takeUntil(this.destroy$))
-    .subscribe((data:any)=>{
-      this.producto=data;
-      this.idProducto=data.id;
-      this.nombre=data.nombre;     
-      this.formularioReactive();     
-    });
-    
-  } */
-
-  
 
   seleccionarProducto(id:number){
     let comanda ={idComanda:this.idComanda,idProducto:id,cantidad:1,notas:"Prueba"}
@@ -215,10 +201,10 @@ formularioReactive(){
     });  
   }
   registrarOrden() {
-    console.log(this.objetoComanda);
-    this.objetoComanda.estado="pagada";
-    this.objetoComanda.total=this.total;
-    console.log(this.lineasDetalle.length);
+    this.objetoComanda.estado="porPagar";
+    this.objetoComanda.totalPagar=this.total;
+    this.objetoComanda.impuesto=this.iv;
+    this.objetoComanda.subTotal=this.subtotal;
     if(this.lineasDetalle.length!=0){ 
       
       this.gSevice

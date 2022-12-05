@@ -53,7 +53,8 @@ module.exports.getById = async (request, response, next) => {
                 cantidad:true,
                 producto:true
             }
-        }
+        },
+        usuario:true
       }
     });
 
@@ -127,6 +128,8 @@ module.exports.create = async (request, response, next) => {
 
 module.exports.update = async (request, response, next) => {
   let detalle = request.body;
+  console.log(detalle.subTotal)
+  console.log(detalle.impuesto)
   console.log(detalle.total)
   console.log(detalle)
   let idComanda = parseInt(request.params.id);
@@ -141,7 +144,7 @@ module.exports.update = async (request, response, next) => {
       id:comanda.idMesa
     },
     data: {
-      estado:"libre"   
+      estado:"porPagar"   
     },
   });
 
@@ -150,8 +153,10 @@ module.exports.update = async (request, response, next) => {
       id:idComanda
     },
     data: {
-      totalPagar:detalle.total,
-      estado:"pagada"   
+      subTotal: detalle.subTotal,
+      impuesto: detalle.impuesto,
+      totalPagar: detalle.totalPagar,
+      estado:"registrada"   
     },
   });
   response.json(newcomanda);

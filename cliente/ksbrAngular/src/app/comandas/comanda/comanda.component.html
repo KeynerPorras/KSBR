@@ -122,6 +122,8 @@
         </mat-paginator>
       </div>
     </mat-card-content>
+    <h3>SubTotal | {{subtotal | currency: "₡ "}}</h3>
+    <h3>Impuesto | {{iv | currency: "₡ "}}</h3>
     <h3>Total | {{total | currency: "₡ "}}</h3>
     <mat-card-actions align="end">
       
