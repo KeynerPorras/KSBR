@@ -18,6 +18,7 @@ export class AuthGuard implements CanActivate {
       //Subscribirse para obtener el usuario autenticado
       this.authService.currentUser.subscribe((x) => (this.currentUser = x));
   }
+  
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
@@ -25,15 +26,15 @@ export class AuthGuard implements CanActivate {
     ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       let url: string = state.url;
       return this.checkUserLogin(route, url);
-      
   }
+  
   //Verificar que el rol del usuario coincida
   //con alguno de los indicados
   checkUserLogin(route: ActivatedRouteSnapshot, url: any): boolean {
     if (this.isAuthenticated) {
-      const userRole = this.currentUser.user.role;
-      if(route.data['roles'].length && !route.data['roles'].includes(userRole)){ 
-        this.router.navigate(['/usuario/login'], {
+      const userRole = this.currentUser.user.rol;
+      if(route.data['rol'].length && !route.data['rol'].includes(userRole)){ 
+        this.router.navigate(['/'], {
           //Parametro para mostrar mensaje en login
           queryParams: { auth: 'no' }
         });
