@@ -1,0 +1,65 @@
+<div class="card">
+    <div class="card-body">
+      <h3>Número de pedido: {{comanda.id}}</h3>
+      <h4>Identificación: {{comanda.usuario.nombre}}</h4>
+      <h4>Fecha: {{comanda.fechaComanda}}</h4>
+      <h4>Sub total {{comanda.subTotal}} Impuesto {{comanda.impuesto}} Total {{comanda.totalPagar}}</h4>
+
+    </div>
+  </div>
+
+
+
+<form [formGroup]="pagoForm" novalidate>
+    <input type="hidden" formControlName="id"/>
+    <input type="hidden" formControlName="idComanda"/>
+    <mat-card class="shipping-card">
+        <mat-card-header>
+          <mat-card-title>{{titleForm}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          
+          <div class="row">
+            <div class="col">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="0000 0000 0000 0000"  formControlName="numeroTarjeta">
+                    <mat-error *ngIf="pagoForm.controls['numeroTarjeta'].hasError('required')">
+                        La capacidad es <strong>requerido</strong>
+                      </mat-error>          
+                  </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Monto" formControlName="monto">
+                    <mat-error *ngIf="pagoForm.controls['monto'].hasError('required')">
+                      La capacidad es <strong>requerido</strong>
+                    </mat-error>           
+                  </mat-form-field>
+            </div>
+          </div>
+          
+          <div class="row">
+            
+            <div class="col">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Tipo"  formControlName="idTipo">
+                    <mat-error *ngIf="pagoForm.controls['idTipo'].hasError('required')">
+                      La capacidad es <strong>requerido</strong>
+                    </mat-error>           
+                  </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              
+            </div>
+          </div>
+
+        </mat-card-content>
+        <h3>Vuelto:</h3>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit">Guardar</button>
+          </mat-card-actions>
+      </mat-card>
+</form>

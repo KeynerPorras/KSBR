@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
+import { FormaPagoComponent } from 'src/app/comandas/forma-pago/forma-pago.component';
 import { GenericService } from 'src/app/share/generic.service';
 import { NotificacionService, TipoMessage } from 'src/app/share/notification.service';
 import { DetalleMesasComponent } from '../detalle-mesas/detalle-mesas.component';
@@ -83,6 +84,9 @@ export class GestionMesasComponent implements OnInit {
       this.router.navigate(['/comandas/comanda',id ], {
         relativeTo: this.route,
       });
+    }
+    if(estado == "porPagar"){
+      this.formaPago(id);
     }else{
       this.router.navigate(['/comandas/comanda',id ], {
         relativeTo: this.route,
@@ -92,7 +96,7 @@ export class GestionMesasComponent implements OnInit {
 
   crearComanda(id:number,idRestaurante:number){
     let comanda ={idMesa:id,idUsuario: "208060669",idRestaurante: idRestaurante ,estado: "registrada",
-    direccion: "Prueba 2",subTotal: 0,impuesto: 0,totalPagar: 0,fechaComanda: Date.now}
+    direccion: "Restaurante",subTotal: 0,impuesto: 0,totalPagar: 0,fechaComanda: Date.now}
 
     this.gSevice
     .create('comanda/',comanda)
@@ -106,6 +110,14 @@ export class GestionMesasComponent implements OnInit {
       );
     });
   }
-
+  formaPago(id:number){
+    const dialogConfig=new MatDialogConfig();
+    dialogConfig.disableClose=true;
+    dialogConfig.data={
+      id:id
+    };
+    this.dialog.open(FormaPagoComponent,dialogConfig);
+    
+  }
   
 }

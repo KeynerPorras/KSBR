@@ -1,5 +1,5 @@
 <form [formGroup]="mesaForm" novalidate (ngSubmit)="isCreate ? crearMesa(): actualizarVideojuego()">
-    <input type="hidden" formControlName="id" />
+    <input type="hidden" formControlName="id"/>
     <mat-card class="shipping-card">
         <mat-card-header>
           <mat-card-title>{{titleForm}} Mesas</mat-card-title>
@@ -31,8 +31,7 @@
             </div>
           </div>
           
-          <div class="row">
-            
+          <div class="row">           
             <div class="col">
               <mat-form-field class="full-width">
                 <input matInput placeholder="Capacidad de mesa" min="2" max="8" type="number" formControlName="capacidad">
@@ -48,7 +47,6 @@
               </mat-form-field>
             </div>
           </div>
-
           <div class="row">
             <div class="col">
               <mat-form-field appearance="fill" class="full-width">
@@ -64,8 +62,8 @@
               </mat-form-field>
             </div>
           </div>
-
         </mat-card-content>
+        
         <mat-card-actions>
             <button mat-raised-button color="primary" type="submit">Guardar</button>
           </mat-card-actions>

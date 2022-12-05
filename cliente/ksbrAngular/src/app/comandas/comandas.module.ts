@@ -24,6 +24,8 @@ import { LineaDetalleComponent } from './linea-detalle/linea-detalle.component';
 import { ToastrModule } from 'ngx-toastr';
 import { ComandaComponent } from './comanda/comanda.component';
 import { ComandaOnlineComponent } from './comanda-online/comanda-online.component';
+import { PagoComponent } from './pago/pago.component';
+import { FormaPagoComponent } from './forma-pago/forma-pago.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { ComandaOnlineComponent } from './comanda-online/comanda-online.componen
     DetalleComandasComponent,
     LineaDetalleComponent,
     ComandaComponent,
-    ComandaOnlineComponent
+    ComandaOnlineComponent,
+    PagoComponent,
+    FormaPagoComponent
   ],
   imports: [
     CommonModule,
