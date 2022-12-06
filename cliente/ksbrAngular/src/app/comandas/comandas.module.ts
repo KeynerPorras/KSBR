@@ -26,6 +26,7 @@ import { ComandaComponent } from './comanda/comanda.component';
 import { ComandaOnlineComponent } from './comanda-online/comanda-online.component';
 import { PagoComponent } from './pago/pago.component';
 import { FormaPagoComponent } from './forma-pago/forma-pago.component';
+import { PagoOnlineComponent } from './pago-online/pago-online.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { FormaPagoComponent } from './forma-pago/forma-pago.component';
     ComandaComponent,
     ComandaOnlineComponent,
     PagoComponent,
-    FormaPagoComponent
+    FormaPagoComponent,
+    PagoOnlineComponent
   ],
   imports: [
     CommonModule,

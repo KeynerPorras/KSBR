@@ -14,6 +14,7 @@ const routes: Routes = [
   { path:'comandas/comanda/:id', component: ComandaComponent},
   { path:'comandas/comanda-online', component: ComandaOnlineComponent},
   { path:'comandas/pago/:id/:tipo', component: PagoComponent},
+  { path:'comandas/pago-online/:idComanda', component: PagoComponent},
   { path:'comandas/forma-pago/:id', component: FormaPagoComponent}
 ];
 

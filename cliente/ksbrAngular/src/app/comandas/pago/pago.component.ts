@@ -64,7 +64,8 @@ pagoForm!: FormGroup;
       idTipo:[null,null],
       idComanda:[null, null],
       numeroTarjeta:[null,Validators.required],
-      monto:[null,null],montoTarjeta:[null,Validators.max(9999999)],
+      monto:[null,null],
+      montoTarjeta:[null,Validators.max(9999999)],
       vuelto:[null,Validators.max(9999999)]
       
     });
@@ -116,7 +117,7 @@ pagoForm!: FormGroup;
     }
  //Ambos
  if(this.tipoPago==3){
-  if(this.pagoForm.value.monto + this.pagoForm.value.montoTarjeta < this.comanda.totalPagar){   
+  if(this.pagoForm.value.monto + this.calcAmbas()< this.comanda.totalPagar){   
     console.log( this.pagoForm.value.montoTarjeta);
     this.noti.mensaje('Orden',
       'Monto insuficiente',

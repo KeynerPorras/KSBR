@@ -1,10 +1,14 @@
 <div class="card">
     <div class="card-body">
-      <h3>Número de pedido: {{comanda.id}}</h3>
-      <h4>Identificación: {{comanda.usuario.nombre}}</h4>
-      <h4>Fecha: {{comanda.fechaComanda}}</h4>
-      <h4>Sub total {{comanda.subTotal}} Impuesto {{comanda.impuesto}} Total {{comanda.totalPagar}}</h4>
+      <h3>Número de pedido: {{comanda.id}}</h3>     
+      <h4>Fecha: {{comanda.fechaComanda | date: 'dd-MM-yyyy'}}</h4>
+      <h4>Sub total {{comanda.subTotal | currency: "₡ "}}  </h4>
+      <h4>Impuesto {{comanda.impuesto | currency: "₡ "}} </h4>
+      <h4>Total {{comanda.totalPagar | currency: "₡ "}}</h4>
 
+    </div>
+    <div class="card-body">
+      
     </div>
   </div>
 
@@ -62,10 +66,9 @@
         </div>       
 
         </mat-card-content>
-        <h3 *ngIf="tipoPago==2  hidden">Vuelto: {{calcVuelto()}}</h3>
-        <h3 *ngIf="tipoPago==3  hidden">Tarjeta: {{calcAmbas()}}</h3>
+
         <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit" (click)="pagar()" >Guardar</button>
+            <button mat-raised-button color="primary" type="submit" (click)="pagar()" ><mat-icon class="mat-18">credit_card</mat-icon> Pagar</button>
           </mat-card-actions>
       </mat-card>
 </form>
