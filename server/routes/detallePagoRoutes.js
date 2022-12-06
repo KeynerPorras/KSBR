@@ -8,6 +8,6 @@ const detallePagoController = require("../controllers/detallePagoController");
 //Definición de rutas para generos
 router.get("/", detallePagoController.get);
 
-router.get("/:id", detallePagoController.create);
+router.post("/", detallePagoController.create);
 
 module.exports = router;

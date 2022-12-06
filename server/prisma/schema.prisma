@@ -97,7 +97,7 @@ model DetallePago{
   id Int       @default(autoincrement())
   idTipo Int
   monto Decimal @db.Decimal(10, 2)
-  idComanda Int @unique
+  idComanda Int
   comanda Comanda @relation(fields: [idComanda], references: [id])
   TipoPago TipoPago @relation(fields: [idTipo], references: [id])
   @@id([id, idTipo])

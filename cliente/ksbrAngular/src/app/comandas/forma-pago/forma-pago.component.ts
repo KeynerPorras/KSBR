@@ -13,6 +13,7 @@ export class FormaPagoComponent implements OnInit {
   datos:any;
   datosDialog:any;
   selectedValue: any;
+  selected:any;
   destroy$:Subject<boolean>= new Subject<boolean>();
   constructor(
     @Inject(MAT_DIALOG_DATA) data:any,

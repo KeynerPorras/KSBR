@@ -10,7 +10,7 @@
 
 
 
-<form [formGroup]="pagoForm" novalidate>
+<form [formGroup]="pagoForm" novalidate >
     <input type="hidden" formControlName="id"/>
     <input type="hidden" formControlName="idComanda"/>
     <mat-card class="shipping-card">
@@ -22,44 +22,50 @@
           <div class="row">
             <div class="col">
                 <mat-form-field class="full-width">
+                  <mat-label>Tarjeta</mat-label>
                     <input matInput placeholder="0000 0000 0000 0000"  formControlName="numeroTarjeta">
                     <mat-error *ngIf="pagoForm.controls['numeroTarjeta'].hasError('required')">
                         La capacidad es <strong>requerido</strong>
                       </mat-error>          
                   </mat-form-field>
             </div>
-            <div class="col">
-                <mat-form-field class="full-width">
-                    <input matInput placeholder="Monto" formControlName="monto">
-                    <mat-error *ngIf="pagoForm.controls['monto'].hasError('required')">
-                      La capacidad es <strong>requerido</strong>
-                    </mat-error>           
-                  </mat-form-field>
-            </div>
-          </div>
-          
-          <div class="row">
             
-            <div class="col">
-                <mat-form-field class="full-width">
-                    <input matInput placeholder="Tipo"  formControlName="idTipo">
-                    <mat-error *ngIf="pagoForm.controls['idTipo'].hasError('required')">
-                      La capacidad es <strong>requerido</strong>
-                    </mat-error>           
-                  </mat-form-field>
-            </div>
-          </div>
-
+          </div>  
           <div class="row">
             <div class="col">
-              
-            </div>
+              <mat-form-field  class="full-width" *ngIf="esTipo() hidden" > 
+                <mat-label>Monto</mat-label>
+                  <input matInput type="number" placeholder="Monto" formControlName="monto">
+                  <mat-error *ngIf="pagoForm.controls['monto'].hasError('required')">
+                    La capacidad es <strong>requerido</strong>
+                  </mat-error>                             
+                </mat-form-field>
           </div>
+          <div class="col" *ngIf="tipoPago==3 hidden">
+            <mat-form-field  class="full-width" *ngIf="tipoPago==3 hidden" > 
+              <mat-label>Monto tarjeta</mat-label>
+                <input matInput type="number" value="{{calcAmbas()}}" placeholder="monto Tarjeta" formControlName="montoTarjeta">
+                <mat-error *ngIf="pagoForm.controls['montoTarjeta'].hasError('max')">
+                  El maximo es <strong>requerido</strong>
+                </mat-error>                             
+              </mat-form-field>
+          </div>
+          <div class="col"*ngIf="tipoPago==2 || tipoPago==3  hidden">
+            <mat-form-field  class="full-width" *ngIf="tipoPago==2 || tipoPago==3 hidden" >
+              <mat-label>Vuelto</mat-label>
+                <input matInput type="number" value="{{calcVuelto()}}" placeholder="Vuelto" formControlName="vuelto">
+                <mat-error *ngIf="pagoForm.controls['vuelto'].hasError('max')">
+                  El maximo es <strong>requerido</strong>
+                </mat-error>                             
+              </mat-form-field>
+          </div>
+        </div>       
 
         </mat-card-content>
-        <h3>Vuelto:</h3>
+        <h3 *ngIf="tipoPago==2  hidden">Vuelto: {{calcVuelto()}}</h3>
+        <h3 *ngIf="tipoPago==3  hidden">Tarjeta: {{calcAmbas()}}</h3>
         <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit">Guardar</button>
+            <button mat-raised-button color="primary" type="submit" (click)="pagar()" >Guardar</button>
           </mat-card-actions>
       </mat-card>
 </form>
