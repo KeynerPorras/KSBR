@@ -13,7 +13,7 @@
         <mat-form-field appearance="fill">
           <mat-label>Selección restaurante</mat-label>
           <mat-select *ngIf="listaRestaurantes">
-            <mat-option *ngFor="let item of listaRestaurantes" value="{{item.id}}" (click)="listaProductos(item.id)">{{item.nombre}}</mat-option>                       
+            <mat-option  *ngFor="let item of listaRestaurantes" value="{{item.id}}" (click)="listaProductos(item.id)">{{item.nombre}}</mat-option>                       
           </mat-select>
         </mat-form-field>
           <table mat-table [dataSource]="dataSource"
@@ -122,7 +122,7 @@
       </mat-card-content>
       <h3 >Total | {{total | currency: "₡ "}}</h3> 
       <mat-card-actions align="end">
-       
+       <h1>{{idRestaurante}}</h1>
         <button mat-flat-button color="accent" (click)="registrarOrden()" >
             Comprar
             <mat-icon>shopping_bag</mat-icon> 

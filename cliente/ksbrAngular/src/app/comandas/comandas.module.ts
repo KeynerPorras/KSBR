@@ -27,6 +27,7 @@ import { ComandaOnlineComponent } from './comanda-online/comanda-online.componen
 import { PagoComponent } from './pago/pago.component';
 import { FormaPagoComponent } from './forma-pago/forma-pago.component';
 import { PagoOnlineComponent } from './pago-online/pago-online.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { PagoOnlineComponent } from './pago-online/pago-online.component';
     MatRadioModule,
     ReactiveFormsModule,
     MatButtonToggleModule,
-    ToastrModule
+    ToastrModule,
+    MatDatepickerModule
   ]
 })
 export class ComandasModule { }

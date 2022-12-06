@@ -12,6 +12,8 @@ router.get("/:id",comandaController.getById);
 
 router.post("/",comandaController.create);
 
+router.post("/cliente",comandaController.createCliente);
+
 router.get("/mesa/:id",comandaController.getByIdMesa);
 
 router.get("/numero/:id",comandaController.getNumComanda);

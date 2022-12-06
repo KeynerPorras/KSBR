@@ -1,1 +1,49 @@
-<p>pago-online works!</p>
+<div class="card">
+    <div class="card-body"> 
+      <h4>Sub total {{subtotal | currency: "₡ "}}  </h4>
+      <h4>Impuesto {{iv | currency: "₡ "}} </h4>
+      <h4>Total {{total | currency: "₡ "}}</h4>
+    </div>
+    <div class="card-body">
+      
+    </div>
+  </div>
+
+<form [formGroup]="pagoForm" novalidate >
+    <input type="hidden" formControlName="id"/>
+    <mat-card class="shipping-card">
+        <mat-card-header>
+          <mat-card-title>{{titleForm}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          
+          <div class="row">
+            <div class="col">
+                <mat-form-field class="full-width">
+                  <mat-label>Tarjeta</mat-label>
+                    <input matInput placeholder="0000 0000 0000 0000"  formControlName="numeroTarjeta">
+                    <mat-error *ngIf="pagoForm.controls['numeroTarjeta'].hasError('required')">
+                        La capacidad es <strong>requerido</strong>
+                      </mat-error>          
+                  </mat-form-field>
+            </div>                        
+          </div>  
+          <div class="row">
+            <div class="col">
+              <mat-form-field  class="full-width" > 
+                <mat-label>Monto</mat-label>
+                  <input matInput type="number" placeholder="Monto" formControlName="monto">
+                  <mat-error *ngIf="pagoForm.controls['monto'].hasError('required')">
+                    La capacidad es <strong>requerido</strong>
+                  </mat-error>                             
+                </mat-form-field>
+          </div>
+        </div>       
+
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit" (click)="pagar()" ><mat-icon class="mat-18">credit_card</mat-icon> Pagar</button>
+          </mat-card-actions>
+      </mat-card>
+</form>

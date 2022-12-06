@@ -7,6 +7,7 @@ export class ItemCart {
   cantidad: number;
   precio: number;
   subtotal: number;
+  notas: any;
 }
 @Injectable({
   providedIn: 'root',
@@ -152,6 +153,37 @@ export class CartService {
     }
 
     return total;
+  }
+  public getImpuesto(): number {//Total antes de impuestos
+    let total = 0;
+    let listCart = this.cart.getValue();
+    if (listCart != null) {
+       //Sumando los subtotales de cada uno de los items del carrito
+     
+      listCart.forEach((item: ItemCart, index) => {
+        total += item.subtotal;
+      });
+    }
+
+    total = total *0.13;
+
+    return total;
+  }
+  public getTotalFinal(): number {//Total antes de impuestos
+    let total = 0;let iv = 0;let final = 0;
+    let listCart = this.cart.getValue();
+    if (listCart != null) {
+       //Sumando los subtotales de cada uno de los items del carrito
+     
+      listCart.forEach((item: ItemCart, index) => {
+        total += item.subtotal;
+      });
+    }
+
+    iv = total *0.13;
+    final=total+iv;
+
+    return final;
   }
   //Borra toda los items del carrito
   public deleteCart() {

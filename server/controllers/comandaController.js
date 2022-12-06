@@ -162,3 +162,29 @@ module.exports.update = async (request, response, next) => {
   response.json(newcomanda);
 };
 
+module.exports.createCliente = async (request, response, next) => {
+  let comanda = request.body;  
+  const newcomanda = await prisma.comanda.create({
+    data: {
+      idMesa: comanda.idMesa,
+      idUsuario: comanda.idUsuario,
+      idRestaurante: comanda.idRestaurante,
+      estado: comanda.estado,
+      direccion: comanda.direccion,
+      subTotal: comanda.subTotal,
+      impuesto: comanda.impuesto,
+      totalPagar: comanda.totalPagar,
+      fechaComanda: comanda.fechaComanda,
+      lineaComandas:{
+        createMany:{
+          data:comanda.lineaComandas
+        },        
+      },           
+    },
+  });
+
+
+  
+
+  response.json(newcomanda);
+};

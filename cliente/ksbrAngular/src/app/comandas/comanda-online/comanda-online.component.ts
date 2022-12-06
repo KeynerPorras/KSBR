@@ -64,7 +64,7 @@ export class ComandaOnlineComponent implements OnInit {
   ngOnInit(): void {
      
     this.obtenerRestaurantes();
-    this.listaRestaurante(1);
+   // this.listaRestaurante(1);
         this.cartService.currentDataCart$.subscribe(data=>{
         this.dataSource2=new MatTableDataSource(data);
         this.dataSource.sort = this.sort;
@@ -84,15 +84,19 @@ export class ComandaOnlineComponent implements OnInit {
    
   }
 
+
+
   listaProductos(id:number) {
     this.gService
       .get('restaurante/sede',id)
       .pipe(takeUntil(this.destroy$))
-      .subscribe((data: any) => {        
+      .subscribe((data: any) => {   
+        this.idRestaurante=id;     
         this.datos = data.productos;
         this.dataSource= new MatTableDataSource(this.datos);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
+        
       });
   }
 
@@ -160,9 +164,12 @@ export class ComandaOnlineComponent implements OnInit {
   eliminarItem(item: any) {    
   }
   registrarOrden() {
-    let comanda ={idMesa:null,idUsuario: "208060669",idRestaurante: this.idRestaurante ,estado: "registrada",
+    let comanda ={idRestaurante: this.idRestaurante ,estado: "registrada",
     direccion: "online",subTotal: 0,impuesto: 0,totalPagar: 0,fechaComanda: Date.now}
-    if(this.cartService.getItems!=null){
+    if(this.cartService.getItems!=null && this.idRestaurante!=null){
+      this.router.navigate(['/comandas/pago-online',this.idRestaurante ], {
+        relativeTo: this.route,
+      });
          // this.cartService.deleteCart();
           this.total=this.cartService.getTotal();  
      }else{

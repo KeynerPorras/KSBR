@@ -5,6 +5,7 @@ import { ComandaComponent } from './comanda/comanda.component';
 import { FormaPagoComponent } from './forma-pago/forma-pago.component';
 import { GestionComandasComponent } from './gestion-comandas/gestion-comandas.component';
 import { LineaDetalleComponent } from './linea-detalle/linea-detalle.component';
+import { PagoOnlineComponent } from './pago-online/pago-online.component';
 import { PagoComponent } from './pago/pago.component';
 
 const routes: Routes = [
@@ -14,7 +15,7 @@ const routes: Routes = [
   { path:'comandas/comanda/:id', component: ComandaComponent},
   { path:'comandas/comanda-online', component: ComandaOnlineComponent},
   { path:'comandas/pago/:id/:tipo', component: PagoComponent},
-  { path:'comandas/pago-online/:idComanda', component: PagoComponent},
+  { path:'comandas/pago-online/:idComanda', component: PagoOnlineComponent},
   { path:'comandas/forma-pago/:id', component: FormaPagoComponent}
 ];
 
