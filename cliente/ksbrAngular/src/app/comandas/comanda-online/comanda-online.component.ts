@@ -160,11 +160,10 @@ export class ComandaOnlineComponent implements OnInit {
   eliminarItem(item: any) {    
   }
   registrarOrden() {
-    if(this.cartService.getItems!=null){      
-          this.noti.mensaje('Orden',
-          'Orden registrada',
-          TipoMessage.success);
-          this.cartService.deleteCart();
+    let comanda ={idMesa:null,idUsuario: "208060669",idRestaurante: this.idRestaurante ,estado: "registrada",
+    direccion: "online",subTotal: 0,impuesto: 0,totalPagar: 0,fechaComanda: Date.now}
+    if(this.cartService.getItems!=null){
+         // this.cartService.deleteCart();
           this.total=this.cartService.getTotal();  
      }else{
       this.noti.mensaje('Orden',
