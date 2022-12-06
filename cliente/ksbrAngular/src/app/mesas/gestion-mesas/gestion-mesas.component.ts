@@ -3,6 +3,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { FormaPagoComponent } from 'src/app/comandas/forma-pago/forma-pago.component';
+import { AuthenticationService } from 'src/app/share/authentication.service';
 import { GenericService } from 'src/app/share/generic.service';
 import { NotificacionService, TipoMessage } from 'src/app/share/notification.service';
 import { DetalleMesasComponent } from '../detalle-mesas/detalle-mesas.component';
@@ -17,6 +18,7 @@ export class GestionMesasComponent implements OnInit {
   datos: any;
   datosRestaurante: any;
   datosSelect: any;
+  currentUser: any;
   destroy$: Subject<boolean> = new Subject<boolean>();
   constructor( 
     
@@ -24,26 +26,46 @@ export class GestionMesasComponent implements OnInit {
     private route: ActivatedRoute,
     private gSevice: GenericService,
     private dialog:MatDialog,
-    private noti: NotificacionService,
-  ) { this.listaVideojuegos(); this.listaRestaurante();}
+    private noti: NotificacionService,private authService: AuthenticationService
+  ) {
+    this.authService.currentUser.subscribe((x) => (this.currentUser = x));
+     this.listaVideojuegos();
+      this.listaRestaurante();
+    }
 
   listaVideojuegos() {
-    this.gSevice
+    
+      this.gSevice
       .list('mesa/')
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any) => {
       //  console.log(data);
         this.datos = data;
       });
+    
+    
   }
   listaRestaurante() {
-    this.gSevice
+    if(this.currentUser.user.rol=="administrador" || this.currentUser.user.rol=="cliente" ){
+      this.gSevice
       .list('restaurante/')
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any) => {
        // console.log(data);
         this.datosRestaurante = data;
       });
+    }else{
+      this.gSevice
+      .get('restaurante/all',this.currentUser.user.idRestaurante)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: any) => {
+       // console.log(data);
+        this.datosRestaurante = data;
+      });
+    }
+      
+    
+    
   }
   selectListaPorRestaurante(id:any) {
     this.gSevice
@@ -66,6 +88,7 @@ export class GestionMesasComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
 
   crearMesa() {

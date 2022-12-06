@@ -1,13 +1,13 @@
 <h1 mat-dialog-title>Tipo de pago</h1>
 <mat-form-field appearance="fill">
   <mat-label>Forma de pago:</mat-label>
-  <mat-select>
+  <mat-select [(value)]="selected">
     <mat-option value="1">Tarjeta</mat-option>
     <mat-option value="2">Efectivo</mat-option>
     <mat-option value="3">Ambas</mat-option>
   </mat-select>
 </mat-form-field>
 <div mat-dialog-actions>
-  <button mat-button (click)="pago(1)">Pagar</button>
+  <button mat-button (click)="pago(selected)">Pagar</button>
   <button mat-button mat-dialog-close>Cancelar</button>
 </div>
