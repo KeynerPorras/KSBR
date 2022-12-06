@@ -14,6 +14,24 @@ module.exports.get = async (request, response, next) => {
 };
 
 //Obtener por Id
+module.exports.getExiste = async (request, response, next) => {
+  let id = request.params.id;
+  const usuario = await prisma.usuario.findUnique({
+    where: { id: id },
+    include:{
+      restaurante:true
+    }
+  });
+  console.log(usuario);
+  if(usuario == null){
+    response.json(false);
+  }else{
+    response.json(true);
+  }
+};
+
+
+//Obtener por Id
 module.exports.getById = async (request, response, next) => {
   let id = request.params.id;
   const videojuego = await prisma.usuario.findUnique({
@@ -24,7 +42,6 @@ module.exports.getById = async (request, response, next) => {
   });
   response.json(videojuego);
 };
-
 
 module.exports.create=async(request, response, next)=>{
   let usuario= request.body;
@@ -127,24 +144,24 @@ module.exports.register = async (request, response, next) => {
   //Salt es una cadena aleatoria.
   //"salt round" factor de costo controla cuánto tiempo se necesita para calcular un solo hash de BCrypt
   // salt es un valor aleatorio y debe ser diferente para cada cálculo, por lo que el resultado casi nunca debe ser el mismo, incluso para contraseñas iguales
-  let salt = bcrypt.genSaltSync(10);
-  // Hash password
-  let hash = bcrypt.hashSync(userData.password, salt);
-  const user = await prisma.usuario.create({
-    data: {
-      id:userData.id,
-      correo:userData.correo,
-      password:hash,
-      rol:userData.rol,
-      nombre:userData.nombre,
-      apellido1:userData.apellido1,
-      apellido2:userData.apellido2,
-      idRestaurante:userData.idRestaurante
-    },
-  });
-  response.status(200).json({
-    status: true,
-    message: "Usuario creado",
-    data: user,
-  });
+    let salt = bcrypt.genSaltSync(10);
+    // Hash password
+    let hash = bcrypt.hashSync(userData.password, salt);
+    const user = await prisma.usuario.create({
+      data: {
+        id:userData.id,
+        correo:userData.correo,
+        password:hash,
+        rol:userData.rol,
+        nombre:userData.nombre,
+        apellido1:userData.apellido1,
+        apellido2:userData.apellido2,
+        idRestaurante:userData.idRestaurante
+      },
+    });
+    response.status(200).json({
+      status: true,
+      message: "Usuario creado",
+      data: user,
+    });
 };
