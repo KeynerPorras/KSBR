@@ -1,169 +1,145 @@
-<form [formGroup]="formCreate"  novalidate>
-    <mat-card class="shipping-card">
-      <mat-card-header>
-        <mat-card-title>Crear Usuario </mat-card-title>
-      </mat-card-header> 
-      <mat-card-content>
+<form [formGroup]="formCreate" novalidate>
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Crear Usuario </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
 
-        <div class="row">
-            <!--id------------------------------------------------------------------------------------->
-            <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput #nombreProducto minlength="5" maxlength="20" placeholder="Identificación" 
-                  formControlName="id">
-                <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
-                <mat-error *ngIf="formCreate.controls['id'].hasError('required')">
-                  Nombre es <strong>requerido</strong>
-                </mat-error>
-                <mat-error *ngIf="formCreate.controls['id'].hasError('minlength')">
-                  Tamaño minimo es <strong>5</strong>
-                </mat-error>
-                <mat-error *ngIf="formCreate.controls['id'].hasError('maxlength')">
-                  Tamaño maximo es <strong>20</strong>
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <!----------------------------------------------------------------------------------------->
-            <!--correo-------------------------------------------------------------------------------->
-            <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput #nombreProducto minlength="5" maxlength="20" placeholder="Correo" formControlName="correo">
-                <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
-                <mat-error *ngIf="formCreate.controls['correo'].hasError('required')">
-                  Nombre es <strong>requerido</strong>
-                </mat-error>
-                <mat-error *ngIf="formCreate.controls['correo'].hasError('minlength')">
-                  Tamaño minimo es <strong>5</strong>
-                </mat-error>
-                <mat-error *ngIf="formCreate.controls['correo'].hasError('maxlength')">
-                  Tamaño maximo es <strong>20</strong>
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <!----------------------------------------------------------------------------------------->
-          </div>
-    
-          <div class="row">
-            <!--Rol------------------------------------------------------------------------------------>
-            <div class="col">
-              <mat-form-field appearance="fill" class="full-width">
-                <mat-label>Rol</mat-label>
-                <mat-select formControlName="rol">
-                  <mat-option value="administrador">
-                    Administrador
-                  </mat-option>
-    
-                  <mat-option value="mesero">
-                    Mesero
-                  </mat-option>
-    
-                  <mat-option value="cliente">
-                    Cliente
-                  </mat-option>
-                </mat-select>
-                <mat-error *ngIf="formCreate.controls['rol'].hasError('required')">
-                  Categoria es <strong>requerido</strong>
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <!----------------------------------------------------------------------------------------->
-            <!--password-------------------------------------------------------------------------------->
-            <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput #nombreProducto minlength="2" maxlength="20" placeholder="Password"
-                  formControlName="password">
-                <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
-                <mat-error *ngIf="formCreate.controls['password'].hasError('required')">
-                  Nombre es <strong>requerido</strong>
-                </mat-error>
-                <mat-error *ngIf="formCreate.controls['password'].hasError('minlength')">
-                  Tamaño minimo es <strong>5</strong>
-                </mat-error>
-                <mat-error *ngIf="formCreate.controls['password'].hasError('maxlength')">
-                  Tamaño maximo es <strong>20</strong>
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <!----------------------------------------------------------------------------------------->
-          </div>
-    
-          <div class="row">
-            <!--nombre-------------------------------------------------------------------------------->
-            <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput #nombreProducto minlength="5" maxlength="20" placeholder="Nombre" formControlName="nombre">
-                <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
-                <mat-error *ngIf="formCreate.controls['nombre'].hasError('required')">
-                  Nombre es <strong>requerido</strong>
-                </mat-error>
-                <mat-error *ngIf="formCreate.controls['nombre'].hasError('minlength')">
-                  Tamaño minimo es <strong>5</strong>
-                </mat-error>
-                <mat-error *ngIf="formCreate.controls['nombre'].hasError('maxlength')">
-                  Tamaño maximo es <strong>20</strong>
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <!----------------------------------------------------------------------------------------->
-            <!--apellido1-------------------------------------------------------------------------------->
-            <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput #nombreProducto minlength="2" maxlength="20" placeholder="Primer Apellido"
-                  formControlName="apellido1">
-                <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
-                <mat-error *ngIf="formCreate.controls['apellido1'].hasError('required')">
-                  Nombre es <strong>requerido</strong>
-                </mat-error>
-                <mat-error *ngIf="formCreate.controls['apellido1'].hasError('minlength')">
-                  Tamaño minimo es <strong>5</strong>
-                </mat-error>
-                <mat-error *ngIf="formCreate.controls['apellido1'].hasError('maxlength')">
-                  Tamaño maximo es <strong>20</strong>
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <!----------------------------------------------------------------------------------------->
-            <!--apellido2-------------------------------------------------------------------------------->
-            <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput #nombreProducto minlength="2" maxlength="20" placeholder="Segundo Apellido"
-                  formControlName="apellido2">
-                <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
-                <mat-error *ngIf="formCreate.controls['apellido2'].hasError('required')">
-                  Nombre es <strong>requerido</strong>
-                </mat-error>
-                <mat-error *ngIf="formCreate.controls['apellido2'].hasError('minlength')">
-                  Tamaño minimo es <strong>5</strong>
-                </mat-error>
-                <mat-error *ngIf="formCreate.controls['apellido2'].hasError('maxlength')">
-                  Tamaño maximo es <strong>20</strong>
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <!----------------------------------------------------------------------------------------->
-          </div>
-    
-          <div class="row">
-            <!--Restaurante-------------------------------------------------------------------------------->
-            <div class="col" *ngIf="generosList">
-                <mat-form-field class="full-width">
-                  <mat-select placeholder="Restaurantes" formControlName="idRestaurante">
-                    <mat-option *ngFor="let g of generosList" [value]="g.id">
-                      {{ g.nombre }}
-                    </mat-option>
-                  </mat-select>
-                  <mat-error *ngIf="formCreate.controls['idRestaurante'].hasError('required')">
-                    Generos es <strong>requerido</strong>
-                  </mat-error>
-                </mat-form-field>
-              </div>
-            <!----------------------------------------------------------------------------------------->
-          </div>
+      <div class="row">
+        <!--id------------------------------------------------------------------------------------->
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput #nombreProducto minlength="2" maxlength="20" placeholder="Identificación"
+              formControlName="id">
+            <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
+            <mat-error *ngIf="formCreate.controls['id'].hasError('required')">
+              Identificación es <strong>requerido</strong>
+            </mat-error>
+            <mat-error *ngIf="formCreate.controls['id'].hasError('minlength')">
+              Tamaño minimo es <strong>5</strong>
+            </mat-error>
+            <mat-error *ngIf="formCreate.controls['id'].hasError('maxlength')">
+              Tamaño maximo es <strong>20</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <!----------------------------------------------------------------------------------------->
+      </div>
+      <div class="row">
+        <!--password-------------------------------------------------------------------------------->
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput #nombreProducto minlength="2" maxlength="20" placeholder="Password"
+              formControlName="password">
+            <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
+            <mat-error *ngIf="formCreate.controls['password'].hasError('required')">
+              Password es <strong>requerido</strong>
+            </mat-error>
+            <mat-error *ngIf="formCreate.controls['password'].hasError('minlength')">
+              Tamaño minimo es <strong>5</strong>
+            </mat-error>
+            <mat-error *ngIf="formCreate.controls['password'].hasError('maxlength')">
+              Tamaño maximo es <strong>20</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <!----------------------------------------------------------------------------------------->
+        <!--correo-------------------------------------------------------------------------------->
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput #nombreProducto minlength="5" maxlength="20" placeholder="Correo" formControlName="correo">
+            <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
+            <mat-error *ngIf="formCreate.controls['correo'].hasError('required')">
+              Correo es <strong>requerido</strong>
+            </mat-error>
+            <mat-error *ngIf="formCreate.controls['correo'].hasError('minlength')">
+              Tamaño minimo es <strong>5</strong>
+            </mat-error>
+            <mat-error *ngIf="formCreate.controls['correo'].hasError('maxlength')">
+              Tamaño maximo es <strong>20</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <!----------------------------------------------------------------------------------------->
+      </div>
 
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button color="primary" (click)="submitForm()">Registrar</button>
-        <button mat-raised-button color="accent" type="reset" (click)="onReset()">Cancelar</button>
-      </mat-card-actions>
-    </mat-card>
-    </form>
+      <div class="row">
+        <!--nombre-------------------------------------------------------------------------------->
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput #nombreProducto minlength="5" maxlength="20" placeholder="Nombre" formControlName="nombre">
+            <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
+            <mat-error *ngIf="formCreate.controls['nombre'].hasError('required')">
+              Nombre es <strong>requerido</strong>
+            </mat-error>
+            <mat-error *ngIf="formCreate.controls['nombre'].hasError('minlength')">
+              Tamaño minimo es <strong>5</strong>
+            </mat-error>
+            <mat-error *ngIf="formCreate.controls['nombre'].hasError('maxlength')">
+              Tamaño maximo es <strong>20</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <!----------------------------------------------------------------------------------------->
+        <!--apellido1-------------------------------------------------------------------------------->
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput #nombreProducto minlength="2" maxlength="20" placeholder="Primer Apellido"
+              formControlName="apellido1">
+            <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
+            <mat-error *ngIf="formCreate.controls['apellido1'].hasError('required')">
+              Primer Apellido es <strong>requerido</strong>
+            </mat-error>
+            <mat-error *ngIf="formCreate.controls['apellido1'].hasError('minlength')">
+              Tamaño minimo es <strong>5</strong>
+            </mat-error>
+            <mat-error *ngIf="formCreate.controls['apellido1'].hasError('maxlength')">
+              Tamaño maximo es <strong>20</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <!----------------------------------------------------------------------------------------->
+        <!--apellido2-------------------------------------------------------------------------------->
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput #nombreProducto minlength="2" maxlength="20" placeholder="Segundo Apellido"
+              formControlName="apellido2">
+            <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
+            <mat-error *ngIf="formCreate.controls['apellido2'].hasError('required')">
+              Segundo Apellido es <strong>requerido</strong>
+            </mat-error>
+            <mat-error *ngIf="formCreate.controls['apellido2'].hasError('minlength')">
+              Tamaño minimo es <strong>5</strong>
+            </mat-error>
+            <mat-error *ngIf="formCreate.controls['apellido2'].hasError('maxlength')">
+              Tamaño maximo es <strong>20</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <!----------------------------------------------------------------------------------------->
+      </div>
+
+      <div class="row">
+        <!--Restaurante-------------------------------------------------------------------------------->
+        <div class="col" *ngIf="generosList">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Restaurantes" formControlName="idRestaurante">
+              <mat-option *ngFor="let g of generosList" [value]="g.id">
+                {{ g.nombre }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="formCreate.controls['idRestaurante'].hasError('required')">
+              Generos es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <!----------------------------------------------------------------------------------------->
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="submitForm()">Registrar</button>
+      <button mat-raised-button color="accent" type="reset" (click)="onReset()">Cancelar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

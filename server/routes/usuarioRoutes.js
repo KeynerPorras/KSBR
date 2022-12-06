@@ -17,6 +17,8 @@ router.post("/registrar", usuarioController.register);
 
 router.get("/:id",usuarioController.getById);
 
+router.get("/existe/:id",usuarioController.getExiste);
+
 router.put("/:id",usuarioController.update);
 
 module.exports=router;

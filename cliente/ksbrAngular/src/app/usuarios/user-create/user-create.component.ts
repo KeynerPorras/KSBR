@@ -8,7 +8,7 @@ import { GenericService } from 'src/app/share/generic.service';
 @Component({
   selector: 'app-user-create',
   templateUrl: './user-create.component.html',
-  styleUrls: ['./user-create.component.css']
+  styleUrls: ['./user-create.component.css'],
 })
 export class UserCreateComponent implements OnInit {
   hide = true;
@@ -16,13 +16,14 @@ export class UserCreateComponent implements OnInit {
   generosList: any;
   formCreate: FormGroup;
   makeSubmit: boolean = false;
+  variaGlob: any;
   destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(
     public fb: FormBuilder,
     private router: Router,
     private gService: GenericService,
     private authService: AuthenticationService
-  ) { 
+  ) {
     this.reactiveForm();
   }
   reactiveForm() {
@@ -38,22 +39,26 @@ export class UserCreateComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   submitForm() {
-    this.makeSubmit = true;
+    this.getUsuarios(this.formCreate.value.id);
+    if (this.variaGlob == null) {
+      console.log('Usuario ya registrado');
+    } else {
+      this.makeSubmit = true;
 
-    if (this.formCreate.invalid) {
-      return;
-    }
-    this.authService
-      .createUser(this.formCreate.value)
-      .subscribe((respuesta: any) => {
-        this.router.navigate(['/usuarios/registrar'], {
-          queryParams: { register: 'true' },
+      if (this.formCreate.invalid) {
+        return;
+      }
+      this.authService
+        .createUser(this.formCreate.value)
+        .subscribe((respuesta: any) => {
+          this.router.navigate(['/usuarios/registrar'], {
+            queryParams: { register: 'true' },
+          });
         });
-      });
+    }
   }
 
   onReset() {
@@ -67,6 +72,16 @@ export class UserCreateComponent implements OnInit {
       .subscribe((data: any) => {
         this.generosList = data;
         console.log(this.generosList);
+      });
+  }
+
+  getUsuarios(id: any) {
+    this.gService
+      .get('usuario', id)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: any) => {
+        this.variaGlob = data;
+        console.log(this.variaGlob);
       });
   }
 
