@@ -9,9 +9,9 @@
         <!--id------------------------------------------------------------------------------------->
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput #nombreProducto minlength="2" maxlength="20" placeholder="Identificación"
+            <input matInput #id minlength="2" maxlength="20" placeholder="Identificación"
               formControlName="id">
-            <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
+            <mat-hint align="end">{{id.value.length}} / 20</mat-hint>
             <mat-error *ngIf="formCreate.controls['id'].hasError('required')">
               Identificación es <strong>requerido</strong>
             </mat-error>
@@ -29,9 +29,9 @@
         <!--password-------------------------------------------------------------------------------->
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput #nombreProducto minlength="2" maxlength="20" placeholder="Password"
+            <input matInput #password minlength="2" maxlength="20" placeholder="Password"
               formControlName="password">
-            <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
+            <mat-hint align="end">{{password.value.length}} / 20</mat-hint>
             <mat-error *ngIf="formCreate.controls['password'].hasError('required')">
               Password es <strong>requerido</strong>
             </mat-error>
@@ -47,8 +47,8 @@
         <!--correo-------------------------------------------------------------------------------->
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput #nombreProducto minlength="5" maxlength="20" placeholder="Correo" formControlName="correo">
-            <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
+            <input matInput #correo minlength="5" maxlength="20" placeholder="Correo" formControlName="correo">
+            <mat-hint align="end">{{correo.value.length}} / 40</mat-hint>
             <mat-error *ngIf="formCreate.controls['correo'].hasError('required')">
               Correo es <strong>requerido</strong>
             </mat-error>
@@ -67,8 +67,8 @@
         <!--nombre-------------------------------------------------------------------------------->
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput #nombreProducto minlength="5" maxlength="20" placeholder="Nombre" formControlName="nombre">
-            <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
+            <input matInput #nombre minlength="5" maxlength="20" placeholder="Nombre" formControlName="nombre">
+            <mat-hint align="end">{{nombre.value.length}} / 20</mat-hint>
             <mat-error *ngIf="formCreate.controls['nombre'].hasError('required')">
               Nombre es <strong>requerido</strong>
             </mat-error>
@@ -84,9 +84,9 @@
         <!--apellido1-------------------------------------------------------------------------------->
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput #nombreProducto minlength="2" maxlength="20" placeholder="Primer Apellido"
+            <input matInput #apellido1 minlength="2" maxlength="20" placeholder="Primer Apellido"
               formControlName="apellido1">
-            <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
+            <mat-hint align="end">{{apellido1.value.length}} / 20</mat-hint>
             <mat-error *ngIf="formCreate.controls['apellido1'].hasError('required')">
               Primer Apellido es <strong>requerido</strong>
             </mat-error>
@@ -102,9 +102,9 @@
         <!--apellido2-------------------------------------------------------------------------------->
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput #nombreProducto minlength="2" maxlength="20" placeholder="Segundo Apellido"
+            <input matInput #apellido2 minlength="2" maxlength="20" placeholder="Segundo Apellido"
               formControlName="apellido2">
-            <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
+            <mat-hint align="end">{{apellido2.value.length}} / 20</mat-hint>
             <mat-error *ngIf="formCreate.controls['apellido2'].hasError('required')">
               Segundo Apellido es <strong>requerido</strong>
             </mat-error>
