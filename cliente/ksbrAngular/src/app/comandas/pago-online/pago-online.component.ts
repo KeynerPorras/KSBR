@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { AuthenticationService } from 'src/app/share/authentication.service';
 import { CartService } from 'src/app/share/cart.service';
 import { GenericService } from 'src/app/share/generic.service';
@@ -47,8 +47,8 @@ export class PagoOnlineComponent implements OnInit {
     this.pagoForm=this.fb.group({
       id:[null,null],
       idTipo:[null,null],
-      numeroTarjeta:[null,Validators.required],
-      monto:[null,null],     
+      numeroTarjeta:[null,Validators.required],codTarjeta:[null,Validators.required],
+      monto:[0,null],     
     });
   }
 
@@ -64,6 +64,10 @@ export class PagoOnlineComponent implements OnInit {
    }
 
   pagar(){  
+    if(this.pagoForm.invalid){
+      return;
+    }
+
   if(this.total > this.pagoForm.value.monto){
     this.noti.mensaje('Orden',
     'Monto insuficiente',
@@ -77,8 +81,8 @@ export class PagoOnlineComponent implements OnInit {
       let detalles = itemsCarrito.map((x) => ({
         ['idProducto']: x.idItem,
         ['cantidad']: x.cantidad,
-       // ['notas']: x.notas,
-        ['notas']: "Prueba",
+        ['notas']: x.notas,
+        
       }));
       let infoOrden={
         'idMesa': null,
@@ -96,18 +100,27 @@ export class PagoOnlineComponent implements OnInit {
       this.gService
       .create('comanda/cliente',infoOrden)
       .subscribe((respuesta:any)=>{
+        console.log(respuesta)
+
+        this.gService.create('pago/cliente',respuesta)
+        .pipe(takeUntil(this.destroy$)) .subscribe((data: any) => {
+        //Obtener respuesta
+        this.respPago=data;    
+        console.log(data);    
+        });
+
           this.noti.mensaje('Orden',
           'Orden registrada',
           TipoMessage.success);
           this.cartService.deleteCart();
+          this.router.navigate(['/']);
           this.total=this.cartService.getTotal();
           console.log(respuesta);
         });
-      
-  
+       
      }else{
       this.noti.mensaje('Orden',
-      'Agregue videojuegos a la orden',
+      'Agregue productos a la orden',
       TipoMessage.warning);     
     }
   }

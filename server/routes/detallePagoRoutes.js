@@ -10,4 +10,6 @@ router.get("/", detallePagoController.get);
 
 router.post("/", detallePagoController.create);
 
+router.post("/cliente", detallePagoController.createCliente);
+
 module.exports = router;

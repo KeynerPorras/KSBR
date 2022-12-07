@@ -47,7 +47,7 @@ export class ComandaOnlineComponent implements OnInit {
   
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id','nombre', 'precio','Agregar'];
-  displayedColumns2: string[] = ['producto','cantidad', 'precio',  'subtotal'];
+  displayedColumns2: string[] = ['producto','cantidad', 'precio','notas', 'subtotal'];
   constructor(
      //private notificacion:NotificacionService,
      private fb: FormBuilder,
@@ -156,6 +156,11 @@ export class ComandaOnlineComponent implements OnInit {
         TipoMessage.success
       );
     });   
+  }
+
+  obtenerdescripcion(item: any) {
+    this.cartService.addToCart(item);
+    this.noti.mensaje('orden', 'Descripción actualizada', TipoMessage.success);
   }
 
   actualizarCantidad(item: any) {

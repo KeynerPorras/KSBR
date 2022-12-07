@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { ComandasRoutingModule } from './comandas-routing.module';
 import { GestionComandasComponent } from './gestion-comandas/gestion-comandas.component';
@@ -39,6 +40,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     PagoComponent,
     FormaPagoComponent,
     PagoOnlineComponent
+    
   ],
   imports: [
     CommonModule,
@@ -61,7 +63,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     ReactiveFormsModule,
     MatButtonToggleModule,
     ToastrModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    FormsModule
   ]
 })
 export class ComandasModule { }

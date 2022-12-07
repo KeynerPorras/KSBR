@@ -53,6 +53,7 @@ export class CartService {
     newItem.cantidad = 1;
     newItem.subtotal = this.calculoSubtotal(newItem);
     newItem.product = producto;
+    newItem.notas = producto.notas;
     //Obtenemos el valor actual
     let listCart = this.cart.getValue();
     //Si no es el primer item del carrito
@@ -75,6 +76,11 @@ export class CartService {
           //Actualizar la cantidad de un producto existente
           listCart[objIndex].cantidad += 1;
         }
+        if (producto.hasOwnProperty('notas')) {
+          //Actualizar cantidad
+          listCart[objIndex].notas = producto.notas;
+        }
+        newItem.notas = listCart[objIndex].notas;
         newItem.cantidad = listCart[objIndex].cantidad;
         listCart[objIndex].subtotal = this.calculoSubtotal(newItem);
       }

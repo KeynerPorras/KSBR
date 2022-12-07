@@ -56,39 +56,12 @@ module.exports.create = async (request, response, next) => {
     let pago = request.body;  
     const newpago = await prisma.detallePago.create({
       data: {
-        idTipo: parseInt(pago.idTipo),
-        monto: pago.monto,
-        idComanda: pago.idComanda,    
+        idTipo: 1,
+        monto: pago.totalPagar,
+        idComanda: pago.id,    
       },
     });
-
-    const newcomanda = await prisma.comanda.findUnique({
-      where: {
-        id:pago.idComanda
-      }
-    });
-
-    const comanda = await prisma.comanda.update({
-      where: {
-        id:pago.idComanda
-      },
-      data: {        
-        estado:"pagada"   
-      },
-    });
-
-    if(newcomanda.idMesa!=null){
-      const newmesa = await prisma.mesa.update({
-        where: {
-          id:newcomanda.idMesa
-        },
-        data: {
-          estado:"libre"   
-        },
-      });
-    }
-
-    
+   
 
     response.json(newpago);
   };

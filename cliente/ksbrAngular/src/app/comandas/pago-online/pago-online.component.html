@@ -1,11 +1,13 @@
-<div class="card">
+<div class="card contenedor">
     <div class="card-body"> 
+      <h2><span style="color: brown;">Pago</span><span style="color: green;">Comanda</span></h2>
       <h4>Sub total {{subtotal | currency: "₡ "}}  </h4>
       <h4>Impuesto {{iv | currency: "₡ "}} </h4>
       <h4>Total {{total | currency: "₡ "}}</h4>
     </div>
-    <div class="card-body">
+    <div class="card-body imagen">
       
+      <img src="./assets/images/milogo.png" class="img-thumbnail" alt="...">
     </div>
   </div>
 
@@ -21,12 +23,33 @@
             <div class="col">
                 <mat-form-field class="full-width">
                   <mat-label>Tarjeta</mat-label>
-                    <input matInput placeholder="0000 0000 0000 0000"  formControlName="numeroTarjeta">
+                    <input matInput minlength="16" maxlength="16" placeholder="0000 0000 0000 0000"  formControlName="numeroTarjeta">
                     <mat-error *ngIf="pagoForm.controls['numeroTarjeta'].hasError('required')">
                         La capacidad es <strong>requerido</strong>
-                      </mat-error>          
+                      </mat-error> 
+                      <mat-error *ngIf="pagoForm.controls['numeroTarjeta'].hasError('minlength')">
+                        El codigo es <strong>min</strong>
+                      </mat-error> 
+                      <mat-error *ngIf="pagoForm.controls['numeroTarjeta'].hasError('maxlength')">
+                        El codigo es <strong>max</strong>
+                      </mat-error>         
                   </mat-form-field>
-            </div>                        
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Codigo</mat-label>
+                  <input matInput placeholder="000" minlength="3" maxlength="3"  formControlName="codTarjeta">
+                  <mat-error *ngIf="pagoForm.controls['codTarjeta'].hasError('required')">
+                      El codigo es <strong>requerido</strong>
+                    </mat-error>
+                    <mat-error *ngIf="pagoForm.controls['codTarjeta'].hasError('minlength')">
+                      El codigo no cumple con el <strong>minimo </strong> de caracteres
+                    </mat-error> 
+                    <mat-error *ngIf="pagoForm.controls['codTarjeta'].hasError('maxlength')">
+                      El codigo supera el <strong>maximo</strong> de caracteres
+                    </mat-error>         
+                </mat-form-field>
+          </div>                        
           </div>  
           <div class="row">
             <div class="col">

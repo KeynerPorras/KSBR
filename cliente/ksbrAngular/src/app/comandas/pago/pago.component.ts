@@ -31,7 +31,7 @@ pagoForm!: FormGroup;
   ngOnInit(): void {
     this.activeRouter.params.subscribe((params:Params)=>{
       this.idMesa=params['id'];
-      this.tipoPago=params['tipo'];  
+      this.tipoPago=params['tipo'];
       this.detalleComanda(this.idMesa);                                  
           })
   }
@@ -63,8 +63,8 @@ pagoForm!: FormGroup;
       id:[null,null],
       idTipo:[null,null],
       idComanda:[null, null],
-      numeroTarjeta:[null,Validators.required],
-      monto:[null,null],
+      numeroTarjeta:[null,Validators.required],codTarjeta:[null,Validators.required],
+      monto:[0,null],
       montoTarjeta:[null,Validators.max(9999999)],
       vuelto:[null,Validators.max(9999999)]
       
@@ -117,7 +117,8 @@ pagoForm!: FormGroup;
     }
  //Ambos
  if(this.tipoPago==3){
-  if(this.pagoForm.value.monto + this.calcAmbas()< this.comanda.totalPagar){   
+ // if(this.pagoForm.value.monto + this.calcAmbas()< this.comanda.totalPagar){ 
+    if(this.pagoForm.value.monto <= 0){    
     console.log( this.pagoForm.value.montoTarjeta);
     this.noti.mensaje('Orden',
       'Monto insuficiente',

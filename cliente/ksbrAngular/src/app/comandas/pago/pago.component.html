@@ -12,8 +12,6 @@
     </div>
   </div>
 
-
-
 <form [formGroup]="pagoForm" novalidate >
     <input type="hidden" formControlName="id"/>
     <input type="hidden" formControlName="idComanda"/>
@@ -27,13 +25,33 @@
             <div class="col">
                 <mat-form-field class="full-width">
                   <mat-label>Tarjeta</mat-label>
-                    <input matInput placeholder="0000 0000 0000 0000"  formControlName="numeroTarjeta">
+                    <input matInput placeholder="0000 0000 0000 0000" minlength="16" maxlength="16"  formControlName="numeroTarjeta">
                     <mat-error *ngIf="pagoForm.controls['numeroTarjeta'].hasError('required')">
                         La capacidad es <strong>requerido</strong>
-                      </mat-error>          
+                      </mat-error> 
+                      <mat-error *ngIf="pagoForm.controls['numeroTarjeta'].hasError('minlength')">
+                        El codigo es <strong>min</strong>
+                      </mat-error> 
+                      <mat-error *ngIf="pagoForm.controls['numeroTarjeta'].hasError('maxlength')">
+                        El codigo es <strong>max</strong>
+                      </mat-error>           
                   </mat-form-field>
             </div>
-            
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Codigo</mat-label>
+                  <input matInput placeholder="000" minlength="3" maxlength="3"  formControlName="codTarjeta">
+                  <mat-error *ngIf="pagoForm.controls['codTarjeta'].hasError('required')">
+                      El codigo es <strong>requerido</strong>
+                    </mat-error>
+                    <mat-error *ngIf="pagoForm.controls['codTarjeta'].hasError('minlength')">
+                      El codigo es <strong>min</strong>
+                    </mat-error> 
+                    <mat-error *ngIf="pagoForm.controls['codTarjeta'].hasError('maxlength')">
+                      El codigo es <strong>max</strong>
+                    </mat-error>         
+                </mat-form-field>
+          </div>
           </div>  
           <div class="row">
             <div class="col">

@@ -98,6 +98,23 @@
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Cantidad</th>
               <td mat-cell *matCellDef="let row">{{ row.cantidad }}</td>          
             </ng-container>
+
+            <ng-container matColumnDef="notas">
+          <mat-header-cell *matHeaderCellDef > Notas </mat-header-cell>
+          <mat-cell *matCellDef="let element" style="padding-right: 55px">
+            <mat-form-field appearance="fill">
+              <input 
+                matInput
+                id=" notas"
+                type="text"
+                class="form-control mb-2"
+                [(ngModel)]="element.notas"
+                (change)="obtenerdescripcion(element)"
+              />
+            </mat-form-field>
+          </mat-cell>
+          <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+        </ng-container>
     
             <ng-container matColumnDef="subtotal">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Sub Total</th>
