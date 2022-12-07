@@ -7,6 +7,7 @@ import { GestionComandasComponent } from './gestion-comandas/gestion-comandas.co
 import { LineaDetalleComponent } from './linea-detalle/linea-detalle.component';
 import { PagoOnlineComponent } from './pago-online/pago-online.component';
 import { PagoComponent } from './pago/pago.component';
+import { ReporteFechasComponent } from './reporte-fechas/reporte-fechas.component';
 
 const routes: Routes = [
   { path:'comandas/gestion-comandas', component: GestionComandasComponent},
@@ -16,7 +17,9 @@ const routes: Routes = [
   { path:'comandas/comanda-online', component: ComandaOnlineComponent},
   { path:'comandas/pago/:id/:tipo', component: PagoComponent},
   { path:'comandas/pago-online/:idComanda', component: PagoOnlineComponent},
-  { path:'comandas/forma-pago/:id', component: FormaPagoComponent}
+  { path:'comandas/forma-pago/:id', component: FormaPagoComponent},
+  
+  { path:'comandas/reporte-fechas', component: ReporteFechasComponent},
 ];
 
 @NgModule({

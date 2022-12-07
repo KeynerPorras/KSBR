@@ -28,6 +28,7 @@ import { PagoComponent } from './pago/pago.component';
 import { FormaPagoComponent } from './forma-pago/forma-pago.component';
 import { PagoOnlineComponent } from './pago-online/pago-online.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { ReporteFechasComponent } from './reporte-fechas/reporte-fechas.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     ComandaOnlineComponent,
     PagoComponent,
     FormaPagoComponent,
-    PagoOnlineComponent
+    PagoOnlineComponent,
+    ReporteFechasComponent
   ],
   imports: [
     CommonModule,
