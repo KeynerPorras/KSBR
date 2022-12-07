@@ -184,9 +184,6 @@ module.exports.createCliente = async (request, response, next) => {
     },
   });
 
-
-  
-
   response.json(newcomanda);
 };
 

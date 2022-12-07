@@ -19,7 +19,12 @@ export class ReporteFechasComponent implements OnInit {
 
   ngOnInit(): void {
     //Obtener información del API
-    
+    /* this.gService
+      .list('reporte/reporte1')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: any) => {
+        this.datos = data;
+      }); */
   }
 
   //npm install jspdf
