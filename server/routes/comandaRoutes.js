@@ -14,6 +14,8 @@ router.post("/",comandaController.create);
 
 router.post("/cliente",comandaController.createCliente);
 
+router.get("/repFechaHoy",comandaController.getReporteFechaHoy);
+
 router.get("/mesa/:id",comandaController.getByIdMesa);
 
 router.get("/numero/:id",comandaController.getNumComanda);

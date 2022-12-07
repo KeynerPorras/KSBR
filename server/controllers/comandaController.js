@@ -1,4 +1,4 @@
-const { PrismaClient } = require("@prisma/client");
+const { PrismaClient, Prisma } = require("@prisma/client");
 const { describe } = require("node:test");
 
 const prisma = new PrismaClient();
@@ -187,4 +187,29 @@ module.exports.createCliente = async (request, response, next) => {
   
 
   response.json(newcomanda);
+};
+
+/* module.exports.getReporteFechas = async (request, response, next) => {
+  let anno1 = request.params.anno1;
+  let mes1 = request.params.mes1;
+  let dia1 = request.params.dia1;
+
+  let anno2 = request.params.anno2;
+  let mes2 = request.params.mes2;
+  let dia2 = request.params.dia2;
+  const result = await prisma.$queryRaw(
+    Prisma.sql`SELECT COUNT(comanda.id)  AS ventas FROM comanda WHERE comanda.estado = 'pagada' AND comanda.fechaComanda BETWEEN '${anno1}-${mes1}-${dia1}' AND '${anno2}-${mes2}-${dia2}'`
+  )
+  //SELECT v.nombre, SUM(ov.cantidad) as suma FROM orden o, ordenonvideojuego ov, videojuego v WHERE o.id=ov.ordenId and ov.videojuegoId=v.id AND MONTH(o.fechaOrden) = 10 GROUP BY ov.videojuegoId
+  response.json(result);
+}; */
+
+
+module.exports.getReporteFechaHoy = async (request, response, next) => {
+  let fecha = Date.now(); 
+  const result = await prisma.$queryRaw(
+    Prisma.sql`SELECT COUNT(comanda.id) AS cantidad, SUM(comanda.totalPagar) AS ventas FROM comanda WHERE comanda.estado = 'pagada' AND comanda.fechaComanda = '2022-10-27'`
+  )
+  //SELECT v.nombre, (SUM(ov.cantidad)*v.precio) as total FROM orden o, ordenonvideojuego ov, videojuego v WHERE o.id=ov.ordenId and ov.videojuegoId=v.id GROUP BY ov.videojuegoId ORDER BY total DESC;
+  response.json(result);
 };
