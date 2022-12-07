@@ -14,26 +14,27 @@ module.exports.get = async (request, response, next) => {
   });
   response.json(comanda);
 };
+
 module.exports.getById = async (request, response, next) => {
-    let id = parseInt(request.params.id);
-    const mesa = await prisma.comanda.findUnique({
-      where: {
-        id: id,
-      },
-      include:{
-        mesa:true,
-        usuario:true,
-        lineaComandas:{
-            select:{
-                notas:true,
-                cantidad:true,
-                producto:true
-            }
-        }
+  let id = parseInt(request.params.id);
+  const mesa = await prisma.comanda.findUnique({
+    where: {
+      id: id,
+    },
+    include:{
+      mesa:true,
+      usuario:true,
+      lineaComandas:{
+          select:{
+              notas:true,
+              cantidad:true,
+              producto:true
+          }
       }
-    });
-    response.json(mesa);
-  };
+    }
+  });
+  response.json(mesa);
+};
 
 
   module.exports.getByIdMesa = async (request, response, next) => {
@@ -205,11 +206,4 @@ module.exports.createCliente = async (request, response, next) => {
 }; */
 
 
-module.exports.getReporteFechaHoy = async (request, response, next) => {
-  let fecha = Date.now(); 
-  const result = await prisma.$queryRaw(
-    Prisma.sql`SELECT COUNT(comanda.id) AS cantidad, SUM(comanda.totalPagar) AS ventas FROM comanda WHERE comanda.estado = 'pagada' AND comanda.fechaComanda = '2022-10-27'`
-  )
-  //SELECT v.nombre, (SUM(ov.cantidad)*v.precio) as total FROM orden o, ordenonvideojuego ov, videojuego v WHERE o.id=ov.ordenId and ov.videojuegoId=v.id GROUP BY ov.videojuegoId ORDER BY total DESC;
-  response.json(result);
-};
+

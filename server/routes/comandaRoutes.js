@@ -6,15 +6,14 @@ const comandaController=require("../controllers/comandaController");
 
 //Rutas de videojuegos
 
-router.get("/",comandaController.get);
 
-router.get("/:id",comandaController.getById);
+router.get("/",comandaController.get);
 
 router.post("/",comandaController.create);
 
 router.post("/cliente",comandaController.createCliente);
 
-router.get("/repFechaHoy",comandaController.getReporteFechaHoy);
+router.get("/:id",comandaController.getById);
 
 router.get("/mesa/:id",comandaController.getByIdMesa);
 

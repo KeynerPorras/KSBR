@@ -17,6 +17,7 @@ const ingredienteRouter = require("./routes/ingredienteRoutes");
 const lineaComandaRouter = require("./routes/lineaComandaRoutes");
 const userRouter = require("./routes/userRoutes");
 const detallePagoRouter = require("./routes/detallePagoRoutes");
+const reportesRouter = require("./routes/reportesRoutes");
 
 // Acceder a la configuracion del archivo .env
 dotEnv.config();
@@ -44,6 +45,7 @@ app.use("/ingrediente/",ingredienteRouter);
 app.use("/lineaComanda/",lineaComandaRouter);
 app.use("/user/", userRouter);
 app.use("/pago/", detallePagoRouter);
+app.use("/reporte/", reportesRouter);
 
 
 // Servidor
