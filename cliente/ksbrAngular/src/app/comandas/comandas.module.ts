@@ -39,7 +39,11 @@ import { ReporteFechasComponent } from './reporte-fechas/reporte-fechas.componen
     ComandaComponent,
     ComandaOnlineComponent,
     PagoComponent,
+    PagoOnlineComponent,
     FormaPagoComponent,
+    ReporteFechasComponent
+  ],
+  imports: [
     CommonModule,
     ComandasRoutingModule,
     MatGridListModule,
