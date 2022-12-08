@@ -193,7 +193,7 @@ async function main() {
   await prisma.comanda.create({
     data: {
       idMesa: 1,
-      idUsuario: "208060669",
+      idUsuario: "208060668",
       idRestaurante: 1,
       estado: EstadoComanda.pagada,
       direccion: "restaurante",
@@ -219,7 +219,7 @@ async function main() {
   await prisma.comanda.create({
     data: {
       idMesa: 3,
-      idUsuario: "208060667",
+      idUsuario: "208060668",
       idRestaurante: 1,
       estado: EstadoComanda.pagada,
       direccion: "restaurante",
