@@ -4,7 +4,7 @@ export const usuario = [
     {
       id: "208060669",
       correo: "kporrascruz@gmail.com",
-      password: "08072",
+      password: "$2b$10$m/qsdU.MGiG1wqpmFpTjc.JGDqmfiCG8OSj4l1ibgt9I6Cy50QnXi",
       rol: Rol.cliente,
       nombre: "keyner",
       apellido1: "Porras",
@@ -14,7 +14,7 @@ export const usuario = [
     {
       id: "208060668",
       correo: "kporras@gmail.com",
-      password: "08072",
+      password: "$2b$10$m/qsdU.MGiG1wqpmFpTjc.JGDqmfiCG8OSj4l1ibgt9I6Cy50QnXi",
       rol: Rol.mesero,
       nombre: "Kevin",
       apellido1: "Morales",
@@ -24,7 +24,7 @@ export const usuario = [
     {
       id: "208060667",
       correo: "kpcruz@gmail.com",
-      password: "08072",
+      password: "$2b$10$m/qsdU.MGiG1wqpmFpTjc.JGDqmfiCG8OSj4l1ibgt9I6Cy50QnXi",
       rol: Rol.administrador,
       nombre: "Gary",
       apellido1: "Barahona",

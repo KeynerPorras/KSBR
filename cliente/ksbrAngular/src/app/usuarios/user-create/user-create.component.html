@@ -70,9 +70,9 @@
             <!--password-------------------------------------------------------------------------------->
             <div class="col">
               <mat-form-field class="full-width">
-                <input matInput #nombreProducto minlength="2" maxlength="20" placeholder="Password"
+                <input matInput #nombreProducto minlength="2" maxlength="100" placeholder="Password"
                   formControlName="password">
-                <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
+                <mat-hint align="end">{{nombreProducto.value.length}} / 100</mat-hint>
                 <mat-error *ngIf="formCreate.controls['password'].hasError('required')">
                   Nombre es <strong>requerido</strong>
                 </mat-error>
@@ -91,13 +91,13 @@
             <!--nombre-------------------------------------------------------------------------------->
             <div class="col">
               <mat-form-field class="full-width">
-                <input matInput #nombreProducto minlength="5" maxlength="20" placeholder="Nombre" formControlName="nombre">
+                <input matInput #nombreProducto minlength="4" maxlength="20" placeholder="Nombre" formControlName="nombre">
                 <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
                 <mat-error *ngIf="formCreate.controls['nombre'].hasError('required')">
                   Nombre es <strong>requerido</strong>
                 </mat-error>
                 <mat-error *ngIf="formCreate.controls['nombre'].hasError('minlength')">
-                  Tamaño minimo es <strong>5</strong>
+                  Tamaño minimo es <strong>4</strong>
                 </mat-error>
                 <mat-error *ngIf="formCreate.controls['nombre'].hasError('maxlength')">
                   Tamaño maximo es <strong>20</strong>
