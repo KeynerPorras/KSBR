@@ -1,7 +1,7 @@
 .titulo {
   font-family: "Cinzel", serif;
-  color: #ce2b37;
-  border-bottom: 3px solid #009246;
+  color: #6F0C0C;
+  border-bottom: 3px solid #6F0C0C;
     font-weight: bold;
   }
   .contenedor {
@@ -24,7 +24,7 @@
     text-align: center;
   }
   .tabla thead tr th {
-    background-color: #04aa6d;
+    background-color: #7D1919;
     color: white;
     text-align: center;
   }
@@ -43,7 +43,7 @@
   }
 
   .tabla tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+    border-bottom: 2px solid #7D1919;
   }
 
   .shipping-card{
