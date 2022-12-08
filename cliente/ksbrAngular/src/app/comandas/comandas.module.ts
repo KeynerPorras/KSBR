@@ -32,6 +32,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ReporteFechasComponent } from './reporte-fechas/reporte-fechas.component';
 
 import { MatNativeDateModule } from '@angular/material/core';
+import { ReportePagosComponent } from './reporte-pagos/reporte-pagos.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     PagoComponent,
     PagoOnlineComponent,
     FormaPagoComponent,
-    ReporteFechasComponent
+    ReporteFechasComponent,
+    ReportePagosComponent
   ],
   imports: [
     CommonModule,

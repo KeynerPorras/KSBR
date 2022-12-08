@@ -62,7 +62,7 @@ reporteFiltrado(){
         fechaF: [
           '',
           [Validators.required],
-        ],
+        ], 
       
       });
     
