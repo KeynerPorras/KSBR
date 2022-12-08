@@ -8,13 +8,13 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput #nombreProducto minlength="5" maxlength="20" placeholder="Nombre" formControlName="nombre">
+            <input matInput #nombreProducto minlength="4" maxlength="20" placeholder="Nombre" formControlName="nombre">
             <mat-hint align="end">{{nombreProducto.value.length}} / 20</mat-hint>
             <mat-error *ngIf="productoForm.controls['nombre'].hasError('required')">
               Nombre es <strong>requerido</strong>
             </mat-error>
             <mat-error *ngIf="productoForm.controls['nombre'].hasError('minlength')">
-              Tamaño minimo es <strong>5</strong>
+              Tamaño minimo es <strong>4</strong>
             </mat-error>
             <mat-error *ngIf="productoForm.controls['nombre'].hasError('maxlength')">
               Tamaño maximo es <strong>20</strong>
@@ -64,12 +64,12 @@
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput maxlength="100" minlength="10" placeholder="Ingredientes" formControlName="ingredientes">
+            <input matInput maxlength="100" minlength="5" placeholder="Ingredientes" formControlName="ingredientes">
             <mat-error *ngIf="productoForm.controls['ingredientes'].hasError('required')">
               Ingredientes es <strong>requerido</strong>
             </mat-error>
             <mat-error *ngIf="productoForm.controls['descripcion'].hasError('minlength')">
-              Tamaño minimo es <strong>10</strong>
+              Tamaño minimo es <strong>5</strong>
             </mat-error>
             <mat-error *ngIf="productoForm.controls['descripcion'].hasError('maxlength')">
               Tamaño maximo es <strong>100</strong>
