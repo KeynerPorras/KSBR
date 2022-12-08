@@ -46,6 +46,8 @@
             *ngSwitchCase="'administrador'">Reporte Ventas por Fecha</button>
             <button mat-menu-item [routerLink]="['/comandas/reporte-pagos']" [routerLinkActive]="'mat-raised-button'"
             *ngSwitchCase="'administrador'">Reporte Ventas por Tipo Pago</button>
+            <button mat-menu-item [routerLink]="['/comandas/reporte-mesas']" [routerLinkActive]="'mat-raised-button'"
+            *ngSwitchCase="'administrador'">Reporte Ventas por Mesas/Usuarios </button>
         </mat-menu>
         <button mat-menu-item [matMenuTriggerFor]="menu5" *ngSwitchCase="'administrador'" class="example-icon">Reportes</button>
         </div>

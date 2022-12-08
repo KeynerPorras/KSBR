@@ -10,9 +10,17 @@ router.get("/vFecha",reportesController.getVentaFecha);
 
 router.get("/vPago",reportesController.getVentaPago);
 
+router.get("/vMesa",reportesController.getVentaMesa);
+
+
+
 router.post("/vFecha2",reportesController.getVentaFecha2);
 
 router.post("/vPago2",reportesController.getVentaPago2);
+
+router.post("/vMesa2",reportesController.getVentaMesaFech);
+
+router.post("/vUsuario2",reportesController.getVentaUsuarioFech);
 
 
 

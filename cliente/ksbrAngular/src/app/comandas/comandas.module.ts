@@ -33,6 +33,7 @@ import { ReporteFechasComponent } from './reporte-fechas/reporte-fechas.componen
 
 import { MatNativeDateModule } from '@angular/material/core';
 import { ReportePagosComponent } from './reporte-pagos/reporte-pagos.component';
+import { ReporteMesasComponent } from './reporte-mesas/reporte-mesas.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ReportePagosComponent } from './reporte-pagos/reporte-pagos.component';
     PagoOnlineComponent,
     FormaPagoComponent,
     ReporteFechasComponent,
-    ReportePagosComponent
+    ReportePagosComponent,
+    ReporteMesasComponent
   ],
   imports: [
     CommonModule,

@@ -10,6 +10,7 @@ import { PagoComponent } from './pago/pago.component';
 import { ReporteFechasComponent } from './reporte-fechas/reporte-fechas.component';
 
 import { ReportePagosComponent } from './reporte-pagos/reporte-pagos.component';
+import { ReporteMesasComponent } from './reporte-mesas/reporte-mesas.component';
 
 const routes: Routes = [
   { path:'comandas/gestion-comandas', component: GestionComandasComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
   
   { path:'comandas/reporte-fechas', component: ReporteFechasComponent},
   { path:'comandas/reporte-pagos', component: ReportePagosComponent},
+  { path:'comandas/reporte-mesas', component: ReporteMesasComponent},
 ];
 
 @NgModule({
