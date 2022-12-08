@@ -36,22 +36,17 @@ module.exports.register = async (request, response, next) => {
 module.exports.login = async (request, response, next) => {
   let userReq = request.body;
   //Buscar el usuario según el email dado
-  const user = await prisma.Usuario.findUnique({
+  const user = await prisma.usuario.findUnique({
     where: {
       id: userReq.id,
     },
-  });
-  //Sino lo encuentra según su email
-  if (!user) {
-    response.status(401).send({
-      success: false,
-      message: "Usuario no registrado",
-    });
-  }
-
-  if (user && userReq.password) {
+  }); 
+  if (user) {
     //Verifica la contraseña
-    const checkPassword = bcrypt.compare(userReq.password, user.password);
+    const checkPassword = bcrypt.compareSync(
+      userReq.password,
+      user.password
+    );
     if (checkPassword) {
       //Si el usuario es correcto: email y password
       //Crear el token
@@ -75,8 +70,14 @@ module.exports.login = async (request, response, next) => {
     } else {
       response.status(401).send({
         success: false,
-        message: "Password incorrecto",
+        message: "Contraseña incorrecta",
       });
     }
+    //Sino lo encuentra según su email
+  } else {
+    response.status(401).send({
+      success: false,
+      message: "Usuario no registrado",
+    });
   }
 };

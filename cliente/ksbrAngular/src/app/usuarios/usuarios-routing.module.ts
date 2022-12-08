@@ -7,9 +7,14 @@ import { UsuarioFormComponent } from './usuario-form/usuario-form.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { UserIndexComponent } from './user-index/user-index.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { AuthGuard } from '../share/guards/auth.guard';
 
 const routes: Routes = [
-  { path:'usuarios/gestion-usuarios', component: GestionUsuariosComponent},
+  { path:'usuarios/gestion-usuarios', component: GestionUsuariosComponent,
+  canActivate: [AuthGuard],
+  data: {
+    roles: ['administrador', 'mesero'],
+  },},
 
   { path:'usuarios/create', component: UsuarioFormComponent},
 

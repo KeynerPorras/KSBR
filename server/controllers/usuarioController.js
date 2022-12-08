@@ -45,11 +45,13 @@ module.exports.getById = async (request, response, next) => {
 
 module.exports.create=async(request, response, next)=>{
   let usuario= request.body;
+  let salt = bcrypt.genSaltSync(10);
+    let hash = bcrypt.hashSync(usuario.password, salt);
   const newproducto= await prisma.usuario.create({
     data:{
       id:usuario.id,
       correo:usuario.correo,
-      password:usuario.password,
+      password:hash,
       rol:usuario.rol,
       nombre:usuario.nombre,
       apellido1:usuario.apellido1,
@@ -62,6 +64,8 @@ module.exports.create=async(request, response, next)=>{
 
 module.exports.update = async (request, response, next) => {
   let usuario = request.body;
+  let salt = bcrypt.genSaltSync(10);
+    let hash = bcrypt.hashSync(usuario.password, salt);
   let idusuario = request.params.id;
   //Obtener producto vieja
   const usuarioViejo = await prisma.usuario.findUnique({
@@ -75,7 +79,7 @@ module.exports.update = async (request, response, next) => {
     data: {
       id:usuario.id,
       correo:usuario.correo,
-      password:usuario.password,
+      password:hash,
       rol:usuario.rol,
       nombre:usuario.nombre,
       apellido1:usuario.apellido1,
