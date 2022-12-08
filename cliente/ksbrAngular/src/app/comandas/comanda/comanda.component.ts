@@ -154,6 +154,7 @@ formularioReactive(){
 
 
   seleccionarProducto(id:number){
+    console.log(this.idComanda);
     let comanda ={idComanda:this.idComanda,idProducto:id,cantidad:1,notas:"Prueba"}
     console.log(this.idComanda);
     this.gSevice

@@ -47,7 +47,7 @@ export class ComandaOnlineComponent implements OnInit {
   
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id','nombre', 'precio','Agregar'];
-  displayedColumns2: string[] = ['producto','cantidad', 'precio','notas', 'subtotal'];
+  displayedColumns2: string[] = ['producto','cantidad', 'precio','notas', 'subtotal','eliminar'];
   constructor(
      //private notificacion:NotificacionService,
      private fb: FormBuilder,
@@ -164,22 +164,39 @@ export class ComandaOnlineComponent implements OnInit {
   }
 
   actualizarCantidad(item: any) {
-    
+    this.cartService.addToCart(item);
+    this.total=this.cartService.getTotal();
+    this.noti.mensaje('Orden',
+    'Cantidad actualizada',
+    TipoMessage.success);
   }
-  eliminarItem(item: any) {    
+  eliminarItem(item: any) {   
+    this.cartService.removeFromCart(item);
+    this.total=this.cartService.getTotal();
+    this.noti.mensaje('Orden',
+    'Producto eliminado',
+    TipoMessage.warning);
   }
   registrarOrden() {
     let comanda ={idRestaurante: this.idRestaurante ,estado: "registrada",
     direccion: "online",subTotal: 0,impuesto: 0,totalPagar: 0,fechaComanda: Date.now}
-    if(this.cartService.getItems!=null && this.idRestaurante!=null){
-      this.router.navigate(['/comandas/pago-online',this.idRestaurante ], {
-        relativeTo: this.route,
-      });
-         // this.cartService.deleteCart();
+
+    if(this.cartService.getItems.length!=0 ){
+
+      if( this.idRestaurante!=null){
+        this.router.navigate(['/comandas/pago-online',this.idRestaurante ], {
+          relativeTo: this.route,
+        });
+      }else{
+        this.noti.mensaje('Orden',
+      'Seleccione restaurante',
+      TipoMessage.warning);
+      }
+         
           this.total=this.cartService.getTotal();  
      }else{
       this.noti.mensaje('Orden',
-      'Agregue videojuegos a la orden',
+      'Agregue productos a la orden',
       TipoMessage.warning);
      }
   }

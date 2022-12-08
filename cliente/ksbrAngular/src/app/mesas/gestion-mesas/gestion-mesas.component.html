@@ -48,7 +48,7 @@
             >
             <mat-icon  class="mat-18">info</mat-icon>
             </button>
-            <button class="crear"
+            <button class="crear" *ngIf="item.estado == 'libre' || currentUser.user.rol == 'administrador'"
               mat-mini-fab color="accent"
               matTooltip="Agregar nueva mesa"
               aria-label="Agregar mesa"
