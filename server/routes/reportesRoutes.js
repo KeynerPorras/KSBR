@@ -20,7 +20,6 @@ router.post("/vPago2",reportesController.getVentaPago2);
 
 router.post("/vMesa2",reportesController.getVentaMesaFech);
 
-router.post("/vUsuario2",reportesController.getVentaUsuarioFech);
 
 
 
