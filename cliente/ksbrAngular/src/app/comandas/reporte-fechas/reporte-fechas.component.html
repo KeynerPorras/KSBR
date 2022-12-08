@@ -5,14 +5,16 @@
         <table class="tabla">
             <thead>
           <tr class="table-primary">
-            <th>Videojuego</th>
+            <th>Restaurante</th>
             <th>Total Ventas</th>
+            <th>Total</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of datos">
-            <th>{{ item.cantidad }}</th>
-            <td>&dollar;{{ item.ventas }}</td>
+            <th>{{ item.Restaurante }}</th>
+            <td>{{ item.Ventas }}</td>
+            <td>{{ item.Total }}</td>
           </tr>
         </tbody>
         </table>
