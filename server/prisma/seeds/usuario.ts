@@ -22,6 +22,26 @@ export const usuario = [
       idRestaurante:2
     },
     {
+      id: "208060123",
+      correo: "emanuel@gmail.com",
+      password: "$2b$10$m/qsdU.MGiG1wqpmFpTjc.JGDqmfiCG8OSj4l1ibgt9I6Cy50QnXi",
+      rol: Rol.mesero,
+      nombre: "Emanuel",
+      apellido1: "Porras",
+      apellido2:"Cruz",
+      idRestaurante:2
+    },
+    {
+      id: "208060999",
+      correo: "juan@gmail.com",
+      password: "$2b$10$m/qsdU.MGiG1wqpmFpTjc.JGDqmfiCG8OSj4l1ibgt9I6Cy50QnXi",
+      rol: Rol.mesero,
+      nombre: "Juan",
+      apellido1: "Perez",
+      apellido2:"Castro",
+      idRestaurante:1
+    },
+    {
       id: "208060667",
       correo: "kpcruz@gmail.com",
       password: "$2b$10$m/qsdU.MGiG1wqpmFpTjc.JGDqmfiCG8OSj4l1ibgt9I6Cy50QnXi",

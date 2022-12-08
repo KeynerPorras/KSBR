@@ -13,9 +13,9 @@
 
 
   
-  <div *ngIf="datosRestaurante">
-    <div class="contenedor-botones">
-      <button class="crear"
+  <div *ngIf="datosRestaurante ">
+    <div class="contenedor-botones" >
+      <button class="crear" *ngIf="currentUser.user.rol == 'administrador'"
             mat-mini-fab color="accent"
             matTooltip="Agregar nueva mesa"
             aria-label="Agregar mesa"
