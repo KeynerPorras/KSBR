@@ -54,13 +54,13 @@
           <table class="tabla">
               <thead>
             <tr class="table-primary">
-              <th>Sede</th>
+              <th>Tipo de Pago</th>
               <th>Total Ventas</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let item of datos">
-              <th>{{ item.Restaurante }}</th>
+              <th>{{ item.Pago }}</th>
               <td>¢{{ item.Ventas }}</td>
             </tr>
           </tbody>
