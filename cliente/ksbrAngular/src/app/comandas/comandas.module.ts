@@ -31,6 +31,8 @@ import { PagoOnlineComponent } from './pago-online/pago-online.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ReporteFechasComponent } from './reporte-fechas/reporte-fechas.component';
 
+import { MatNativeDateModule } from '@angular/material/core';
+
 @NgModule({
   declarations: [
     GestionComandasComponent,
@@ -64,6 +66,7 @@ import { ReporteFechasComponent } from './reporte-fechas/reporte-fechas.componen
     MatButtonToggleModule,
     ToastrModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     FormsModule
   ]
 })
