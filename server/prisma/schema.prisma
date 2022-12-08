@@ -14,12 +14,12 @@ model Usuario {
 id String @unique
 correo String
 password String
-rol Rol
+rol Rol?
 nombre String
 apellido1 String
 apellido2 String
-idRestaurante Int
-restaurante Restaurante @relation(fields:[idRestaurante], references:[id])
+idRestaurante Int?
+restaurante Restaurante? @relation(fields:[idRestaurante], references:[id])
 comandas Comanda[]
 deleted Boolean @default(false)
 }
@@ -87,7 +87,7 @@ model LineaComanda {
 idComanda Int
 idProducto Int
 cantidad  Int
-notas String
+notas String?
 comanda Comanda @relation(fields:[idComanda], references:[id])
 producto Producto @relation(fields:[idProducto], references:[id])
 @@id([idComanda, idProducto])

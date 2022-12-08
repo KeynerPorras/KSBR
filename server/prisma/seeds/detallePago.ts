@@ -5,4 +5,16 @@ export const detallePago = [
     idTipo: 1,
     monto: 200000,
   },
+  //1
+  {
+    idComanda: 2,
+    idTipo: 1,
+    monto: 8000,
+  },
+  //3
+  {
+    idComanda: 3,
+    idTipo: 2,
+    monto: 11500,
+  },
 ];

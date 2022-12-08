@@ -23,10 +23,10 @@
         <mat-card-content>
           
           <div class="row">
-            <div class="col">
+            <div class="col" *ngIf="tipoPago==1 || tipoPago==3  hidden">
                 <mat-form-field class="full-width">
                   <mat-label>Tarjeta</mat-label>
-                    <input matInput placeholder="0000 0000 0000 0000" minlength="16" maxlength="16"  formControlName="numeroTarjeta">
+                    <input matInput placeholder="0000 0000 0000 0000" minlength="16" maxlength="16"  formControlName="numeroTarjeta" >
                     <mat-error *ngIf="pagoForm.controls['numeroTarjeta'].hasError('required')">
                         La capacidad es <strong>requerido</strong>
                       </mat-error> 
@@ -38,10 +38,10 @@
                       </mat-error>           
                   </mat-form-field>
             </div>
-            <div class="col">
+            <div class="col" *ngIf="tipoPago==1 || tipoPago==3  hidden" >
               <mat-form-field class="full-width">
                 <mat-label>Codigo</mat-label>
-                  <input matInput placeholder="000" minlength="3" maxlength="3"  formControlName="codTarjeta">
+                  <input matInput placeholder="000" minlength="3" maxlength="3"  formControlName="codTarjeta" >
                   <mat-error *ngIf="pagoForm.controls['codTarjeta'].hasError('required')">
                       El codigo es <strong>requerido</strong>
                     </mat-error>

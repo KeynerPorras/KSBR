@@ -75,7 +75,7 @@ async function main() {
   await prisma.producto.create({
     data: {
       nombre: "Hamburguesa vegana",
-      descripcion: "Hamgurguesa sin carne",
+      descripcion: "Hamburgesa sin carne",
       precio: 3500,
       estado: true,
       ingredientes:"Cerezas",
@@ -208,7 +208,7 @@ async function main() {
       idMesa: 2,
       idUsuario: "208060668",
       idRestaurante: 1,
-      estado: EstadoComanda.pendiente,
+      estado: EstadoComanda.pagada,
       direccion: "restaurante",
       subTotal: 7000,
       impuesto: 1000,
@@ -221,7 +221,7 @@ async function main() {
       idMesa: 3,
       idUsuario: "208060667",
       idRestaurante: 1,
-      estado: EstadoComanda.porPagar,
+      estado: EstadoComanda.pagada,
       direccion: "restaurante",
       subTotal: 9500,
       impuesto: 2000,
@@ -258,6 +258,9 @@ async function main() {
 
   await prisma.lineaComanda.createMany({
     data: lineaComanda,
+  });
+  await prisma.detallePago.createMany({
+    data: detallePago,
   });
   
 }

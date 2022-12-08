@@ -95,6 +95,30 @@ pagoForm!: FormGroup;
     this.submitted=true;
     //Verificar validación
     if(this.pagoForm.invalid){
+      if(this.tipoPago==2){
+        if(this.pagoForm.value.monto < this.comanda.totalPagar){
+          this.noti.mensaje('Orden',
+        'Monto insuficiente',
+        TipoMessage.error);
+          return;
+        }
+      this.pagoForm.value.idTipo=this.tipoPago;
+      this.pagoForm.value.idComanda=this.comanda.id;
+      this.pagoForm.value.monto=this.comanda.totalPagar;
+      //Accion API create enviando toda la informacion del formulario
+    this.gService.create('pago/',this.pagoForm.value)
+    .pipe(takeUntil(this.destroy$)) .subscribe((data: any) => {
+      //Obtener respuesta
+      this.respPago=data;
+      console.log(data);
+      this.noti.mensaje('Orden',
+      'Orden pagada',
+      TipoMessage.success);
+      this.router.navigate(['/mesas/gestion-mesas'],{
+        queryParams: {create:'true'}
+      });
+    });
+      }
       return;
     }
     //Tarjeta
@@ -103,7 +127,7 @@ pagoForm!: FormGroup;
       this.pagoForm.value.idComanda=this.comanda.id;
       this.pagoForm.value.monto=this.comanda.totalPagar;
     }
-    //Efectivo
+    /* //Efectivo
     if(this.tipoPago==2){
       if(this.pagoForm.value.monto < this.comanda.totalPagar){
         this.noti.mensaje('Orden',
@@ -114,7 +138,7 @@ pagoForm!: FormGroup;
     this.pagoForm.value.idTipo=this.tipoPago;
     this.pagoForm.value.idComanda=this.comanda.id;
     this.pagoForm.value.monto=this.comanda.totalPagar;
-    }
+    } */
  //Ambos
  if(this.tipoPago==3){
  // if(this.pagoForm.value.monto + this.calcAmbas()< this.comanda.totalPagar){ 
@@ -129,7 +153,6 @@ this.pagoForm.value.idTipo=this.tipoPago;
 this.pagoForm.value.idComanda=this.comanda.id;
 this.pagoForm.value.monto=this.comanda.totalPagar;
 }
-    console.log(this.pagoForm.value);
     //Accion API create enviando toda la informacion del formulario
     this.gService.create('pago/',this.pagoForm.value)
     .pipe(takeUntil(this.destroy$)) .subscribe((data: any) => {

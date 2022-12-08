@@ -52,6 +52,9 @@
             <mat-error *ngIf="formCreate.controls['correo'].hasError('required')">
               Correo es <strong>requerido</strong>
             </mat-error>
+            <mat-error *ngIf="formCreate.controls['correo'].hasError('email')">
+              El formatod del correo es <strong>invalido</strong>
+            </mat-error>
             <mat-error *ngIf="formCreate.controls['correo'].hasError('minlength')">
               Tamaño minimo es <strong>5</strong>
             </mat-error>
