@@ -1,28 +1,57 @@
 <mat-card class="shipping-card">
-  <mat-card-content>
-    <div id="htmlData"  class="contenedor">
-      <h2 class="titulo">Total de ventas por Producto</h2>
-      <table class="tabla">
-          <thead>
-        <tr class="table-primary">
-          <th>Restaurante</th>
-          <th>Total Ventas</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of datos">
-          <th>{{ item.Restaurante }}</th>
-          <td>{{ item.Ventas }}</td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
-    <div class="col-md-4 text-right">
-      <button mat-flat-button color="accent" (click)="openPDF()" >
-          Descargar PDF
-          <mat-icon>download</mat-icon> 
-          </button>
-      
-    </div>
-  </mat-card-content>
-  </mat-card>
+    
+  <form [formGroup]="formulario" (ngSubmit)="reporteFiltrado()" novalidate> 
+    <div class="marcadores">
+    <mat-form-field appearance="fill" >
+        <mat-label>Fecha inicial</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="fechaI">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+        <mat-error *ngIf="errorHandling('fechaI', 'required')">
+            Fecha inicial es <strong>requerido</strong>
+          </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" >
+        <mat-label>Fecha final</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="fechaF">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+         <mat-error *ngIf="errorHandling('fechaF', 'required')">
+            Fecha final es <strong>requerido</strong>
+       </mat-error>
+      </mat-form-field>
+    </div > 
+    <br>
+      <button class="Procesar" mat-flat-button color="accent" type="submit">Consultar</button>
+    </form>
+
+    <mat-card-content>
+      <div id="htmlData"  class="contenedor">
+        <h2 class="titulo">{{titulo}}</h2>
+        <table class="tabla">
+            <thead>
+          <tr class="table-primary">
+            <th>Sede</th>
+            <th>Total Ventas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of datos">
+            <th>{{ item.Restaurante }}</th>
+            <td>¢{{ item.Ventas }}</td>
+          </tr>
+        </tbody>
+        </table>
+      </div>
+      <div class="col-md-4 text-right" style="margin-top:15px;">
+        <button mat-flat-button color="accent" (click)="openPDF()" >
+            Descargar PDF
+            <mat-icon>download</mat-icon> 
+            </button>
+        
+      </div>
+    </mat-card-content>
+    </mat-card>

@@ -6,7 +6,13 @@ const reportesController=require("../controllers/reportesController");
 
 //Rutas de videojuegos
 
-router.get("/vFecha/:fechaI, fechaF",reportesController.getVentaFecha);
+router.get("/vFecha",reportesController.getVentaFecha);
+
+router.get("/vPago",reportesController.getVentaPago);
+
+router.post("/vFecha2",reportesController.getVentaFecha2);
+
+router.post("/vPago2",reportesController.getVentaPago2);
 
 
 
