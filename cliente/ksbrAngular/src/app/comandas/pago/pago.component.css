@@ -25,4 +25,14 @@
   .col:last-child {
     margin-right: 0;
   }
+
+  .imagen img{
+    width: 200px;
+    height: 200px;
+  }
+  .contenedor{
+    display: flex;
+    flex-direction: row;
+    
+  }
   
