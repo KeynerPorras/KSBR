@@ -12,9 +12,13 @@
         <!---->
         <div *ngIf="isAutenticated" [ngSwitch]="currentUser.user.rol">
           <button mat-menu-item [routerLink]="['/mesas/gestion-mesas']"
-            [routerLinkActive]="'mat-raised-button'">Reservación</button>
+            [routerLinkActive]="'mat-raised-button'" *ngSwitchCase="'administrador'">Reservación</button>
+            <button mat-menu-item [routerLink]="['/mesas/gestion-mesas']"
+            [routerLinkActive]="'mat-raised-button'" *ngSwitchCase="'mesero'">Reservación</button>
           <button mat-menu-item [routerLink]="['/comandas/comanda-online']"
-            [routerLinkActive]="'mat-raised-button'">Compra online</button>
+            [routerLinkActive]="'mat-raised-button'" *ngSwitchCase="'administrador'">Compra online</button>
+            <button mat-menu-item [routerLink]="['/comandas/comanda-online']"
+            [routerLinkActive]="'mat-raised-button'" *ngSwitchCase="'cliente'">Compra online</button>
           <button mat-menu-item [routerLink]="['/productos/gestion-productos']" [routerLinkActive]="'mat-raised-button'"
             *ngSwitchCase="'administrador'">Productos</button>
           <button mat-menu-item [routerLink]="['/usuarios/gestion-usuarios']" [routerLinkActive]="'mat-raised-button'"
