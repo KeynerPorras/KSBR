@@ -1,5 +1,6 @@
 .full-width-table {
     width: 100%;
+    background-color: #f1eae5;
   }
   mat-card-title{
     text-align: center;
@@ -15,4 +16,12 @@
   }
   .centrar{
     text-align: center;
+  }
+
+  .tabla{
+    background-color: #6F0C0C;
+  }
+  .paginador{
+    background-color: #6F0C0C;
+    color: white;
   }

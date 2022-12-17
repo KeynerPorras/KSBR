@@ -18,7 +18,7 @@ module.exports.get = async (request, response, next) => {
 module.exports.getEstados = async (request, response) => {
   
   const estados = [{"id":EstadosMesas.libre},{"id":EstadosMesas.ocupada},{"id":EstadosMesas.ordenRealizada},
-  {"id":EstadosMesas.porPagar},{"id":EstadosMesas.reservada}]
+  {"id":EstadosMesas.porPagar},{"id":EstadosMesas.reservada},{"id":EstadosMesas.inactiva}]
  // const estados = EstadosMesas;
   response.json(estados);
 };

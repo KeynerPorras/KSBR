@@ -16,7 +16,13 @@
   flex-direction: column;
  margin: 5%;
  width: 20%;
- background-color: #f96666;
+ background-color: #6F0C0C;
+ border-radius: 5%;
+ color: white;
+}
+
+img{
+  padding: 3%;
 }
 
 mat-card-actions{        

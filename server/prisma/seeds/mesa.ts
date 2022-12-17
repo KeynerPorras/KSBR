@@ -16,7 +16,7 @@ export const mesa = [
     codigo:"KSOC-2",
     idRestaurante: 1,
     capacidad: 6,
-    estado:EstadosMesas.libre
+    estado:EstadosMesas.porPagar
   },
   {
     codigo:"KSOC-3",

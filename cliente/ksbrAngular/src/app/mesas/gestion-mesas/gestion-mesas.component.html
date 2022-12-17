@@ -1,88 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body class="body">
-  <div class="titulo">
-    <h1><b><span style="color: green;">Gestión de </span> <span style="color: brown;">mesas</span></b></h1>
-  </div>
-
-
-  
-  <div *ngIf="datosRestaurante ">
-    <div class="contenedor-botones" >
-      <button class="crear" *ngIf="currentUser.user.rol == 'administrador'"
-            mat-mini-fab color="accent"
-            matTooltip="Agregar nueva mesa"
-            aria-label="Agregar mesa"
-            (click)="crearMesa()"           
-          >
-          <mat-icon class="mat-18">add</mat-icon>
-          </button>
-      <mat-button-toggle-group color="primary" #group="matButtonToggleGroup" name="fontStyle" aria-label="Font Style"  >
-        <mat-button-toggle *ngFor="let item of datosRestaurante" value="{{item.id}}" (click)="selectListaPorRestaurante(item.id)">{{item.nombre}} </mat-button-toggle>     
-      </mat-button-toggle-group>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body class="body" style="background-image: url(./assets/images/cremaFondo.jpg);">
+    <div class="titulo">
+      <h1>
+        <b
+          ><span style="color: green">Gestión de </span>
+          <span style="color: brown">mesas</span></b
+        >
+      </h1>
     </div>
-    <div class="grid-container" *ngIf="datosSelect" >
-    
-      <mat-card  class="tarjeta" *ngFor="let item of datosSelect">
-        <mat-card-header>     
-          <mat-card-title >Mesa</mat-card-title>
-          <mat-card-subtitle>Codigo:{{item.codigo}}</mat-card-subtitle>
-          
-        </mat-card-header>                 
-          <mat-card-content>
-            <img class="imagen" mat-card-image src="./assets/images/mesas.jpg" >  
-          </mat-card-content>
-          <mat-card-actions>
-            <div class="acciones">
-              <button
-              mat-mini-fab color="accent"
+
+    <div *ngIf="datosRestaurante">
+      <div class="contenedor-botones">
+        <button
+          class="crear"
+          *ngIf="currentUser.user.rol == 'administrador'"
+          mat-mini-fab
+          color="primary"
+          matTooltip="Agregar nueva mesa"
+          aria-label="Agregar mesa"
+          (click)="crearMesa()"
+        >
+          <mat-icon class="mat-18">add</mat-icon>
+        </button>
+        <mat-button-toggle-group
+          color="primary"
+          #group="matButtonToggleGroup"
+          name="fontStyle"
+          aria-label="Font Style"
+        >
+          <mat-button-toggle
+            *ngFor="let item of datosRestaurante"
+            value="{{ item.id }}"
+            (click)="selectListaPorRestaurante(item.id)"
+            >{{ item.nombre }}
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+
+      <div class="grid-container" *ngIf="datosSelect" style="padding: 5%; background-image: url(./assets/images/cremaFondo.jpg);" >
+        <div
+          class="card mb-2"
+          style="width: 18rem; background-color: #6f0c0c; color: white"
+          *ngFor="let item of datosSelect"
+        >
+          <img
+            src="./assets/images/mesas.jpg"
+            class="card-img-top"
+            alt="mesa"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Codigo:{{ item.codigo }}</h5>
+            <h5 *ngIf="item.estado == 'libre'" style="color: green">
+              Estado : {{ item.estado }}
+            </h5>
+            <h5 *ngIf="item.estado == 'reservada'" style="color: red">
+              Estado : {{ item.estado }}
+            </h5>
+            <h5 *ngIf="item.estado == 'ocupada'" style="color: blue">
+              Estado : {{ item.estado }}
+            </h5>
+            <h5 *ngIf="item.estado == 'porPagar'" style="color: purple">
+              Estado : {{ item.estado }}
+            </h5>
+            <h5 *ngIf="item.estado == 'ordenRealizada'" style="color: yellow">
+              Estado : {{ item.estado }}
+            </h5>
+            <h5 *ngIf="item.estado == 'inactiva'" style="color: orangered">
+              Estado : {{ item.estado }}
+            </h5>
+            <h5>Capacidad : {{ item.capacidad }}</h5>
+            <button
+              mat-mini-fab
+              color="accent"
               matTooltip="Detalle Videjuego"
-              aria-label="Detalle Videjuego"           
+              aria-label="Detalle Videjuego"
               (click)="detalleMesa(item.id)"
             >
-            <mat-icon  class="mat-18">info</mat-icon>
+              <mat-icon class="mat-18">info</mat-icon>
             </button>
-            <button class="crear" *ngIf="item.estado == 'libre' || currentUser.user.rol == 'administrador'"
-              mat-mini-fab color="accent"
+            <button
+              class="crear"
+              *ngIf="
+                item.estado == 'libre' ||
+                currentUser.user.rol == 'administrador'
+              "
+              mat-mini-fab
+              color="accent"
               matTooltip="Agregar nueva mesa"
               aria-label="Agregar mesa"
-              (click)="actualizarMesa(item.id)"          
+              (click)="actualizarMesa(item.id)"
             >
-            <mat-icon class="mat-18">edit</mat-icon>
+              <mat-icon class="mat-18">edit</mat-icon>
             </button>
-            <button class="reserva"
-              mat-mini-fab color="accent"
+            <button
+              class="reserva"
+              *ngIf="item.estado != 'inactiva'"
+              mat-mini-fab
+              color="accent"
               matTooltip="Agregar nueva mesa"
-              aria-label="Agregar mesa" 
-              (click)="reservarMesa(item.id,item.estado,item.idRestaurante)"        
+              aria-label="Agregar mesa"
+              (click)="reservarMesa(item.id, item.estado, item.idRestaurante)"
             >
-            <mat-icon class="mat-18">bookmark_added </mat-icon>
+              <mat-icon class="mat-18">bookmark_added </mat-icon>
             </button>
-            </div>
-            <div class="estados">
-              <button mat-button *ngIf="item.estado=='libre' " style="color:green">Estado : {{item.estado}}</button>
-              <button mat-button *ngIf="item.estado=='reservada' " style="color:red">Estado : {{item.estado}}</button>
-              <button mat-button *ngIf="item.estado=='ocupada' " style="color:blue">Estado : {{item.estado}}</button>
-              <button mat-button *ngIf="item.estado=='porPagar' " style="color:purple">Estado : {{item.estado}}</button>
-              <button mat-button *ngIf="item.estado=='ordenRealizada' " style="color:yellow">Estado : {{item.estado}}</button>
-              <button mat-button *ngIf="item.estado=='inactiva' " style="color:orangered">Estado : {{item.estado}}</button>
-              <button mat-button>Capacidad : {{item.capacidad}}</button>
-            </div>
-            
-          </mat-card-actions>          
-      </mat-card>
-  
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  
-  
-  
-  
-</body>
+  </body>
 </html>

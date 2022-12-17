@@ -5,7 +5,7 @@
     <mat-card-title>
       <span style="color: green;">Prod</span><span style="color: brown;">uctos</span>
     </mat-card-title>
-    <mat-card-content>
+    <mat-card-content class="tabla">
       <div class="mat-elevation-z8" *ngIf="dataSource">
         <mat-card-title class="boton-crear">
           <button class="crear" mat-mini-fab color="accent" matTooltip="Agregar nuevo Producto"
@@ -14,9 +14,9 @@
             <mat-icon class="mat-18">add</mat-icon>
           </button>
         </mat-card-title>
-        <mat-form-field>
-          <mat-label>Buscar Productos</mat-label>
-          <input matInput (keyup)="filtrar($event)" placeholder="Buscar">
+        <mat-form-field style=" margin-left: 5%;" >
+          <mat-label style="color: white; " >Buscar Productos</mat-label>
+          <input style="color: white; " matInput (keyup)="filtrar($event)" placeholder="Buscar">
         </mat-form-field>
         <table mat-table [dataSource]="dataSource" class="full-width-table" matSort matSortStart="desc"
           aria-label="Elements">
@@ -78,7 +78,7 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
 
-        <mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="5"
+        <mat-paginator class="paginador" #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="5"
           [pageSizeOptions]="[3, 5, 10]" aria-label="Seleccione una pagina">
         </mat-paginator>
       </div>

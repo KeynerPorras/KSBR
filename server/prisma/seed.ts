@@ -208,7 +208,7 @@ async function main() {
       idMesa: 2,
       idUsuario: "208060668",
       idRestaurante: 1,
-      estado: EstadoComanda.pagada,
+      estado: EstadoComanda.porPagar,
       direccion: "restaurante",
       subTotal: 7000,
       impuesto: 1000,

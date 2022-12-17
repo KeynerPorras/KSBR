@@ -3,7 +3,7 @@
     <mat-card-title>
       <span style="color: brown;">Orde</span><span style="color: green;">nes</span>
     </mat-card-title>
-    <mat-card-content>
+    <mat-card-content class="tabla">
       <div class="mat-elevation-z8"   
       *ngIf="dataSource"
      
@@ -54,7 +54,7 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
   
-        <mat-paginator
+        <mat-paginator class="paginador"
           #paginator
           [length]="dataSource.data.length"
           [pageIndex]="0"
